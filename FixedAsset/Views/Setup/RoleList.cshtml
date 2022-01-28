@@ -1,0 +1,123 @@
+﻿@model IEnumerable<FixedAsset.Models.Setup.Role.RoleModel>
+@{
+    ViewBag.Title = "RoleList";
+}
+
+}
+
+<section id="intro" class="intro">
+
+    <div class="row">
+
+        <div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="0.1s">
+            <div style="height:130px">
+
+            </div>
+        </div>
+    </div>
+
+</section>
+<section id="intro" class="intro">
+
+    <div class="row">
+
+        <div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="0.1s">
+            <div style="height:130px">
+
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 pad-top">
+    <div class="card">
+    <br />
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                @*<a href="@Url.Action("Create","Applicant")" class="btn btn-primary btn-lg">Add New</a>*@
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                @*<a href="@Url.Action("Create","Applicant")" class="btn btn-primary btn-lg">Add New</a>*@
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <a href="@Url.Action("Role","Setup")" class="btn btn-primary btn-lg">Add New</a>
+            </div>
+        </div>
+    </div>
+        <div class="card-header">
+            <h2 class="mb-0">Roles</h2>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered basic-main-table">
+                    <thead>
+                        <tr>
+                            <th>Role ID</th>
+                            <th>Role Name</th>
+                            <th>Role Description</th>
+                            <th>Access Days</th>
+                            <th>Create Date</th>
+                            <th>Authoriser</th>
+                            <th>Role Level</th>
+                            <th>Committee member</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null)
+                        {
+                            foreach (var item in Model)
+                            {
+                                //var dateC = item.createdate.ToString("dd/MM/yyyy");
+                                <tr>
+                                    <td>@item.role_id</td>
+                                    <td>@item.role_name</td>
+                                    <td>@item.roledesc</td>
+                                    <td>@item.access_days</td>
+                                    <td>@item.createdate</td>
+                                    <td>@item.canauth</td>
+                                    <td>@item.role_level</td>
+                                    <td>@item.Commitee</td>
+                                    <td class="table-action">
+                                        <div class="dropdown float-right">
+                                            <a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown" aria-expanded="false">
+                                                Actions<i class="mdi mdi-dots-vertical"></i>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-right" style="">
+                                                <a class="dropdown-item" href="@Url.Action("RoleEdit", "Setup", new { Id = item.role_id })">
+                                                    <i class="la fa fa-edit"></i>
+                                                    <span class="kt-nav__link-text">Edit</span>
+                                                </a>
+                                                <a class="dropdown-item" href="@Url.Action("RoleDelete", "Setup", new { Id = item.role_id  })">
+                                                    <i class="la fa fa-trash"></i>
+                                                    <span class="kt-nav__link-text">Delete</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+                @if (ViewBag.Message != null)
+                {
+                    <script type="text/javascript">
+
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+                    </script>
+
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<br />

@@ -1,0 +1,1549 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="FixedAssetModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FixedAsset.dbo.tbl_amortise' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbl_amortise">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="transtype" Type="varchar" MaxLength="150" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FixedAsset.dbo.tbl_Branch' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbl_Branch">
+          <Key>
+            <PropertyRef Name="BranchCode" />
+            <PropertyRef Name="BranchName" />
+          </Key>
+          <Property Name="BranchCode" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="BranchName" Type="char" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="char" MaxLength="100" />
+          <Property Name="address2" Type="char" MaxLength="100" />
+          <Property Name="Address3" Type="char" MaxLength="100" />
+          <Property Name="phone" Type="char" MaxLength="40" />
+          <Property Name="email" Type="char" MaxLength="100" />
+          <Property Name="fax" Type="char" MaxLength="40" />
+          <Property Name="City" Type="char" MaxLength="50" />
+          <Property Name="State" Type="char" MaxLength="10" />
+          <Property Name="Country" Type="char" MaxLength="10" />
+          <Property Name="status" Type="int" />
+          <Property Name="cashaccount" Type="varchar" MaxLength="16" />
+          <Property Name="suspenseDR" Type="varchar" MaxLength="20" />
+          <Property Name="suspenseCR" Type="varchar" MaxLength="20" />
+          <Property Name="InterBranchGL" Type="varchar" MaxLength="16" />
+          <Property Name="BranchType" Type="int" />
+          <Property Name="MBranchCode" Type="varchar" MaxLength="10" />
+          <Property Name="SBranchCode" Type="varchar" MaxLength="10" />
+          <Property Name="Userid" Type="varchar" MaxLength="10" />
+          <Property Name="create_dt" Type="datetime" />
+          <Property Name="region" Type="varchar" MaxLength="6" />
+          <Property Name="Createdate" Type="datetime" />
+          <Property Name="authid" Type="varchar" MaxLength="20" />
+          <Property Name="subbranch" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FixedAsset.dbo.tbl_Department' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbl_Department">
+          <Key>
+            <PropertyRef Name="Deptid" />
+          </Key>
+          <Property Name="Deptid" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="DeptName" Type="varchar" MaxLength="50" />
+          <Property Name="DeptShortname" Type="varchar" MaxLength="100" />
+          <Property Name="status" Type="int" />
+          <Property Name="userid" Type="varchar" MaxLength="20" />
+          <Property Name="authid" Type="varchar" MaxLength="20" />
+          <Property Name="createdate" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'FixedAsset.dbo.tbl_DepSchedule' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="tbl_DepSchedule">
+          <Property Name="AssetCode" Type="varchar" MaxLength="20" />
+          <Property Name="Installment" Type="int" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="YearlyDep" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="MonthlyDep" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Status" Type="int" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FixedAsset.dbo.tbl_FAAncilaryAmortSchedule' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbl_FAAncilaryAmortSchedule">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FACode" Type="varchar" MaxLength="20" />
+          <Property Name="CostCode" Type="varchar" MaxLength="3" />
+          <Property Name="MonthlyRunRate" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="NextAmortDate" Type="datetime" />
+          <Property Name="status" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FixedAsset.dbo.tbl_FAAncilaryClass' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbl_FAAncilaryClass">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClassCode" Type="varchar" MaxLength="5" />
+          <Property Name="CostCode" Type="varchar" MaxLength="3" />
+          <Property Name="status" Type="int" />
+          <Property Name="UserID" Type="varchar" MaxLength="20" />
+          <Property Name="AuthID" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FixedAsset.dbo.tbl_FAAncilaryCost' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbl_FAAncilaryCost">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CostCode" Type="varchar" MaxLength="3" />
+          <Property Name="CostDesc" Type="varchar" MaxLength="150" />
+          <Property Name="Capitalized" Type="int" />
+          <Property Name="Status" Type="int" />
+          <Property Name="UserID" Type="varchar" MaxLength="20" />
+          <Property Name="AuthID" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FixedAsset.dbo.tbl_FAAncilaryCostTrans' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbl_FAAncilaryCostTrans">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="TranDate" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FACode" Type="varchar" MaxLength="20" />
+          <Property Name="CostCode" Type="varchar" MaxLength="3" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TranDate" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="Narration" Type="varchar" MaxLength="150" />
+          <Property Name="ExpMethod" Type="int" />
+          <Property Name="DRAccount" Type="varchar" MaxLength="20" />
+          <Property Name="CRAccount" Type="varchar" MaxLength="20" />
+          <Property Name="MonthlyRunRate" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="NextAmortDate" Type="datetime" />
+          <Property Name="AmountPaid" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="UserID" Type="varchar" MaxLength="20" />
+          <Property Name="AuthID" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FixedAsset.dbo.tbl_FACategory' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbl_FACategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CatCode" Type="varchar" MaxLength="5" />
+          <Property Name="CatDesc" Type="varchar" MaxLength="150" />
+          <Property Name="status" Type="int" />
+          <Property Name="UserID" Type="varchar" MaxLength="20" />
+          <Property Name="AuthID" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FixedAsset.dbo.tbl_FAClass' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbl_FAClass">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CatCode" Type="varchar" MaxLength="5" />
+          <Property Name="ClassCode" Type="varchar" MaxLength="5" />
+          <Property Name="ClassName" Type="varchar" MaxLength="150" />
+          <Property Name="DepMethod" Type="int" />
+          <Property Name="DepRate" Type="decimal" Precision="10" Scale="6" />
+          <Property Name="LifeSpan" Type="int" />
+          <Property Name="status" Type="int" />
+          <Property Name="UserID" Type="varchar" MaxLength="20" />
+          <Property Name="AuthID" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FixedAsset.dbo.tbl_FADepSchedule' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbl_FADepSchedule">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AssetCode" Type="varchar" MaxLength="20" />
+          <Property Name="Installment" Type="int" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="YearlyDep" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="MonthlyDep" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FixedAsset.dbo.tbl_FALocation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbl_FALocation">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="DateAllocated" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FACode" Type="varchar" MaxLength="20" />
+          <Property Name="FALocationCode" Type="varchar" MaxLength="3" />
+          <Property Name="DateAllocated" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="Status" Type="int" />
+          <Property Name="ReceiptStatus" Type="int" />
+          <Property Name="UserID" Type="varchar" MaxLength="20" />
+          <Property Name="AuthID" Type="varchar" MaxLength="20" />
+          <Property Name="ReceiptBy" Type="varchar" MaxLength="20" />
+          <Property Name="AssetGL" Type="varchar" MaxLength="20" />
+          <Property Name="AccumDepGL" Type="varchar" MaxLength="20" />
+          <Property Name="DepExpenseGL" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FixedAsset.dbo.tbl_FAMaintenaceHist' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbl_FAMaintenaceHist">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="TranDate" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FACode" Type="varchar" MaxLength="20" />
+          <Property Name="Narration" Type="varchar" MaxLength="200" />
+          <Property Name="Tranamount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TranDate" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="expMethod" Type="int" />
+          <Property Name="DRGL" Type="varchar" MaxLength="20" />
+          <Property Name="CRGL" Type="varchar" MaxLength="20" />
+          <Property Name="MaintType" Type="int" />
+          <Property Name="status" Type="int" />
+          <Property Name="UserID" Type="varchar" MaxLength="20" />
+          <Property Name="AuthID" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FixedAsset.dbo.tbl_FARecuringAmortSchedule' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbl_FARecuringAmortSchedule">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FACode" Type="varchar" MaxLength="20" />
+          <Property Name="CostCode" Type="varchar" MaxLength="3" />
+          <Property Name="MonthlyRunRate" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="NextAmortDate" Type="datetime" />
+          <Property Name="Tenor" Type="int" />
+          <Property Name="TenorSpent" Type="int" />
+          <Property Name="status" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FixedAsset.dbo.tbl_FARecurringClass' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbl_FARecurringClass">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClassCode" Type="varchar" MaxLength="5" />
+          <Property Name="CostCode" Type="varchar" MaxLength="3" />
+          <Property Name="status" Type="int" />
+          <Property Name="UserID" Type="varchar" MaxLength="20" />
+          <Property Name="AuthID" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FixedAsset.dbo.tbl_FARecurringCost' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbl_FARecurringCost">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CostCode" Type="varchar" MaxLength="3" />
+          <Property Name="CostDesc" Type="varchar" MaxLength="150" />
+          <Property Name="Amortized" Type="int" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FixedAsset.dbo.tbl_FARecurringgCostTrans' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbl_FARecurringgCostTrans">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="TranDate" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FACode" Type="varchar" MaxLength="20" />
+          <Property Name="CostCode" Type="varchar" MaxLength="3" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TranDate" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="Narration" Type="varchar" MaxLength="150" />
+          <Property Name="ExpMethod" Type="int" />
+          <Property Name="DRAccount" Type="varchar" MaxLength="20" />
+          <Property Name="CRAccount" Type="varchar" MaxLength="20" />
+          <Property Name="MonthlyRunRate" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="NextAmortDate" Type="datetime" />
+          <Property Name="AmountPaid" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="UserID" Type="varchar" MaxLength="20" />
+          <Property Name="AuthID" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FixedAsset.dbo.tbl_FARevaluation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbl_FARevaluation">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="RevDate" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FACode" Type="varchar" MaxLength="20" />
+          <Property Name="PrevValue" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="CurrentValue" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="RevDate" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="status" Type="int" />
+          <Property Name="UserID" Type="varchar" MaxLength="20" />
+          <Property Name="AuthID" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FixedAsset.dbo.tbl_FASchMaintRecord' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbl_FASchMaintRecord">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="MaintDate" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FACode" Type="varchar" MaxLength="20" />
+          <Property Name="MaintDate" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="NextMaintDate" Type="datetime" />
+          <Property Name="status" Type="int" />
+          <Property Name="UserID" Type="varchar" MaxLength="20" />
+          <Property Name="AuthID" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FixedAsset.dbo.tbl_FAWriteOff' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbl_FAWriteOff">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="TranDate" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FACode" Type="varchar" MaxLength="20" />
+          <Property Name="DisposalAmt" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="OtherCostWriteoff" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TranDate" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="Narration" Type="varchar" MaxLength="150" />
+          <Property Name="DRGL" Type="varchar" MaxLength="20" />
+          <Property Name="CRGL" Type="varchar" MaxLength="20" />
+          <Property Name="UserID" Type="varchar" MaxLength="20" />
+          <Property Name="AuthID" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FixedAsset.dbo.tbl_FixedAsset' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbl_FixedAsset">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="PurchaseDate" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CatCode" Type="varchar" MaxLength="20" />
+          <Property Name="ClassCode" Type="varchar" MaxLength="20" />
+          <Property Name="FACode" Type="varchar" MaxLength="20" />
+          <Property Name="FAName" Type="varchar" MaxLength="150" />
+          <Property Name="DepMethod" Type="int" />
+          <Property Name="Deprate" Type="decimal" Precision="10" Scale="6" />
+          <Property Name="LifeSpan" Type="int" />
+          <Property Name="LocationCode" Type="varchar" MaxLength="5" />
+          <Property Name="PurchaseDate" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="FACost" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ResidualVal" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="AccumDep" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="LifeSpanUsed" Type="int" />
+          <Property Name="DepStartDate" Type="datetime" />
+          <Property Name="FAGLAccount" Type="varchar" MaxLength="20" />
+          <Property Name="FundingGL" Type="varchar" MaxLength="20" />
+          <Property Name="AccumDepGL" Type="varchar" MaxLength="20" />
+          <Property Name="ExpenseGL" Type="varchar" MaxLength="20" />
+          <Property Name="Status" Type="int" />
+          <Property Name="DisposalMethod" Type="int" />
+          <Property Name="DisposalAmt" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="UserID" Type="varchar" MaxLength="20" />
+          <Property Name="AuthID" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'FixedAsset.dbo.tbl_Role' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbl_Role">
+          <Key>
+            <PropertyRef Name="role_id" />
+            <PropertyRef Name="role_name" />
+          </Key>
+          <Property Name="role_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="role_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="roledesc" Type="varchar" MaxLength="150" />
+          <Property Name="access_days" Type="int" />
+          <Property Name="createdate" Type="datetime" />
+          <Property Name="isoperation" Type="int" />
+          <Property Name="reqLimit" Type="int" />
+          <Property Name="status" Type="int" />
+          <Property Name="authid" Type="varchar" MaxLength="50" />
+          <Property Name="userid" Type="varchar" MaxLength="50" />
+          <Property Name="canauth" Type="bit" />
+          <Property Name="role_level" Type="int" />
+          <Property Name="Commitee" Type="bit" />
+        </EntityType>
+        <EntityType Name="tbl_userprofile">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Userid" Type="varchar" MaxLength="50" />
+          <Property Name="userpassword" Type="varchar" MaxLength="150" />
+          <Property Name="fullname" Type="varchar" MaxLength="100" />
+          <Property Name="deptcode" Type="char" MaxLength="10" />
+          <Property Name="Role_id" Type="int" />
+          <Property Name="ipaddress" Type="varchar" MaxLength="20" />
+          <Property Name="loginstatus" Type="char" MaxLength="1" />
+          <Property Name="Authoriser" Type="int" />
+          <Property Name="branchcode" Type="char" MaxLength="10" />
+          <Property Name="Staff_status" Type="char" MaxLength="10" />
+          <Property Name="PostGL_Acctno" Type="varchar" MaxLength="18" />
+          <Property Name="passchange_date" Type="datetime" />
+          <Property Name="Next_Passchange_date" Type="datetime" />
+          <Property Name="Create_date" Type="datetime" />
+          <Property Name="SScode" Type="bigint" />
+          <Property Name="sessionid" Type="int" />
+          <Property Name="Computername" Type="varchar" MaxLength="100" />
+          <Property Name="machaddress" Type="varchar" MaxLength="100" />
+          <Property Name="lockcount" Type="int" />
+          <Property Name="ReportLevel" Type="varchar" MaxLength="22" />
+          <Property Name="AuthUserid" Type="varchar" MaxLength="12" />
+          <Property Name="PostUserId" Type="varchar" MaxLength="12" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="phoneno" Type="varchar" MaxLength="20" />
+          <Property Name="Status" Type="int" />
+          <Property Name="authid" Type="varchar" MaxLength="100" />
+          <Property Name="smsalert" Type="int" />
+          <Property Name="emailalert" Type="int" />
+          <Property Name="offlinealert" Type="int" />
+          <Property Name="authorisedby" Type="varchar" MaxLength="100" />
+          <Property Name="enforce_pwd" Type="int" />
+          <Property Name="excemptlock" Type="int" />
+          <Property Name="statement" Type="int" />
+          <Property Name="remotelogin" Type="int" />
+          <Property Name="targetamt" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="logincount" Type="int" />
+          <Property Name="multilogin" Type="int" />
+          <Property Name="SBU" Type="int" />
+          <Property Name="reportflag" Type="int" />
+          <Property Name="ConfirmPassword" Type="varchar" MaxLength="150" />
+          <Property Name="PasswordResetCode" Type="varchar" MaxLength="100" />
+          <Property Name="IsEmailVerified" Type="bit" />
+          <Property Name="ActivationCode" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityContainer Name="FixedAssetModelStoreContainer">
+          <EntitySet Name="tbl_userprofile" EntityType="Self.tbl_userprofile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_amortise" EntityType="Self.tbl_amortise" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbl_amortise].[Id] AS [Id], 
+    [tbl_amortise].[transtype] AS [transtype], 
+    [tbl_amortise].[Status] AS [Status]
+    FROM [dbo].[tbl_amortise] AS [tbl_amortise]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tbl_Branch" EntityType="Self.tbl_Branch" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbl_Branch].[BranchCode] AS [BranchCode], 
+    [tbl_Branch].[BranchName] AS [BranchName], 
+    [tbl_Branch].[Address] AS [Address], 
+    [tbl_Branch].[address2] AS [address2], 
+    [tbl_Branch].[Address3] AS [Address3], 
+    [tbl_Branch].[phone] AS [phone], 
+    [tbl_Branch].[email] AS [email], 
+    [tbl_Branch].[fax] AS [fax], 
+    [tbl_Branch].[City] AS [City], 
+    [tbl_Branch].[State] AS [State], 
+    [tbl_Branch].[Country] AS [Country], 
+    [tbl_Branch].[status] AS [status], 
+    [tbl_Branch].[cashaccount] AS [cashaccount], 
+    [tbl_Branch].[suspenseDR] AS [suspenseDR], 
+    [tbl_Branch].[suspenseCR] AS [suspenseCR], 
+    [tbl_Branch].[InterBranchGL] AS [InterBranchGL], 
+    [tbl_Branch].[BranchType] AS [BranchType], 
+    [tbl_Branch].[MBranchCode] AS [MBranchCode], 
+    [tbl_Branch].[SBranchCode] AS [SBranchCode], 
+    [tbl_Branch].[Userid] AS [Userid], 
+    [tbl_Branch].[create_dt] AS [create_dt], 
+    [tbl_Branch].[region] AS [region], 
+    [tbl_Branch].[Createdate] AS [Createdate], 
+    [tbl_Branch].[authid] AS [authid], 
+    [tbl_Branch].[subbranch] AS [subbranch]
+    FROM [dbo].[tbl_Branch] AS [tbl_Branch]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tbl_Department" EntityType="Self.tbl_Department" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbl_Department].[Deptid] AS [Deptid], 
+    [tbl_Department].[DeptName] AS [DeptName], 
+    [tbl_Department].[DeptShortname] AS [DeptShortname], 
+    [tbl_Department].[status] AS [status], 
+    [tbl_Department].[userid] AS [userid], 
+    [tbl_Department].[authid] AS [authid], 
+    [tbl_Department].[createdate] AS [createdate]
+    FROM [dbo].[tbl_Department] AS [tbl_Department]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tbl_FAAncilaryAmortSchedule" EntityType="Self.tbl_FAAncilaryAmortSchedule" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbl_FAAncilaryAmortSchedule].[Id] AS [Id], 
+    [tbl_FAAncilaryAmortSchedule].[FACode] AS [FACode], 
+    [tbl_FAAncilaryAmortSchedule].[CostCode] AS [CostCode], 
+    [tbl_FAAncilaryAmortSchedule].[MonthlyRunRate] AS [MonthlyRunRate], 
+    [tbl_FAAncilaryAmortSchedule].[NextAmortDate] AS [NextAmortDate], 
+    [tbl_FAAncilaryAmortSchedule].[status] AS [status]
+    FROM [dbo].[tbl_FAAncilaryAmortSchedule] AS [tbl_FAAncilaryAmortSchedule]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tbl_FAAncilaryClass" EntityType="Self.tbl_FAAncilaryClass" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbl_FAAncilaryClass].[Id] AS [Id], 
+    [tbl_FAAncilaryClass].[ClassCode] AS [ClassCode], 
+    [tbl_FAAncilaryClass].[CostCode] AS [CostCode], 
+    [tbl_FAAncilaryClass].[status] AS [status], 
+    [tbl_FAAncilaryClass].[UserID] AS [UserID], 
+    [tbl_FAAncilaryClass].[AuthID] AS [AuthID]
+    FROM [dbo].[tbl_FAAncilaryClass] AS [tbl_FAAncilaryClass]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tbl_FAAncilaryCost" EntityType="Self.tbl_FAAncilaryCost" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbl_FAAncilaryCost].[Id] AS [Id], 
+    [tbl_FAAncilaryCost].[CostCode] AS [CostCode], 
+    [tbl_FAAncilaryCost].[CostDesc] AS [CostDesc], 
+    [tbl_FAAncilaryCost].[Capitalized] AS [Capitalized], 
+    [tbl_FAAncilaryCost].[Status] AS [Status], 
+    [tbl_FAAncilaryCost].[UserID] AS [UserID], 
+    [tbl_FAAncilaryCost].[AuthID] AS [AuthID]
+    FROM [dbo].[tbl_FAAncilaryCost] AS [tbl_FAAncilaryCost]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tbl_FAAncilaryCostTrans" EntityType="Self.tbl_FAAncilaryCostTrans" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbl_FAAncilaryCostTrans].[Id] AS [Id], 
+    [tbl_FAAncilaryCostTrans].[FACode] AS [FACode], 
+    [tbl_FAAncilaryCostTrans].[CostCode] AS [CostCode], 
+    [tbl_FAAncilaryCostTrans].[Amount] AS [Amount], 
+    [tbl_FAAncilaryCostTrans].[TranDate] AS [TranDate], 
+    [tbl_FAAncilaryCostTrans].[Narration] AS [Narration], 
+    [tbl_FAAncilaryCostTrans].[ExpMethod] AS [ExpMethod], 
+    [tbl_FAAncilaryCostTrans].[DRAccount] AS [DRAccount], 
+    [tbl_FAAncilaryCostTrans].[CRAccount] AS [CRAccount], 
+    [tbl_FAAncilaryCostTrans].[MonthlyRunRate] AS [MonthlyRunRate], 
+    [tbl_FAAncilaryCostTrans].[NextAmortDate] AS [NextAmortDate], 
+    [tbl_FAAncilaryCostTrans].[AmountPaid] AS [AmountPaid], 
+    [tbl_FAAncilaryCostTrans].[UserID] AS [UserID], 
+    [tbl_FAAncilaryCostTrans].[AuthID] AS [AuthID]
+    FROM [dbo].[tbl_FAAncilaryCostTrans] AS [tbl_FAAncilaryCostTrans]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tbl_FACategory" EntityType="Self.tbl_FACategory" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbl_FACategory].[Id] AS [Id], 
+    [tbl_FACategory].[CatCode] AS [CatCode], 
+    [tbl_FACategory].[CatDesc] AS [CatDesc], 
+    [tbl_FACategory].[status] AS [status], 
+    [tbl_FACategory].[UserID] AS [UserID], 
+    [tbl_FACategory].[AuthID] AS [AuthID]
+    FROM [dbo].[tbl_FACategory] AS [tbl_FACategory]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tbl_FAClass" EntityType="Self.tbl_FAClass" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbl_FAClass].[Id] AS [Id], 
+    [tbl_FAClass].[CatCode] AS [CatCode], 
+    [tbl_FAClass].[ClassCode] AS [ClassCode], 
+    [tbl_FAClass].[ClassName] AS [ClassName], 
+    [tbl_FAClass].[DepMethod] AS [DepMethod], 
+    [tbl_FAClass].[DepRate] AS [DepRate], 
+    [tbl_FAClass].[LifeSpan] AS [LifeSpan], 
+    [tbl_FAClass].[status] AS [status], 
+    [tbl_FAClass].[UserID] AS [UserID], 
+    [tbl_FAClass].[AuthID] AS [AuthID]
+    FROM [dbo].[tbl_FAClass] AS [tbl_FAClass]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tbl_FADepSchedule" EntityType="Self.tbl_FADepSchedule" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbl_FADepSchedule].[Id] AS [Id], 
+    [tbl_FADepSchedule].[AssetCode] AS [AssetCode], 
+    [tbl_FADepSchedule].[Installment] AS [Installment], 
+    [tbl_FADepSchedule].[StartDate] AS [StartDate], 
+    [tbl_FADepSchedule].[YearlyDep] AS [YearlyDep], 
+    [tbl_FADepSchedule].[MonthlyDep] AS [MonthlyDep], 
+    [tbl_FADepSchedule].[Status] AS [Status]
+    FROM [dbo].[tbl_FADepSchedule] AS [tbl_FADepSchedule]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tbl_FALocation" EntityType="Self.tbl_FALocation" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbl_FALocation].[Id] AS [Id], 
+    [tbl_FALocation].[FACode] AS [FACode], 
+    [tbl_FALocation].[FALocationCode] AS [FALocationCode], 
+    [tbl_FALocation].[DateAllocated] AS [DateAllocated], 
+    [tbl_FALocation].[Status] AS [Status], 
+    [tbl_FALocation].[ReceiptStatus] AS [ReceiptStatus], 
+    [tbl_FALocation].[UserID] AS [UserID], 
+    [tbl_FALocation].[AuthID] AS [AuthID], 
+    [tbl_FALocation].[ReceiptBy] AS [ReceiptBy], 
+    [tbl_FALocation].[AssetGL] AS [AssetGL], 
+    [tbl_FALocation].[AccumDepGL] AS [AccumDepGL], 
+    [tbl_FALocation].[DepExpenseGL] AS [DepExpenseGL]
+    FROM [dbo].[tbl_FALocation] AS [tbl_FALocation]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tbl_FAMaintenaceHist" EntityType="Self.tbl_FAMaintenaceHist" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbl_FAMaintenaceHist].[Id] AS [Id], 
+    [tbl_FAMaintenaceHist].[FACode] AS [FACode], 
+    [tbl_FAMaintenaceHist].[Narration] AS [Narration], 
+    [tbl_FAMaintenaceHist].[Tranamount] AS [Tranamount], 
+    [tbl_FAMaintenaceHist].[TranDate] AS [TranDate], 
+    [tbl_FAMaintenaceHist].[expMethod] AS [expMethod], 
+    [tbl_FAMaintenaceHist].[DRGL] AS [DRGL], 
+    [tbl_FAMaintenaceHist].[CRGL] AS [CRGL], 
+    [tbl_FAMaintenaceHist].[MaintType] AS [MaintType], 
+    [tbl_FAMaintenaceHist].[status] AS [status], 
+    [tbl_FAMaintenaceHist].[UserID] AS [UserID], 
+    [tbl_FAMaintenaceHist].[AuthID] AS [AuthID]
+    FROM [dbo].[tbl_FAMaintenaceHist] AS [tbl_FAMaintenaceHist]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tbl_FARecuringAmortSchedule" EntityType="Self.tbl_FARecuringAmortSchedule" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbl_FARecuringAmortSchedule].[Id] AS [Id], 
+    [tbl_FARecuringAmortSchedule].[FACode] AS [FACode], 
+    [tbl_FARecuringAmortSchedule].[CostCode] AS [CostCode], 
+    [tbl_FARecuringAmortSchedule].[MonthlyRunRate] AS [MonthlyRunRate], 
+    [tbl_FARecuringAmortSchedule].[NextAmortDate] AS [NextAmortDate], 
+    [tbl_FARecuringAmortSchedule].[Tenor] AS [Tenor], 
+    [tbl_FARecuringAmortSchedule].[TenorSpent] AS [TenorSpent], 
+    [tbl_FARecuringAmortSchedule].[status] AS [status]
+    FROM [dbo].[tbl_FARecuringAmortSchedule] AS [tbl_FARecuringAmortSchedule]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tbl_FARecurringClass" EntityType="Self.tbl_FARecurringClass" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbl_FARecurringClass].[Id] AS [Id], 
+    [tbl_FARecurringClass].[ClassCode] AS [ClassCode], 
+    [tbl_FARecurringClass].[CostCode] AS [CostCode], 
+    [tbl_FARecurringClass].[status] AS [status], 
+    [tbl_FARecurringClass].[UserID] AS [UserID], 
+    [tbl_FARecurringClass].[AuthID] AS [AuthID]
+    FROM [dbo].[tbl_FARecurringClass] AS [tbl_FARecurringClass]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tbl_FARecurringCost" EntityType="Self.tbl_FARecurringCost" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbl_FARecurringCost].[Id] AS [Id], 
+    [tbl_FARecurringCost].[CostCode] AS [CostCode], 
+    [tbl_FARecurringCost].[CostDesc] AS [CostDesc], 
+    [tbl_FARecurringCost].[Amortized] AS [Amortized], 
+    [tbl_FARecurringCost].[Status] AS [Status]
+    FROM [dbo].[tbl_FARecurringCost] AS [tbl_FARecurringCost]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tbl_FARecurringgCostTrans" EntityType="Self.tbl_FARecurringgCostTrans" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbl_FARecurringgCostTrans].[Id] AS [Id], 
+    [tbl_FARecurringgCostTrans].[FACode] AS [FACode], 
+    [tbl_FARecurringgCostTrans].[CostCode] AS [CostCode], 
+    [tbl_FARecurringgCostTrans].[Amount] AS [Amount], 
+    [tbl_FARecurringgCostTrans].[TranDate] AS [TranDate], 
+    [tbl_FARecurringgCostTrans].[Narration] AS [Narration], 
+    [tbl_FARecurringgCostTrans].[ExpMethod] AS [ExpMethod], 
+    [tbl_FARecurringgCostTrans].[DRAccount] AS [DRAccount], 
+    [tbl_FARecurringgCostTrans].[CRAccount] AS [CRAccount], 
+    [tbl_FARecurringgCostTrans].[MonthlyRunRate] AS [MonthlyRunRate], 
+    [tbl_FARecurringgCostTrans].[NextAmortDate] AS [NextAmortDate], 
+    [tbl_FARecurringgCostTrans].[AmountPaid] AS [AmountPaid], 
+    [tbl_FARecurringgCostTrans].[UserID] AS [UserID], 
+    [tbl_FARecurringgCostTrans].[AuthID] AS [AuthID]
+    FROM [dbo].[tbl_FARecurringgCostTrans] AS [tbl_FARecurringgCostTrans]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tbl_FARevaluation" EntityType="Self.tbl_FARevaluation" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbl_FARevaluation].[Id] AS [Id], 
+    [tbl_FARevaluation].[FACode] AS [FACode], 
+    [tbl_FARevaluation].[PrevValue] AS [PrevValue], 
+    [tbl_FARevaluation].[CurrentValue] AS [CurrentValue], 
+    [tbl_FARevaluation].[RevDate] AS [RevDate], 
+    [tbl_FARevaluation].[status] AS [status], 
+    [tbl_FARevaluation].[UserID] AS [UserID], 
+    [tbl_FARevaluation].[AuthID] AS [AuthID]
+    FROM [dbo].[tbl_FARevaluation] AS [tbl_FARevaluation]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tbl_FASchMaintRecord" EntityType="Self.tbl_FASchMaintRecord" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbl_FASchMaintRecord].[Id] AS [Id], 
+    [tbl_FASchMaintRecord].[FACode] AS [FACode], 
+    [tbl_FASchMaintRecord].[MaintDate] AS [MaintDate], 
+    [tbl_FASchMaintRecord].[NextMaintDate] AS [NextMaintDate], 
+    [tbl_FASchMaintRecord].[status] AS [status], 
+    [tbl_FASchMaintRecord].[UserID] AS [UserID], 
+    [tbl_FASchMaintRecord].[AuthID] AS [AuthID]
+    FROM [dbo].[tbl_FASchMaintRecord] AS [tbl_FASchMaintRecord]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tbl_FAWriteOff" EntityType="Self.tbl_FAWriteOff" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbl_FAWriteOff].[Id] AS [Id], 
+    [tbl_FAWriteOff].[FACode] AS [FACode], 
+    [tbl_FAWriteOff].[DisposalAmt] AS [DisposalAmt], 
+    [tbl_FAWriteOff].[OtherCostWriteoff] AS [OtherCostWriteoff], 
+    [tbl_FAWriteOff].[TranDate] AS [TranDate], 
+    [tbl_FAWriteOff].[Narration] AS [Narration], 
+    [tbl_FAWriteOff].[DRGL] AS [DRGL], 
+    [tbl_FAWriteOff].[CRGL] AS [CRGL], 
+    [tbl_FAWriteOff].[UserID] AS [UserID], 
+    [tbl_FAWriteOff].[AuthID] AS [AuthID]
+    FROM [dbo].[tbl_FAWriteOff] AS [tbl_FAWriteOff]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tbl_FixedAsset" EntityType="Self.tbl_FixedAsset" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbl_FixedAsset].[Id] AS [Id], 
+    [tbl_FixedAsset].[CatCode] AS [CatCode], 
+    [tbl_FixedAsset].[ClassCode] AS [ClassCode], 
+    [tbl_FixedAsset].[FACode] AS [FACode], 
+    [tbl_FixedAsset].[FAName] AS [FAName], 
+    [tbl_FixedAsset].[DepMethod] AS [DepMethod], 
+    [tbl_FixedAsset].[Deprate] AS [Deprate], 
+    [tbl_FixedAsset].[LifeSpan] AS [LifeSpan], 
+    [tbl_FixedAsset].[LocationCode] AS [LocationCode], 
+    [tbl_FixedAsset].[PurchaseDate] AS [PurchaseDate], 
+    [tbl_FixedAsset].[FACost] AS [FACost], 
+    [tbl_FixedAsset].[ResidualVal] AS [ResidualVal], 
+    [tbl_FixedAsset].[AccumDep] AS [AccumDep], 
+    [tbl_FixedAsset].[LifeSpanUsed] AS [LifeSpanUsed], 
+    [tbl_FixedAsset].[DepStartDate] AS [DepStartDate], 
+    [tbl_FixedAsset].[FAGLAccount] AS [FAGLAccount], 
+    [tbl_FixedAsset].[FundingGL] AS [FundingGL], 
+    [tbl_FixedAsset].[AccumDepGL] AS [AccumDepGL], 
+    [tbl_FixedAsset].[ExpenseGL] AS [ExpenseGL], 
+    [tbl_FixedAsset].[Status] AS [Status], 
+    [tbl_FixedAsset].[DisposalMethod] AS [DisposalMethod], 
+    [tbl_FixedAsset].[DisposalAmt] AS [DisposalAmt], 
+    [tbl_FixedAsset].[UserID] AS [UserID], 
+    [tbl_FixedAsset].[AuthID] AS [AuthID]
+    FROM [dbo].[tbl_FixedAsset] AS [tbl_FixedAsset]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tbl_Role" EntityType="Self.tbl_Role" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbl_Role].[role_id] AS [role_id], 
+    [tbl_Role].[role_name] AS [role_name], 
+    [tbl_Role].[roledesc] AS [roledesc], 
+    [tbl_Role].[access_days] AS [access_days], 
+    [tbl_Role].[createdate] AS [createdate], 
+    [tbl_Role].[isoperation] AS [isoperation], 
+    [tbl_Role].[reqLimit] AS [reqLimit], 
+    [tbl_Role].[status] AS [status], 
+    [tbl_Role].[authid] AS [authid], 
+    [tbl_Role].[userid] AS [userid], 
+    [tbl_Role].[canauth] AS [canauth], 
+    [tbl_Role].[role_level] AS [role_level], 
+    [tbl_Role].[Commitee] AS [Commitee]
+    FROM [dbo].[tbl_Role] AS [tbl_Role]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FixedAssetModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbl_userprofile">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Userid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="userpassword" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="fullname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="deptcode" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="Role_id" Type="Int32" />
+          <Property Name="ipaddress" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="loginstatus" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Authoriser" Type="Int32" />
+          <Property Name="branchcode" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="Staff_status" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="PostGL_Acctno" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="passchange_date" Type="DateTime" Precision="3" />
+          <Property Name="Next_Passchange_date" Type="DateTime" Precision="3" />
+          <Property Name="Create_date" Type="DateTime" Precision="3" />
+          <Property Name="SScode" Type="Int64" />
+          <Property Name="sessionid" Type="Int32" />
+          <Property Name="Computername" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="machaddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="lockcount" Type="Int32" />
+          <Property Name="ReportLevel" Type="String" MaxLength="22" FixedLength="false" Unicode="false" />
+          <Property Name="AuthUserid" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="PostUserId" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="phoneno" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="authid" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="smsalert" Type="Int32" />
+          <Property Name="emailalert" Type="Int32" />
+          <Property Name="offlinealert" Type="Int32" />
+          <Property Name="authorisedby" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="enforce_pwd" Type="Int32" />
+          <Property Name="excemptlock" Type="Int32" />
+          <Property Name="statement" Type="Int32" />
+          <Property Name="remotelogin" Type="Int32" />
+          <Property Name="targetamt" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="logincount" Type="Int32" />
+          <Property Name="multilogin" Type="Int32" />
+          <Property Name="SBU" Type="Int32" />
+          <Property Name="reportflag" Type="Int32" />
+          <Property Name="ConfirmPassword" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="PasswordResetCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IsEmailVerified" Type="Boolean" />
+          <Property Name="ActivationCode" Type="Guid" />
+        </EntityType>
+        <EntityType Name="tbl_amortise">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="transtype" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbl_Branch">
+          <Key>
+            <PropertyRef Name="BranchCode" />
+            <PropertyRef Name="BranchName" />
+          </Key>
+          <Property Name="BranchCode" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="BranchName" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="true" Unicode="false" />
+          <Property Name="address2" Type="String" MaxLength="100" FixedLength="true" Unicode="false" />
+          <Property Name="Address3" Type="String" MaxLength="100" FixedLength="true" Unicode="false" />
+          <Property Name="phone" Type="String" MaxLength="40" FixedLength="true" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="true" Unicode="false" />
+          <Property Name="fax" Type="String" MaxLength="40" FixedLength="true" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="cashaccount" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="suspenseDR" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="suspenseCR" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="InterBranchGL" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="BranchType" Type="Int32" />
+          <Property Name="MBranchCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="SBranchCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Userid" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="create_dt" Type="DateTime" Precision="3" />
+          <Property Name="region" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="Createdate" Type="DateTime" Precision="3" />
+          <Property Name="authid" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="subbranch" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbl_Department">
+          <Key>
+            <PropertyRef Name="Deptid" />
+          </Key>
+          <Property Name="Deptid" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="DeptName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DeptShortname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="userid" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="authid" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="createdate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tbl_FAAncilaryAmortSchedule">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FACode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CostCode" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="MonthlyRunRate" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="NextAmortDate" Type="DateTime" Precision="3" />
+          <Property Name="status" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbl_FAAncilaryClass">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClassCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="CostCode" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="UserID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AuthID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_FAAncilaryCost">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CostCode" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="CostDesc" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Capitalized" Type="Int32" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="UserID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AuthID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_FAAncilaryCostTrans">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="TranDate" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FACode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CostCode" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TranDate" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Narration" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="ExpMethod" Type="Int32" />
+          <Property Name="DRAccount" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CRAccount" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MonthlyRunRate" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="NextAmortDate" Type="DateTime" Precision="3" />
+          <Property Name="AmountPaid" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="UserID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AuthID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_FACategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CatCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="CatDesc" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="UserID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AuthID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_FAClass">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CatCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="ClassCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="ClassName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="DepMethod" Type="Int32" />
+          <Property Name="DepRate" Type="Decimal" Precision="10" Scale="6" />
+          <Property Name="LifeSpan" Type="Int32" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="UserID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AuthID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_FADepSchedule">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AssetCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Installment" Type="Int32" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="YearlyDep" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="MonthlyDep" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Status" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbl_FALocation">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="DateAllocated" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FACode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FALocationCode" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="DateAllocated" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="ReceiptStatus" Type="Int32" />
+          <Property Name="UserID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AuthID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ReceiptBy" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AssetGL" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AccumDepGL" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DepExpenseGL" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_FAMaintenaceHist">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="TranDate" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FACode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Narration" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Tranamount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TranDate" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="expMethod" Type="Int32" />
+          <Property Name="DRGL" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CRGL" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MaintType" Type="Int32" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="UserID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AuthID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_FARecuringAmortSchedule">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FACode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CostCode" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="MonthlyRunRate" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="NextAmortDate" Type="DateTime" Precision="3" />
+          <Property Name="Tenor" Type="Int32" />
+          <Property Name="TenorSpent" Type="Int32" />
+          <Property Name="status" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbl_FARecurringClass">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClassCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="CostCode" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="UserID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AuthID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_FARecurringCost">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CostCode" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="CostDesc" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Amortized" Type="Int32" />
+          <Property Name="Status" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbl_FARecurringgCostTrans">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="TranDate" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FACode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CostCode" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TranDate" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Narration" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="ExpMethod" Type="Int32" />
+          <Property Name="DRAccount" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CRAccount" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MonthlyRunRate" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="NextAmortDate" Type="DateTime" Precision="3" />
+          <Property Name="AmountPaid" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="UserID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AuthID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_FARevaluation">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="RevDate" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FACode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PrevValue" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="CurrentValue" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="RevDate" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="UserID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AuthID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_FASchMaintRecord">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="MaintDate" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FACode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MaintDate" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="NextMaintDate" Type="DateTime" Precision="3" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="UserID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AuthID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_FAWriteOff">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="TranDate" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FACode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DisposalAmt" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="OtherCostWriteoff" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TranDate" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Narration" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="DRGL" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CRGL" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UserID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AuthID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_FixedAsset">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="PurchaseDate" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CatCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ClassCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FACode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FAName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="DepMethod" Type="Int32" />
+          <Property Name="Deprate" Type="Decimal" Precision="10" Scale="6" />
+          <Property Name="LifeSpan" Type="Int32" />
+          <Property Name="LocationCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="PurchaseDate" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="FACost" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ResidualVal" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="AccumDep" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="LifeSpanUsed" Type="Int32" />
+          <Property Name="DepStartDate" Type="DateTime" Precision="3" />
+          <Property Name="FAGLAccount" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FundingGL" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AccumDepGL" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ExpenseGL" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="DisposalMethod" Type="Int32" />
+          <Property Name="DisposalAmt" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="UserID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="AuthID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_Role">
+          <Key>
+            <PropertyRef Name="role_id" />
+            <PropertyRef Name="role_name" />
+          </Key>
+          <Property Name="role_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="role_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="roledesc" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="access_days" Type="Int32" />
+          <Property Name="createdate" Type="DateTime" Precision="3" />
+          <Property Name="isoperation" Type="Int32" />
+          <Property Name="reqLimit" Type="Int32" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="authid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="userid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="canauth" Type="Boolean" />
+          <Property Name="role_level" Type="Int32" />
+          <Property Name="Commitee" Type="Boolean" />
+        </EntityType>
+        <EntityContainer Name="FixedAssetEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_userprofile" EntityType="Self.tbl_userprofile" />
+          <EntitySet Name="tbl_amortise" EntityType="Self.tbl_amortise" />
+          <EntitySet Name="tbl_Branch" EntityType="Self.tbl_Branch" />
+          <EntitySet Name="tbl_Department" EntityType="Self.tbl_Department" />
+          <EntitySet Name="tbl_FAAncilaryAmortSchedule" EntityType="Self.tbl_FAAncilaryAmortSchedule" />
+          <EntitySet Name="tbl_FAAncilaryClass" EntityType="Self.tbl_FAAncilaryClass" />
+          <EntitySet Name="tbl_FAAncilaryCost" EntityType="Self.tbl_FAAncilaryCost" />
+          <EntitySet Name="tbl_FAAncilaryCostTrans" EntityType="Self.tbl_FAAncilaryCostTrans" />
+          <EntitySet Name="tbl_FACategory" EntityType="Self.tbl_FACategory" />
+          <EntitySet Name="tbl_FAClass" EntityType="Self.tbl_FAClass" />
+          <EntitySet Name="tbl_FADepSchedule" EntityType="Self.tbl_FADepSchedule" />
+          <EntitySet Name="tbl_FALocation" EntityType="Self.tbl_FALocation" />
+          <EntitySet Name="tbl_FAMaintenaceHist" EntityType="Self.tbl_FAMaintenaceHist" />
+          <EntitySet Name="tbl_FARecuringAmortSchedule" EntityType="Self.tbl_FARecuringAmortSchedule" />
+          <EntitySet Name="tbl_FARecurringClass" EntityType="Self.tbl_FARecurringClass" />
+          <EntitySet Name="tbl_FARecurringCost" EntityType="Self.tbl_FARecurringCost" />
+          <EntitySet Name="tbl_FARecurringgCostTrans" EntityType="Self.tbl_FARecurringgCostTrans" />
+          <EntitySet Name="tbl_FARevaluation" EntityType="Self.tbl_FARevaluation" />
+          <EntitySet Name="tbl_FASchMaintRecord" EntityType="Self.tbl_FASchMaintRecord" />
+          <EntitySet Name="tbl_FAWriteOff" EntityType="Self.tbl_FAWriteOff" />
+          <EntitySet Name="tbl_FixedAsset" EntityType="Self.tbl_FixedAsset" />
+          <EntitySet Name="tbl_Role" EntityType="Self.tbl_Role" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FixedAssetModelStoreContainer" CdmEntityContainer="FixedAssetEntities">
+          <EntitySetMapping Name="tbl_userprofile">
+            <EntityTypeMapping TypeName="FixedAssetModel.tbl_userprofile">
+              <MappingFragment StoreEntitySet="tbl_userprofile">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Userid" ColumnName="Userid" />
+                <ScalarProperty Name="userpassword" ColumnName="userpassword" />
+                <ScalarProperty Name="fullname" ColumnName="fullname" />
+                <ScalarProperty Name="deptcode" ColumnName="deptcode" />
+                <ScalarProperty Name="Role_id" ColumnName="Role_id" />
+                <ScalarProperty Name="ipaddress" ColumnName="ipaddress" />
+                <ScalarProperty Name="loginstatus" ColumnName="loginstatus" />
+                <ScalarProperty Name="Authoriser" ColumnName="Authoriser" />
+                <ScalarProperty Name="branchcode" ColumnName="branchcode" />
+                <ScalarProperty Name="Staff_status" ColumnName="Staff_status" />
+                <ScalarProperty Name="PostGL_Acctno" ColumnName="PostGL_Acctno" />
+                <ScalarProperty Name="passchange_date" ColumnName="passchange_date" />
+                <ScalarProperty Name="Next_Passchange_date" ColumnName="Next_Passchange_date" />
+                <ScalarProperty Name="Create_date" ColumnName="Create_date" />
+                <ScalarProperty Name="SScode" ColumnName="SScode" />
+                <ScalarProperty Name="sessionid" ColumnName="sessionid" />
+                <ScalarProperty Name="Computername" ColumnName="Computername" />
+                <ScalarProperty Name="machaddress" ColumnName="machaddress" />
+                <ScalarProperty Name="lockcount" ColumnName="lockcount" />
+                <ScalarProperty Name="ReportLevel" ColumnName="ReportLevel" />
+                <ScalarProperty Name="AuthUserid" ColumnName="AuthUserid" />
+                <ScalarProperty Name="PostUserId" ColumnName="PostUserId" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="phoneno" ColumnName="phoneno" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="authid" ColumnName="authid" />
+                <ScalarProperty Name="smsalert" ColumnName="smsalert" />
+                <ScalarProperty Name="emailalert" ColumnName="emailalert" />
+                <ScalarProperty Name="offlinealert" ColumnName="offlinealert" />
+                <ScalarProperty Name="authorisedby" ColumnName="authorisedby" />
+                <ScalarProperty Name="enforce_pwd" ColumnName="enforce_pwd" />
+                <ScalarProperty Name="excemptlock" ColumnName="excemptlock" />
+                <ScalarProperty Name="statement" ColumnName="statement" />
+                <ScalarProperty Name="remotelogin" ColumnName="remotelogin" />
+                <ScalarProperty Name="targetamt" ColumnName="targetamt" />
+                <ScalarProperty Name="logincount" ColumnName="logincount" />
+                <ScalarProperty Name="multilogin" ColumnName="multilogin" />
+                <ScalarProperty Name="SBU" ColumnName="SBU" />
+                <ScalarProperty Name="reportflag" ColumnName="reportflag" />
+                <ScalarProperty Name="ConfirmPassword" ColumnName="ConfirmPassword" />
+                <ScalarProperty Name="PasswordResetCode" ColumnName="PasswordResetCode" />
+                <ScalarProperty Name="IsEmailVerified" ColumnName="IsEmailVerified" />
+                <ScalarProperty Name="ActivationCode" ColumnName="ActivationCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_amortise">
+            <EntityTypeMapping TypeName="FixedAssetModel.tbl_amortise">
+              <MappingFragment StoreEntitySet="tbl_amortise">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="transtype" ColumnName="transtype" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Branch">
+            <EntityTypeMapping TypeName="FixedAssetModel.tbl_Branch">
+              <MappingFragment StoreEntitySet="tbl_Branch">
+                <ScalarProperty Name="BranchCode" ColumnName="BranchCode" />
+                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="address2" ColumnName="address2" />
+                <ScalarProperty Name="Address3" ColumnName="Address3" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="fax" ColumnName="fax" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="cashaccount" ColumnName="cashaccount" />
+                <ScalarProperty Name="suspenseDR" ColumnName="suspenseDR" />
+                <ScalarProperty Name="suspenseCR" ColumnName="suspenseCR" />
+                <ScalarProperty Name="InterBranchGL" ColumnName="InterBranchGL" />
+                <ScalarProperty Name="BranchType" ColumnName="BranchType" />
+                <ScalarProperty Name="MBranchCode" ColumnName="MBranchCode" />
+                <ScalarProperty Name="SBranchCode" ColumnName="SBranchCode" />
+                <ScalarProperty Name="Userid" ColumnName="Userid" />
+                <ScalarProperty Name="create_dt" ColumnName="create_dt" />
+                <ScalarProperty Name="region" ColumnName="region" />
+                <ScalarProperty Name="Createdate" ColumnName="Createdate" />
+                <ScalarProperty Name="authid" ColumnName="authid" />
+                <ScalarProperty Name="subbranch" ColumnName="subbranch" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Department">
+            <EntityTypeMapping TypeName="FixedAssetModel.tbl_Department">
+              <MappingFragment StoreEntitySet="tbl_Department">
+                <ScalarProperty Name="Deptid" ColumnName="Deptid" />
+                <ScalarProperty Name="DeptName" ColumnName="DeptName" />
+                <ScalarProperty Name="DeptShortname" ColumnName="DeptShortname" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="authid" ColumnName="authid" />
+                <ScalarProperty Name="createdate" ColumnName="createdate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_FAAncilaryAmortSchedule">
+            <EntityTypeMapping TypeName="FixedAssetModel.tbl_FAAncilaryAmortSchedule">
+              <MappingFragment StoreEntitySet="tbl_FAAncilaryAmortSchedule">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FACode" ColumnName="FACode" />
+                <ScalarProperty Name="CostCode" ColumnName="CostCode" />
+                <ScalarProperty Name="MonthlyRunRate" ColumnName="MonthlyRunRate" />
+                <ScalarProperty Name="NextAmortDate" ColumnName="NextAmortDate" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_FAAncilaryClass">
+            <EntityTypeMapping TypeName="FixedAssetModel.tbl_FAAncilaryClass">
+              <MappingFragment StoreEntitySet="tbl_FAAncilaryClass">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ClassCode" ColumnName="ClassCode" />
+                <ScalarProperty Name="CostCode" ColumnName="CostCode" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="AuthID" ColumnName="AuthID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_FAAncilaryCost">
+            <EntityTypeMapping TypeName="FixedAssetModel.tbl_FAAncilaryCost">
+              <MappingFragment StoreEntitySet="tbl_FAAncilaryCost">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CostCode" ColumnName="CostCode" />
+                <ScalarProperty Name="CostDesc" ColumnName="CostDesc" />
+                <ScalarProperty Name="Capitalized" ColumnName="Capitalized" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="AuthID" ColumnName="AuthID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_FAAncilaryCostTrans">
+            <EntityTypeMapping TypeName="FixedAssetModel.tbl_FAAncilaryCostTrans">
+              <MappingFragment StoreEntitySet="tbl_FAAncilaryCostTrans">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FACode" ColumnName="FACode" />
+                <ScalarProperty Name="CostCode" ColumnName="CostCode" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="TranDate" ColumnName="TranDate" />
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+                <ScalarProperty Name="ExpMethod" ColumnName="ExpMethod" />
+                <ScalarProperty Name="DRAccount" ColumnName="DRAccount" />
+                <ScalarProperty Name="CRAccount" ColumnName="CRAccount" />
+                <ScalarProperty Name="MonthlyRunRate" ColumnName="MonthlyRunRate" />
+                <ScalarProperty Name="NextAmortDate" ColumnName="NextAmortDate" />
+                <ScalarProperty Name="AmountPaid" ColumnName="AmountPaid" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="AuthID" ColumnName="AuthID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_FACategory">
+            <EntityTypeMapping TypeName="FixedAssetModel.tbl_FACategory">
+              <MappingFragment StoreEntitySet="tbl_FACategory">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CatCode" ColumnName="CatCode" />
+                <ScalarProperty Name="CatDesc" ColumnName="CatDesc" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="AuthID" ColumnName="AuthID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_FAClass">
+            <EntityTypeMapping TypeName="FixedAssetModel.tbl_FAClass">
+              <MappingFragment StoreEntitySet="tbl_FAClass">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CatCode" ColumnName="CatCode" />
+                <ScalarProperty Name="ClassCode" ColumnName="ClassCode" />
+                <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+                <ScalarProperty Name="DepMethod" ColumnName="DepMethod" />
+                <ScalarProperty Name="DepRate" ColumnName="DepRate" />
+                <ScalarProperty Name="LifeSpan" ColumnName="LifeSpan" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="AuthID" ColumnName="AuthID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_FADepSchedule">
+            <EntityTypeMapping TypeName="FixedAssetModel.tbl_FADepSchedule">
+              <MappingFragment StoreEntitySet="tbl_FADepSchedule">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AssetCode" ColumnName="AssetCode" />
+                <ScalarProperty Name="Installment" ColumnName="Installment" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="YearlyDep" ColumnName="YearlyDep" />
+                <ScalarProperty Name="MonthlyDep" ColumnName="MonthlyDep" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_FALocation">
+            <EntityTypeMapping TypeName="FixedAssetModel.tbl_FALocation">
+              <MappingFragment StoreEntitySet="tbl_FALocation">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FACode" ColumnName="FACode" />
+                <ScalarProperty Name="FALocationCode" ColumnName="FALocationCode" />
+                <ScalarProperty Name="DateAllocated" ColumnName="DateAllocated" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ReceiptStatus" ColumnName="ReceiptStatus" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="AuthID" ColumnName="AuthID" />
+                <ScalarProperty Name="ReceiptBy" ColumnName="ReceiptBy" />
+                <ScalarProperty Name="AssetGL" ColumnName="AssetGL" />
+                <ScalarProperty Name="AccumDepGL" ColumnName="AccumDepGL" />
+                <ScalarProperty Name="DepExpenseGL" ColumnName="DepExpenseGL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_FAMaintenaceHist">
+            <EntityTypeMapping TypeName="FixedAssetModel.tbl_FAMaintenaceHist">
+              <MappingFragment StoreEntitySet="tbl_FAMaintenaceHist">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FACode" ColumnName="FACode" />
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+                <ScalarProperty Name="Tranamount" ColumnName="Tranamount" />
+                <ScalarProperty Name="TranDate" ColumnName="TranDate" />
+                <ScalarProperty Name="expMethod" ColumnName="expMethod" />
+                <ScalarProperty Name="DRGL" ColumnName="DRGL" />
+                <ScalarProperty Name="CRGL" ColumnName="CRGL" />
+                <ScalarProperty Name="MaintType" ColumnName="MaintType" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="AuthID" ColumnName="AuthID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_FARecuringAmortSchedule">
+            <EntityTypeMapping TypeName="FixedAssetModel.tbl_FARecuringAmortSchedule">
+              <MappingFragment StoreEntitySet="tbl_FARecuringAmortSchedule">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FACode" ColumnName="FACode" />
+                <ScalarProperty Name="CostCode" ColumnName="CostCode" />
+                <ScalarProperty Name="MonthlyRunRate" ColumnName="MonthlyRunRate" />
+                <ScalarProperty Name="NextAmortDate" ColumnName="NextAmortDate" />
+                <ScalarProperty Name="Tenor" ColumnName="Tenor" />
+                <ScalarProperty Name="TenorSpent" ColumnName="TenorSpent" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_FARecurringClass">
+            <EntityTypeMapping TypeName="FixedAssetModel.tbl_FARecurringClass">
+              <MappingFragment StoreEntitySet="tbl_FARecurringClass">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ClassCode" ColumnName="ClassCode" />
+                <ScalarProperty Name="CostCode" ColumnName="CostCode" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="AuthID" ColumnName="AuthID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_FARecurringCost">
+            <EntityTypeMapping TypeName="FixedAssetModel.tbl_FARecurringCost">
+              <MappingFragment StoreEntitySet="tbl_FARecurringCost">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CostCode" ColumnName="CostCode" />
+                <ScalarProperty Name="CostDesc" ColumnName="CostDesc" />
+                <ScalarProperty Name="Amortized" ColumnName="Amortized" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_FARecurringgCostTrans">
+            <EntityTypeMapping TypeName="FixedAssetModel.tbl_FARecurringgCostTrans">
+              <MappingFragment StoreEntitySet="tbl_FARecurringgCostTrans">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FACode" ColumnName="FACode" />
+                <ScalarProperty Name="CostCode" ColumnName="CostCode" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="TranDate" ColumnName="TranDate" />
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+                <ScalarProperty Name="ExpMethod" ColumnName="ExpMethod" />
+                <ScalarProperty Name="DRAccount" ColumnName="DRAccount" />
+                <ScalarProperty Name="CRAccount" ColumnName="CRAccount" />
+                <ScalarProperty Name="MonthlyRunRate" ColumnName="MonthlyRunRate" />
+                <ScalarProperty Name="NextAmortDate" ColumnName="NextAmortDate" />
+                <ScalarProperty Name="AmountPaid" ColumnName="AmountPaid" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="AuthID" ColumnName="AuthID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_FARevaluation">
+            <EntityTypeMapping TypeName="FixedAssetModel.tbl_FARevaluation">
+              <MappingFragment StoreEntitySet="tbl_FARevaluation">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FACode" ColumnName="FACode" />
+                <ScalarProperty Name="PrevValue" ColumnName="PrevValue" />
+                <ScalarProperty Name="CurrentValue" ColumnName="CurrentValue" />
+                <ScalarProperty Name="RevDate" ColumnName="RevDate" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="AuthID" ColumnName="AuthID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_FASchMaintRecord">
+            <EntityTypeMapping TypeName="FixedAssetModel.tbl_FASchMaintRecord">
+              <MappingFragment StoreEntitySet="tbl_FASchMaintRecord">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FACode" ColumnName="FACode" />
+                <ScalarProperty Name="MaintDate" ColumnName="MaintDate" />
+                <ScalarProperty Name="NextMaintDate" ColumnName="NextMaintDate" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="AuthID" ColumnName="AuthID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_FAWriteOff">
+            <EntityTypeMapping TypeName="FixedAssetModel.tbl_FAWriteOff">
+              <MappingFragment StoreEntitySet="tbl_FAWriteOff">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FACode" ColumnName="FACode" />
+                <ScalarProperty Name="DisposalAmt" ColumnName="DisposalAmt" />
+                <ScalarProperty Name="OtherCostWriteoff" ColumnName="OtherCostWriteoff" />
+                <ScalarProperty Name="TranDate" ColumnName="TranDate" />
+                <ScalarProperty Name="Narration" ColumnName="Narration" />
+                <ScalarProperty Name="DRGL" ColumnName="DRGL" />
+                <ScalarProperty Name="CRGL" ColumnName="CRGL" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="AuthID" ColumnName="AuthID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_FixedAsset">
+            <EntityTypeMapping TypeName="FixedAssetModel.tbl_FixedAsset">
+              <MappingFragment StoreEntitySet="tbl_FixedAsset">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CatCode" ColumnName="CatCode" />
+                <ScalarProperty Name="ClassCode" ColumnName="ClassCode" />
+                <ScalarProperty Name="FACode" ColumnName="FACode" />
+                <ScalarProperty Name="FAName" ColumnName="FAName" />
+                <ScalarProperty Name="DepMethod" ColumnName="DepMethod" />
+                <ScalarProperty Name="Deprate" ColumnName="Deprate" />
+                <ScalarProperty Name="LifeSpan" ColumnName="LifeSpan" />
+                <ScalarProperty Name="LocationCode" ColumnName="LocationCode" />
+                <ScalarProperty Name="PurchaseDate" ColumnName="PurchaseDate" />
+                <ScalarProperty Name="FACost" ColumnName="FACost" />
+                <ScalarProperty Name="ResidualVal" ColumnName="ResidualVal" />
+                <ScalarProperty Name="AccumDep" ColumnName="AccumDep" />
+                <ScalarProperty Name="LifeSpanUsed" ColumnName="LifeSpanUsed" />
+                <ScalarProperty Name="DepStartDate" ColumnName="DepStartDate" />
+                <ScalarProperty Name="FAGLAccount" ColumnName="FAGLAccount" />
+                <ScalarProperty Name="FundingGL" ColumnName="FundingGL" />
+                <ScalarProperty Name="AccumDepGL" ColumnName="AccumDepGL" />
+                <ScalarProperty Name="ExpenseGL" ColumnName="ExpenseGL" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="DisposalMethod" ColumnName="DisposalMethod" />
+                <ScalarProperty Name="DisposalAmt" ColumnName="DisposalAmt" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="AuthID" ColumnName="AuthID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Role">
+            <EntityTypeMapping TypeName="FixedAssetModel.tbl_Role">
+              <MappingFragment StoreEntitySet="tbl_Role">
+                <ScalarProperty Name="role_id" ColumnName="role_id" />
+                <ScalarProperty Name="role_name" ColumnName="role_name" />
+                <ScalarProperty Name="roledesc" ColumnName="roledesc" />
+                <ScalarProperty Name="access_days" ColumnName="access_days" />
+                <ScalarProperty Name="createdate" ColumnName="createdate" />
+                <ScalarProperty Name="isoperation" ColumnName="isoperation" />
+                <ScalarProperty Name="reqLimit" ColumnName="reqLimit" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="authid" ColumnName="authid" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="canauth" ColumnName="canauth" />
+                <ScalarProperty Name="role_level" ColumnName="role_level" />
+                <ScalarProperty Name="Commitee" ColumnName="Commitee" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

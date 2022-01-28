@@ -1,0 +1,823 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{36BFFB92-157F-4E8F-B348-6A329C3F2CD8}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FixedAsset</RootNamespace>
+    <AssemblyName>FixedAsset</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44316</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AssetAlloctionController.cs" />
+    <Compile Include="Controllers\AssetDisposalController.cs" />
+    <Compile Include="Controllers\AssetMaintenanceController.cs" />
+    <Compile Include="Controllers\AssetRelocationController.cs" />
+    <Compile Include="Controllers\AssetRevaluationController.cs" />
+    <Compile Include="Controllers\FixedAssetController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ReAncillaryController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Controllers\SetupController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\WriteOffController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AssetAcuisition\AssetModel.cs" />
+    <Compile Include="Models\AssetAllocation\AssetAllocation.cs" />
+    <Compile Include="Models\AssetDisposal\AssetDisposal.cs" />
+    <Compile Include="Models\AssetRelocation\AssetRelocation.cs" />
+    <Compile Include="Models\AssetRevaluation\AssetRevaluation.cs" />
+    <Compile Include="Models\FALocation\FALocationModel.cs" />
+    <Compile Include="Models\FixedAsset.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FixedAsset.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FixedAsset.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FixedAsset.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FixedAsset.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FixedAsset.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HelperModel\AmortiseSet.cs" />
+    <Compile Include="Models\HelperModel\ReturnModel.cs" />
+    <Compile Include="Models\maintenance\maintenance.cs" />
+    <Compile Include="Models\ReAncillary\ReAncillary.cs" />
+    <Compile Include="Models\Setup\AncillaryCost\AncillaryCostm.cs" />
+    <Compile Include="Models\Setup\Branch\BrancModel.cs" />
+    <Compile Include="Models\Setup\Department\DepartModel.cs" />
+    <Compile Include="Models\Setup\FAAncilaryClass\FAAncilaryClassModel.cs" />
+    <Compile Include="Models\Setup\FACategory\Asset_Categorym.cs" />
+    <Compile Include="Models\Setup\FAClass\FAClassModel.cs" />
+    <Compile Include="Models\Setup\Role\RoleModel.cs" />
+    <Compile Include="Models\tbl_amortise.cs">
+      <DependentUpon>FixedAsset.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_Branch.cs">
+      <DependentUpon>FixedAsset.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_Department.cs">
+      <DependentUpon>FixedAsset.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_FAAncilaryAmortSchedule.cs">
+      <DependentUpon>FixedAsset.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_FAAncilaryClass.cs">
+      <DependentUpon>FixedAsset.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_FAAncilaryCost.cs">
+      <DependentUpon>FixedAsset.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_FAAncilaryCostTrans.cs">
+      <DependentUpon>FixedAsset.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_FACategory.cs">
+      <DependentUpon>FixedAsset.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_FAClass.cs">
+      <DependentUpon>FixedAsset.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_FADepSchedule.cs">
+      <DependentUpon>FixedAsset.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_FALocation.cs">
+      <DependentUpon>FixedAsset.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_FAMaintenaceHist.cs">
+      <DependentUpon>FixedAsset.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_FARecuringAmortSchedule.cs">
+      <DependentUpon>FixedAsset.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_FARecurringClass.cs">
+      <DependentUpon>FixedAsset.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_FARecurringCost.cs">
+      <DependentUpon>FixedAsset.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_FARecurringgCostTrans.cs">
+      <DependentUpon>FixedAsset.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_FARevaluation.cs">
+      <DependentUpon>FixedAsset.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_FASchMaintRecord.cs">
+      <DependentUpon>FixedAsset.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_FAWriteOff.cs">
+      <DependentUpon>FixedAsset.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_FixedAsset.cs">
+      <DependentUpon>FixedAsset.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_Role.cs">
+      <DependentUpon>FixedAsset.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbl_userprofile.cs">
+      <DependentUpon>FixedAsset.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\User\ResetPasswordModel.cs" />
+    <Compile Include="Models\User\UserLogin.cs" />
+    <Compile Include="Models\User\UserModel.cs" />
+    <Compile Include="Models\WriteOff\WriteOff.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\AssetAcquis\AssetAcquisition.cs" />
+    <Compile Include="Repository\AssetAcquis\IAssetAcquisition.cs" />
+    <Compile Include="Repository\Maintenance\IMaintenance.cs" />
+    <Compile Include="Repository\Maintenance\Maintenance.cs" />
+    <Compile Include="Repository\Setup\AncillaryCost.cs" />
+    <Compile Include="Repository\Setup\Asset_Category.cs" />
+    <Compile Include="Repository\Setup\Asset_Class.cs" />
+    <Compile Include="Repository\Setup\Branch.cs" />
+    <Compile Include="Repository\Setup\Department.cs" />
+    <Compile Include="Repository\Setup\FAAncilary_class.cs" />
+    <Compile Include="Repository\Setup\FALocation.cs" />
+    <Compile Include="Repository\Setup\IAncillaryCost.cs" />
+    <Compile Include="Repository\Setup\IAsset_Category.cs" />
+    <Compile Include="Repository\Setup\IAsset_Class.cs" />
+    <Compile Include="Repository\Setup\IBranch.cs" />
+    <Compile Include="Repository\Setup\IDepartment.cs" />
+    <Compile Include="Repository\Setup\IFAAncilary_Class.cs" />
+    <Compile Include="Repository\Setup\IFALocation.cs" />
+    <Compile Include="Repository\Setup\IRole.cs" />
+    <Compile Include="Repository\Setup\Role.cs" />
+    <Compile Include="Repository\User\IUserRepo.cs" />
+    <Compile Include="Repository\User\UserRepo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\consula\consula\css\aos.css" />
+    <Content Include="Content\consula\consula\css\bootstrap-datepicker.css" />
+    <Content Include="Content\consula\consula\css\bootstrap.min.css" />
+    <Content Include="Content\consula\consula\css\bootstrap\bootstrap-grid.css" />
+    <Content Include="Content\consula\consula\css\bootstrap\bootstrap-reboot.css" />
+    <Content Include="Content\consula\consula\css\jquery-ui.css" />
+    <Content Include="Content\consula\consula\css\jquery.fancybox.min.css" />
+    <Content Include="Content\consula\consula\css\magnific-popup.css" />
+    <Content Include="Content\consula\consula\css\mediaelementplayer.css" />
+    <Content Include="Content\consula\consula\css\owl.carousel.min.css" />
+    <Content Include="Content\consula\consula\css\owl.theme.default.min.css" />
+    <Content Include="Content\consula\consula\css\style.css" />
+    <Content Include="Content\consula\consula\fonts\flaticon\backup.txt" />
+    <Content Include="Content\consula\consula\fonts\flaticon\font\flaticon.css" />
+    <Content Include="Content\consula\consula\fonts\flaticon\font\flaticon.html" />
+    <Content Include="Content\consula\consula\fonts\flaticon\font\Flaticon.svg" />
+    <Content Include="Content\consula\consula\fonts\flaticon\font\_flaticon.css" />
+    <Content Include="Content\consula\consula\fonts\icomoon\demo-files\demo.css" />
+    <Content Include="Content\consula\consula\fonts\icomoon\demo-files\demo.js" />
+    <Content Include="Content\consula\consula\fonts\icomoon\demo.html" />
+    <Content Include="Content\consula\consula\fonts\icomoon\fonts\icomoon.svg" />
+    <Content Include="Content\consula\consula\fonts\icomoon\Read Me.txt" />
+    <Content Include="Content\consula\consula\fonts\icomoon\style.css" />
+    <Content Include="Content\consula\consula\images\about_1.jpg" />
+    <Content Include="Content\consula\consula\images\hero_2.jpg" />
+    <Content Include="Content\consula\consula\images\img_1.jpg" />
+    <Content Include="Content\consula\consula\images\img_2.jpg" />
+    <Content Include="Content\consula\consula\images\img_3.jpg" />
+    <Content Include="Content\consula\consula\images\person_1.jpg" />
+    <Content Include="Content\consula\consula\images\person_2.jpg" />
+    <Content Include="Content\consula\consula\images\person_3.jpg" />
+    <Content Include="Content\consula\consula\images\person_4.jpg" />
+    <Content Include="Content\consula\consula\index.html" />
+    <Content Include="Content\consula\consula\js\aos.js" />
+    <Content Include="Content\consula\consula\js\bootstrap-datepicker.min.js" />
+    <Content Include="Content\consula\consula\js\bootstrap.min.js" />
+    <Content Include="Content\consula\consula\js\jquery-3.3.1.min.js" />
+    <Content Include="Content\consula\consula\js\jquery-migrate-3.0.1.min.js" />
+    <Content Include="Content\consula\consula\js\jquery-ui.js" />
+    <Content Include="Content\consula\consula\js\jquery.countdown.min.js" />
+    <Content Include="Content\consula\consula\js\jquery.easing.1.3.js" />
+    <Content Include="Content\consula\consula\js\jquery.fancybox.min.js" />
+    <Content Include="Content\consula\consula\js\jquery.magnific-popup.min.js" />
+    <Content Include="Content\consula\consula\js\jquery.stellar.min.js" />
+    <Content Include="Content\consula\consula\js\jquery.sticky.js" />
+    <Content Include="Content\consula\consula\js\main.js" />
+    <Content Include="Content\consula\consula\js\mediaelement-and-player.min.js" />
+    <Content Include="Content\consula\consula\js\owl.carousel.min.js" />
+    <Content Include="Content\consula\consula\js\popper.min.js" />
+    <Content Include="Content\consula\consula\js\slick.min.js" />
+    <Content Include="Content\consula\consula\js\SweetAlert.js" />
+    <Content Include="Content\consula\consula\js\SweetAlert2.js" />
+    <Content Include="Content\consula\consula\js\SweetAlert3.js" />
+    <Content Include="Content\consula\consula\js\typed.js" />
+    <Content Include="Content\consula\DataTables\DataTables-1.10.24\css\dataTables.bootstrap.css" />
+    <Content Include="Content\consula\DataTables\DataTables-1.10.24\css\dataTables.bootstrap.min.css" />
+    <Content Include="Content\consula\DataTables\DataTables-1.10.24\css\dataTables.bootstrap4.css" />
+    <Content Include="Content\consula\DataTables\DataTables-1.10.24\css\dataTables.bootstrap4.min.css" />
+    <Content Include="Content\consula\DataTables\DataTables-1.10.24\css\dataTables.foundation.css" />
+    <Content Include="Content\consula\DataTables\DataTables-1.10.24\css\dataTables.foundation.min.css" />
+    <Content Include="Content\consula\DataTables\DataTables-1.10.24\css\dataTables.jqueryui.css" />
+    <Content Include="Content\consula\DataTables\DataTables-1.10.24\css\dataTables.jqueryui.min.css" />
+    <Content Include="Content\consula\DataTables\DataTables-1.10.24\css\dataTables.semanticui.css" />
+    <Content Include="Content\consula\DataTables\DataTables-1.10.24\css\dataTables.semanticui.min.css" />
+    <Content Include="Content\consula\DataTables\DataTables-1.10.24\css\jquery.dataTables.css" />
+    <Content Include="Content\consula\DataTables\DataTables-1.10.24\css\jquery.dataTables.min.css" />
+    <Content Include="Content\consula\DataTables\DataTables-1.10.24\images\sort_asc.png" />
+    <Content Include="Content\consula\DataTables\DataTables-1.10.24\images\sort_asc_disabled.png" />
+    <Content Include="Content\consula\DataTables\DataTables-1.10.24\images\sort_both.png" />
+    <Content Include="Content\consula\DataTables\DataTables-1.10.24\images\sort_desc.png" />
+    <Content Include="Content\consula\DataTables\DataTables-1.10.24\images\sort_desc_disabled.png" />
+    <Content Include="Content\consula\DataTables\DataTables-1.10.24\js\dataTables.bootstrap.js" />
+    <Content Include="Content\consula\DataTables\DataTables-1.10.24\js\dataTables.bootstrap.min.js" />
+    <Content Include="Content\consula\DataTables\DataTables-1.10.24\js\dataTables.bootstrap4.js" />
+    <Content Include="Content\consula\DataTables\DataTables-1.10.24\js\dataTables.bootstrap4.min.js" />
+    <Content Include="Content\consula\DataTables\DataTables-1.10.24\js\dataTables.foundation.js" />
+    <Content Include="Content\consula\DataTables\DataTables-1.10.24\js\dataTables.foundation.min.js" />
+    <Content Include="Content\consula\DataTables\DataTables-1.10.24\js\dataTables.jqueryui.js" />
+    <Content Include="Content\consula\DataTables\DataTables-1.10.24\js\dataTables.jqueryui.min.js" />
+    <Content Include="Content\consula\DataTables\DataTables-1.10.24\js\dataTables.semanticui.js" />
+    <Content Include="Content\consula\DataTables\DataTables-1.10.24\js\dataTables.semanticui.min.js" />
+    <Content Include="Content\consula\DataTables\DataTables-1.10.24\js\jquery.dataTables.js" />
+    <Content Include="Content\consula\DataTables\DataTables-1.10.24\js\jquery.dataTables.min.js" />
+    <Content Include="Content\consula\DataTables\datatables.css" />
+    <Content Include="Content\consula\DataTables\datatables.js" />
+    <Content Include="Content\consula\DataTables\datatables.min.css" />
+    <Content Include="Content\consula\DataTables\datatables.min.js" />
+    <Content Include="Content\Login_v1\css\main.css" />
+    <Content Include="Content\Login_v1\css\util.css" />
+    <Content Include="Content\Login_v1\fonts\font-awesome-4.7.0\css\font-awesome.css" />
+    <Content Include="Content\Login_v1\fonts\font-awesome-4.7.0\css\font-awesome.min.css" />
+    <Content Include="Content\Login_v1\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\Login_v1\fonts\font-awesome-4.7.0\HELP-US-OUT.txt" />
+    <Content Include="Content\Login_v1\fonts\montserrat\OFL.txt" />
+    <Content Include="Content\Login_v1\images\icons\favicon.ico" />
+    <Content Include="Content\Login_v1\images\img-01.png" />
+    <Content Include="Content\Login_v1\index.html" />
+    <Content Include="Content\Login_v1\js\main.js" />
+    <Content Include="Content\Login_v1\vendor\animate\animate.css" />
+    <Content Include="Content\Login_v1\vendor\bootstrap\css\bootstrap-grid.css" />
+    <Content Include="Content\Login_v1\vendor\bootstrap\css\bootstrap-grid.min.css" />
+    <Content Include="Content\Login_v1\vendor\bootstrap\css\bootstrap-reboot.css" />
+    <Content Include="Content\Login_v1\vendor\bootstrap\css\bootstrap-reboot.min.css" />
+    <Content Include="Content\Login_v1\vendor\bootstrap\css\bootstrap.css" />
+    <Content Include="Content\Login_v1\vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\Login_v1\vendor\bootstrap\js\bootstrap.js" />
+    <Content Include="Content\Login_v1\vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\Login_v1\vendor\bootstrap\js\popper.js" />
+    <Content Include="Content\Login_v1\vendor\bootstrap\js\popper.min.js" />
+    <Content Include="Content\Login_v1\vendor\bootstrap\js\tooltip.js" />
+    <Content Include="Content\Login_v1\vendor\css-hamburgers\hamburgers.css" />
+    <Content Include="Content\Login_v1\vendor\css-hamburgers\hamburgers.min.css" />
+    <Content Include="Content\Login_v1\vendor\jquery\jquery-3.2.1.min.js" />
+    <Content Include="Content\Login_v1\vendor\select2\select2.css" />
+    <Content Include="Content\Login_v1\vendor\select2\select2.js" />
+    <Content Include="Content\Login_v1\vendor\select2\select2.min.css" />
+    <Content Include="Content\Login_v1\vendor\select2\select2.min.js" />
+    <Content Include="Content\Login_v1\vendor\tilt\tilt.jquery.min.js" />
+    <Content Include="Content\Regna\assets\css\style.css" />
+    <Content Include="Content\Regna\assets\img\about-img.jpg" />
+    <Content Include="Content\Regna\assets\img\apple-touch-icon.png" />
+    <Content Include="Content\Regna\assets\img\call-to-action-bg.jpg" />
+    <Content Include="Content\Regna\assets\img\favicon.png" />
+    <Content Include="Content\Regna\assets\img\hero-bg.jpg" />
+    <Content Include="Content\Regna\assets\img\logo.png" />
+    <Content Include="Content\Regna\assets\img\portfolio\portfolio-1.jpg" />
+    <Content Include="Content\Regna\assets\img\portfolio\portfolio-2.jpg" />
+    <Content Include="Content\Regna\assets\img\portfolio\portfolio-3.jpg" />
+    <Content Include="Content\Regna\assets\img\portfolio\portfolio-4.jpg" />
+    <Content Include="Content\Regna\assets\img\portfolio\portfolio-5.jpg" />
+    <Content Include="Content\Regna\assets\img\portfolio\portfolio-6.jpg" />
+    <Content Include="Content\Regna\assets\img\portfolio\portfolio-7.jpg" />
+    <Content Include="Content\Regna\assets\img\portfolio\portfolio-8.jpg" />
+    <Content Include="Content\Regna\assets\img\portfolio\portfolio-9.jpg" />
+    <Content Include="Content\Regna\assets\img\portfolio\portfolio-details-1.jpg" />
+    <Content Include="Content\Regna\assets\img\portfolio\portfolio-details-2.jpg" />
+    <Content Include="Content\Regna\assets\img\portfolio\portfolio-details-3.jpg" />
+    <Content Include="Content\Regna\assets\img\team-1.jpg" />
+    <Content Include="Content\Regna\assets\img\team-2.jpg" />
+    <Content Include="Content\Regna\assets\img\team-3.jpg" />
+    <Content Include="Content\Regna\assets\img\team-4.jpg" />
+    <Content Include="Content\Regna\assets\js\main.js" />
+    <Content Include="Content\Regna\assets\vendor\aos\aos.css" />
+    <Content Include="Content\Regna\assets\vendor\aos\aos.js" />
+    <Content Include="Content\Regna\assets\vendor\bootstrap-icons\bootstrap-icons.css" />
+    <Content Include="Content\Regna\assets\vendor\bootstrap-icons\index.html" />
+    <Content Include="Content\Regna\assets\vendor\bootstrap\css\bootstrap-grid.css" />
+    <Content Include="Content\Regna\assets\vendor\bootstrap\css\bootstrap-grid.min.css" />
+    <Content Include="Content\Regna\assets\vendor\bootstrap\css\bootstrap-grid.rtl.css" />
+    <Content Include="Content\Regna\assets\vendor\bootstrap\css\bootstrap-grid.rtl.min.css" />
+    <Content Include="Content\Regna\assets\vendor\bootstrap\css\bootstrap-reboot.css" />
+    <Content Include="Content\Regna\assets\vendor\bootstrap\css\bootstrap-reboot.min.css" />
+    <Content Include="Content\Regna\assets\vendor\bootstrap\css\bootstrap-reboot.rtl.css" />
+    <Content Include="Content\Regna\assets\vendor\bootstrap\css\bootstrap-reboot.rtl.min.css" />
+    <Content Include="Content\Regna\assets\vendor\bootstrap\css\bootstrap-utilities.css" />
+    <Content Include="Content\Regna\assets\vendor\bootstrap\css\bootstrap-utilities.min.css" />
+    <Content Include="Content\Regna\assets\vendor\bootstrap\css\bootstrap-utilities.rtl.css" />
+    <Content Include="Content\Regna\assets\vendor\bootstrap\css\bootstrap-utilities.rtl.min.css" />
+    <Content Include="Content\Regna\assets\vendor\bootstrap\css\bootstrap.css" />
+    <Content Include="Content\Regna\assets\vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\Regna\assets\vendor\bootstrap\css\bootstrap.rtl.css" />
+    <Content Include="Content\Regna\assets\vendor\bootstrap\css\bootstrap.rtl.min.css" />
+    <Content Include="Content\Regna\assets\vendor\bootstrap\js\bootstrap.bundle.js" />
+    <Content Include="Content\Regna\assets\vendor\bootstrap\js\bootstrap.bundle.min.js" />
+    <Content Include="Content\Regna\assets\vendor\bootstrap\js\bootstrap.esm.js" />
+    <Content Include="Content\Regna\assets\vendor\bootstrap\js\bootstrap.esm.min.js" />
+    <Content Include="Content\Regna\assets\vendor\bootstrap\js\bootstrap.js" />
+    <Content Include="Content\Regna\assets\vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\Regna\assets\vendor\boxicons\css\animations.css" />
+    <Content Include="Content\Regna\assets\vendor\boxicons\css\boxicons.css" />
+    <Content Include="Content\Regna\assets\vendor\boxicons\css\boxicons.min.css" />
+    <Content Include="Content\Regna\assets\vendor\boxicons\css\transformations.css" />
+    <Content Include="Content\Regna\assets\vendor\boxicons\fonts\boxicons.svg" />
+    <Content Include="Content\Regna\assets\vendor\font\googleapis.css" />
+    <Content Include="Content\Regna\assets\vendor\glightbox\css\glightbox.css" />
+    <Content Include="Content\Regna\assets\vendor\glightbox\css\glightbox.min.css" />
+    <Content Include="Content\Regna\assets\vendor\glightbox\js\glightbox.js" />
+    <Content Include="Content\Regna\assets\vendor\glightbox\js\glightbox.min.js" />
+    <Content Include="Content\Regna\assets\vendor\isotope-layout\isotope.pkgd.js" />
+    <Content Include="Content\Regna\assets\vendor\isotope-layout\isotope.pkgd.min.js" />
+    <Content Include="Content\Regna\assets\vendor\php-email-form\validate.js" />
+    <Content Include="Content\Regna\assets\vendor\purecounter\purecounter.js" />
+    <Content Include="Content\Regna\assets\vendor\swiper\swiper-bundle.min.css" />
+    <Content Include="Content\Regna\assets\vendor\swiper\swiper-bundle.min.js" />
+    <Content Include="Content\Regna\changelog.txt" />
+    <Content Include="Content\Regna\forms\contact.php" />
+    <Content Include="Content\Regna\forms\Readme.txt" />
+    <Content Include="Content\Regna\index.html" />
+    <Content Include="Content\Regna\inner-page.html" />
+    <Content Include="Content\Regna\portfolio-details.html" />
+    <Content Include="Content\Regna\Readme.txt" />
+    <Content Include="Content\Tabs.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Models\FixedAsset.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FixedAsset.edmx</DependentUpon>
+      <LastGenOutput>FixedAsset.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\FixedAsset.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FixedAsset.edmx</DependentUpon>
+      <LastGenOutput>FixedAsset.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\Login_v1\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\Login_v1\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\Login_v1\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\Login_v1\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\Login_v1\fonts\font-awesome-4.7.0\fonts\FontAwesome.otf" />
+    <Content Include="Content\Login_v1\fonts\font-awesome-4.7.0\less\animated.less" />
+    <Content Include="Content\Login_v1\fonts\font-awesome-4.7.0\less\bordered-pulled.less" />
+    <Content Include="Content\Login_v1\fonts\font-awesome-4.7.0\less\core.less" />
+    <Content Include="Content\Login_v1\fonts\font-awesome-4.7.0\less\fixed-width.less" />
+    <Content Include="Content\Login_v1\fonts\font-awesome-4.7.0\less\font-awesome.less" />
+    <Content Include="Content\Login_v1\fonts\font-awesome-4.7.0\less\icons.less" />
+    <Content Include="Content\Login_v1\fonts\font-awesome-4.7.0\less\larger.less" />
+    <Content Include="Content\Login_v1\fonts\font-awesome-4.7.0\less\list.less" />
+    <Content Include="Content\Login_v1\fonts\font-awesome-4.7.0\less\mixins.less" />
+    <Content Include="Content\Login_v1\fonts\font-awesome-4.7.0\less\path.less" />
+    <Content Include="Content\Login_v1\fonts\font-awesome-4.7.0\less\rotated-flipped.less" />
+    <Content Include="Content\Login_v1\fonts\font-awesome-4.7.0\less\screen-reader.less" />
+    <Content Include="Content\Login_v1\fonts\font-awesome-4.7.0\less\stacked.less" />
+    <Content Include="Content\Login_v1\fonts\font-awesome-4.7.0\less\variables.less" />
+    <Content Include="Content\Login_v1\fonts\font-awesome-4.7.0\scss\font-awesome.scss" />
+    <Content Include="Content\Login_v1\fonts\font-awesome-4.7.0\scss\_animated.scss" />
+    <Content Include="Content\Login_v1\fonts\font-awesome-4.7.0\scss\_bordered-pulled.scss" />
+    <Content Include="Content\Login_v1\fonts\font-awesome-4.7.0\scss\_core.scss" />
+    <Content Include="Content\Login_v1\fonts\font-awesome-4.7.0\scss\_fixed-width.scss" />
+    <Content Include="Content\Login_v1\fonts\font-awesome-4.7.0\scss\_icons.scss" />
+    <Content Include="Content\Login_v1\fonts\font-awesome-4.7.0\scss\_larger.scss" />
+    <Content Include="Content\Login_v1\fonts\font-awesome-4.7.0\scss\_list.scss" />
+    <Content Include="Content\Login_v1\fonts\font-awesome-4.7.0\scss\_mixins.scss" />
+    <Content Include="Content\Login_v1\fonts\font-awesome-4.7.0\scss\_path.scss" />
+    <Content Include="Content\Login_v1\fonts\font-awesome-4.7.0\scss\_rotated-flipped.scss" />
+    <Content Include="Content\Login_v1\fonts\font-awesome-4.7.0\scss\_screen-reader.scss" />
+    <Content Include="Content\Login_v1\fonts\font-awesome-4.7.0\scss\_stacked.scss" />
+    <Content Include="Content\Login_v1\fonts\font-awesome-4.7.0\scss\_variables.scss" />
+    <Content Include="Content\Login_v1\fonts\montserrat\Montserrat-Black.ttf" />
+    <Content Include="Content\Login_v1\fonts\montserrat\Montserrat-BlackItalic.ttf" />
+    <Content Include="Content\Login_v1\fonts\montserrat\Montserrat-Bold.ttf" />
+    <Content Include="Content\Login_v1\fonts\montserrat\Montserrat-BoldItalic.ttf" />
+    <Content Include="Content\Login_v1\fonts\montserrat\Montserrat-ExtraBold.ttf" />
+    <Content Include="Content\Login_v1\fonts\montserrat\Montserrat-ExtraBoldItalic.ttf" />
+    <Content Include="Content\Login_v1\fonts\montserrat\Montserrat-ExtraLight.ttf" />
+    <Content Include="Content\Login_v1\fonts\montserrat\Montserrat-ExtraLightItalic.ttf" />
+    <Content Include="Content\Login_v1\fonts\montserrat\Montserrat-Italic.ttf" />
+    <Content Include="Content\Login_v1\fonts\montserrat\Montserrat-Light.ttf" />
+    <Content Include="Content\Login_v1\fonts\montserrat\Montserrat-LightItalic.ttf" />
+    <Content Include="Content\Login_v1\fonts\montserrat\Montserrat-Medium.ttf" />
+    <Content Include="Content\Login_v1\fonts\montserrat\Montserrat-MediumItalic.ttf" />
+    <Content Include="Content\Login_v1\fonts\montserrat\Montserrat-Regular.ttf" />
+    <Content Include="Content\Login_v1\fonts\montserrat\Montserrat-SemiBold.ttf" />
+    <Content Include="Content\Login_v1\fonts\montserrat\Montserrat-SemiBoldItalic.ttf" />
+    <Content Include="Content\Login_v1\fonts\montserrat\Montserrat-Thin.ttf" />
+    <Content Include="Content\Login_v1\fonts\montserrat\Montserrat-ThinItalic.ttf" />
+    <Content Include="Content\Login_v1\fonts\poppins\Poppins-Black.ttf" />
+    <Content Include="Content\Login_v1\fonts\poppins\Poppins-BlackItalic.ttf" />
+    <Content Include="Content\Login_v1\fonts\poppins\Poppins-Bold.ttf" />
+    <Content Include="Content\Login_v1\fonts\poppins\Poppins-BoldItalic.ttf" />
+    <Content Include="Content\Login_v1\fonts\poppins\Poppins-ExtraBold.ttf" />
+    <Content Include="Content\Login_v1\fonts\poppins\Poppins-ExtraBoldItalic.ttf" />
+    <Content Include="Content\Login_v1\fonts\poppins\Poppins-ExtraLight.ttf" />
+    <Content Include="Content\Login_v1\fonts\poppins\Poppins-ExtraLightItalic.ttf" />
+    <Content Include="Content\Login_v1\fonts\poppins\Poppins-Italic.ttf" />
+    <Content Include="Content\Login_v1\fonts\poppins\Poppins-Light.ttf" />
+    <Content Include="Content\Login_v1\fonts\poppins\Poppins-LightItalic.ttf" />
+    <Content Include="Content\Login_v1\fonts\poppins\Poppins-Medium.ttf" />
+    <Content Include="Content\Login_v1\fonts\poppins\Poppins-MediumItalic.ttf" />
+    <Content Include="Content\Login_v1\fonts\poppins\Poppins-Regular.ttf" />
+    <Content Include="Content\Login_v1\fonts\poppins\Poppins-SemiBold.ttf" />
+    <Content Include="Content\Login_v1\fonts\poppins\Poppins-SemiBoldItalic.ttf" />
+    <Content Include="Content\Login_v1\fonts\poppins\Poppins-Thin.ttf" />
+    <Content Include="Content\Login_v1\fonts\poppins\Poppins-ThinItalic.ttf" />
+    <Content Include="Content\Login_v1\vendor\bootstrap\css\bootstrap-grid.css.map" />
+    <Content Include="Content\Login_v1\vendor\bootstrap\css\bootstrap-grid.min.css.map" />
+    <Content Include="Content\Login_v1\vendor\bootstrap\css\bootstrap-reboot.css.map" />
+    <Content Include="Content\Login_v1\vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\Login_v1\vendor\bootstrap\css\bootstrap.css.map" />
+    <Content Include="Content\Login_v1\vendor\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="Content\Regna\assets\vendor\bootstrap-icons\bootstrap-icons.json" />
+    <Content Include="Content\Regna\assets\vendor\bootstrap-icons\fonts\bootstrap-icons.woff" />
+    <Content Include="Content\Regna\assets\vendor\bootstrap-icons\fonts\bootstrap-icons.woff2" />
+    <Content Include="Content\Regna\assets\vendor\bootstrap\css\bootstrap-grid.css.map" />
+    <Content Include="Content\Regna\assets\vendor\bootstrap\css\bootstrap-grid.min.css.map" />
+    <Content Include="Content\Regna\assets\vendor\bootstrap\css\bootstrap-grid.rtl.css.map" />
+    <Content Include="Content\Regna\assets\vendor\bootstrap\css\bootstrap-grid.rtl.min.css.map" />
+    <Content Include="Content\Regna\assets\vendor\bootstrap\css\bootstrap-reboot.css.map" />
+    <Content Include="Content\Regna\assets\vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\Regna\assets\vendor\bootstrap\css\bootstrap-reboot.rtl.css.map" />
+    <Content Include="Content\Regna\assets\vendor\bootstrap\css\bootstrap-reboot.rtl.min.css.map" />
+    <Content Include="Content\Regna\assets\vendor\bootstrap\css\bootstrap-utilities.css.map" />
+    <Content Include="Content\Regna\assets\vendor\bootstrap\css\bootstrap-utilities.min.css.map" />
+    <Content Include="Content\Regna\assets\vendor\bootstrap\css\bootstrap-utilities.rtl.css.map" />
+    <Content Include="Content\Regna\assets\vendor\bootstrap\css\bootstrap-utilities.rtl.min.css.map" />
+    <Content Include="Content\Regna\assets\vendor\bootstrap\css\bootstrap.css.map" />
+    <Content Include="Content\Regna\assets\vendor\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="Content\Regna\assets\vendor\bootstrap\css\bootstrap.rtl.css.map" />
+    <Content Include="Content\Regna\assets\vendor\bootstrap\css\bootstrap.rtl.min.css.map" />
+    <Content Include="Content\Regna\assets\vendor\bootstrap\js\bootstrap.bundle.js.map" />
+    <Content Include="Content\Regna\assets\vendor\bootstrap\js\bootstrap.bundle.min.js.map" />
+    <Content Include="Content\Regna\assets\vendor\bootstrap\js\bootstrap.esm.js.map" />
+    <Content Include="Content\Regna\assets\vendor\bootstrap\js\bootstrap.esm.min.js.map" />
+    <Content Include="Content\Regna\assets\vendor\bootstrap\js\bootstrap.js.map" />
+    <Content Include="Content\Regna\assets\vendor\bootstrap\js\bootstrap.min.js.map" />
+    <Content Include="Content\Regna\assets\vendor\boxicons\fonts\boxicons.eot" />
+    <Content Include="Content\Regna\assets\vendor\boxicons\fonts\boxicons.ttf" />
+    <Content Include="Content\Regna\assets\vendor\boxicons\fonts\boxicons.woff" />
+    <Content Include="Content\Regna\assets\vendor\boxicons\fonts\boxicons.woff2" />
+    <Content Include="Content\consula\consula\.DS_Store" />
+    <Content Include="Content\consula\consula\css\.DS_Store" />
+    <Content Include="Content\consula\consula\css\bootstrap.min.css.map" />
+    <Content Include="Content\consula\consula\fonts\.DS_Store" />
+    <Content Include="Content\consula\consula\fonts\flaticon\font\Flaticon.eot" />
+    <Content Include="Content\consula\consula\fonts\flaticon\font\Flaticon.ttf" />
+    <Content Include="Content\consula\consula\fonts\flaticon\font\Flaticon.woff" />
+    <Content Include="Content\consula\consula\fonts\flaticon\font\Flaticon.woff2" />
+    <Content Include="Content\consula\consula\fonts\flaticon\font\_flaticon.scss" />
+    <Content Include="Content\consula\consula\fonts\flaticon\license\license.pdf" />
+    <Content Include="Content\consula\consula\fonts\icomoon\fonts\icomoon.eot" />
+    <Content Include="Content\consula\consula\fonts\icomoon\fonts\icomoon.ttf" />
+    <Content Include="Content\consula\consula\fonts\icomoon\fonts\icomoon.woff" />
+    <Content Include="Content\consula\consula\fonts\icomoon\selection.json" />
+    <Content Include="Content\consula\consula\images\.DS_Store" />
+    <Content Include="Content\consula\consula\scss\.DS_Store" />
+    <Content Include="Content\consula\consula\scss\bootstrap\.DS_Store" />
+    <Content Include="Content\consula\consula\scss\bootstrap\bootstrap-grid.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\bootstrap-reboot.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\bootstrap.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\mixins\_alert.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\mixins\_background-variant.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\mixins\_badge.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\mixins\_border-radius.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\mixins\_box-shadow.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\mixins\_breakpoints.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\mixins\_buttons.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\mixins\_caret.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\mixins\_clearfix.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\mixins\_float.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\mixins\_forms.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\mixins\_gradients.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\mixins\_grid-framework.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\mixins\_grid.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\mixins\_hover.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\mixins\_image.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\mixins\_list-group.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\mixins\_lists.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\mixins\_nav-divider.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\mixins\_pagination.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\mixins\_reset-text.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\mixins\_resize.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\mixins\_screen-reader.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\mixins\_size.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\mixins\_table-row.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\mixins\_text-emphasis.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\mixins\_text-hide.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\mixins\_text-truncate.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\mixins\_transition.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\mixins\_visibility.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\utilities\_align.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\utilities\_background.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\utilities\_borders.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\utilities\_clearfix.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\utilities\_display.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\utilities\_embed.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\utilities\_flex.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\utilities\_float.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\utilities\_position.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\utilities\_screenreaders.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\utilities\_shadows.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\utilities\_sizing.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\utilities\_spacing.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\utilities\_text.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\utilities\_visibility.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\_alert.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\_badge.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\_breadcrumb.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\_button-group.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\_buttons.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\_card.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\_carousel.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\_close.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\_code.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\_custom-forms.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\_dropdown.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\_forms.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\_functions.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\_grid.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\_images.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\_input-group.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\_jumbotron.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\_list-group.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\_media.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\_mixins.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\_modal.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\_nav.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\_navbar.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\_pagination.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\_popover.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\_print.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\_progress.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\_reboot.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\_root.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\_tables.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\_tooltip.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\_transitions.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\_type.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\_utilities.scss" />
+    <Content Include="Content\consula\consula\scss\bootstrap\_variables.scss" />
+    <Content Include="Content\consula\consula\scss\style.scss" />
+    <Content Include="Content\consula\consula\scss\_site-base.scss" />
+    <Content Include="Content\consula\consula\scss\_site-blocks.scss" />
+    <Content Include="Content\consula\consula\scss\_site-navbar.scss" />
+    <EntityDeploy Include="Models\FixedAsset.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>FixedAsset.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\FixedAsset.edmx.diagram">
+      <DependentUpon>FixedAsset.edmx</DependentUpon>
+    </Content>
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\Shared\_RealLayout.cshtml" />
+    <Content Include="Views\FixedAsset\Create.cshtml" />
+    <Content Include="Views\FixedAsset\Index.cshtml" />
+    <Content Include="Views\ReAncillary\create.cshtml" />
+    <Content Include="Views\AssetAlloction\create.cshtml" />
+    <Content Include="Views\AssetRelocation\create.cshtml" />
+    <Content Include="Views\WriteOff\create.cshtml" />
+    <Content Include="Views\AssetDisposal\create.cshtml" />
+    <Content Include="Views\AssetRevaluation\create.cshtml" />
+    <Content Include="Views\AssetMaintenance\create.cshtml" />
+    <Content Include="Views\Report\Index.cshtml" />
+    <Content Include="Views\Setup\createAssetClass.cshtml" />
+    <Content Include="Views\Setup\createCategoryClass.cshtml" />
+    <Content Include="Views\Setup\create_ancillaryCost.cshtml" />
+    <Content Include="Views\User\CreateUser.cshtml" />
+    <Content Include="Views\Setup\Role.cshtml" />
+    <Content Include="Views\Setup\Branch.cshtml" />
+    <Content Include="Views\Setup\RoleList.cshtml" />
+    <Content Include="Views\Setup\RoleEdit.cshtml" />
+    <Content Include="Views\Setup\BranchList.cshtml" />
+    <Content Include="Views\Setup\BranchEdit.cshtml" />
+    <Content Include="Views\Setup\Department.cshtml" />
+    <Content Include="Views\Setup\DepartmentList.cshtml" />
+    <Content Include="Views\Setup\DepartmentEdit.cshtml" />
+    <Content Include="Views\Setup\AncillaryCostList.cshtml" />
+    <Content Include="Views\Setup\AncillaryCostEdit.cshtml" />
+    <Content Include="Views\Setup\AssetClassList.cshtml" />
+    <Content Include="Views\Setup\EditAssetClass.cshtml" />
+    <Content Include="Views\Setup\CategoryClassList.cshtml" />
+    <Content Include="Views\Setup\AncillaryClassList.cshtml" />
+    <Content Include="Views\Setup\EditAncillaryClass.cshtml" />
+    <Content Include="Views\Setup\createAncillaryClass.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
+    <Content Include="Views\User\Userlist.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Views\AncillaryCost\" />
+    <Folder Include="Views\Role\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>60811</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44316/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

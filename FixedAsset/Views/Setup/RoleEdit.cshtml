@@ -1,0 +1,286 @@
+﻿@model FixedAsset.Models.Setup.Role.RoleModel
+@{
+    ViewBag.Title = "RoleEdit";
+}
+<section id="intro" class="intro">
+
+    <div class="row">
+
+        <div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="0.1s">
+            <div style="height:130px">
+
+            </div>
+        </div>
+
+
+    </div>
+
+</section>
+<section id="intro" class="intro">
+
+    <div class="row">
+
+        <div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="0.1s">
+            <div style="height:130px">
+
+            </div>
+        </div>
+
+
+    </div>
+
+</section>
+<section id="intro" class="intro">
+
+    <div class="row">
+
+        <div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="0.1s">
+            <div style="height:130px">
+
+            </div>
+        </div>
+
+
+    </div>
+
+</section>
+@*<section id="boxes" class="home-section paddingtop-80">*@
+
+<div class="container">
+    <div class="row">
+
+
+        <div class="col-md-10 col-md-offset-1">
+
+
+
+            <div style="display:none;" class="alert alert-success alert-dismissible" id="succesdiv">
+                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                <p>
+                    <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong><span id="sucessspan"></span>
+
+                </p>
+            </div>
+            <div class="panel panel-default panel-table" id="maindiv">
+
+                <div class="panel-heading">
+                    <div class="row">
+
+                        <div class="col col-xs-6 text-left">
+                            <div>
+                                <h3 id="tile1">&nbsp;&nbsp;ROLE EDIT</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-heading">
+                    <div class="row">
+
+                        <div class="col col-xs-6 text-left">
+                            <div>
+                                <h3 id="tile1">&nbsp;&nbsp; </h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body" id="FormDiv">
+
+                    <div class="alert alert-danger alert-dismissible" style="display:none;" id="errordiv">
+                        <a href="#" class="close" data-dismiss="alert">&times;</a>
+                        <strong>Error!&nbsp;&nbsp;</strong><span id="errorspan"></span>
+                    </div>
+                    @if (ViewBag.Status != null && Convert.ToBoolean(ViewBag.Status))
+                    {
+
+                        if (ViewBag.Message != null)
+                        {
+
+                            <div class="alert alert-success">
+                                <strong>@ViewBag.Message</strong>
+                            </div>
+                            <div class="action">
+
+                                <a href="@Url.Action("RoleList","Setup")" class="btn btn-primary btn-lg">Return</a>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        using (Html.BeginForm("RoleEdit", "Setup", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="form" id="userform">
+
+
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                @Html.HiddenFor(m => m.canauth)
+                                @Html.HiddenFor(m => m.isoperation)
+                                @Html.HiddenFor(m => m.role_id)
+
+
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="userId"> Role Name:</label>
+                                            @Html.EditorFor(m => m.role_name, new { htmlAttributes = new { @class = "form-control fulName", @required = "required" } })
+                                            @Html.ValidationMessageFor(model => model.role_name, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+
+                                        <div class="form-group">
+                                            <label for="userId">Role description:</label>
+                                            @Html.EditorFor(m => m.roledesc, new { htmlAttributes = new { @class = "form-control fulName", @required = "required" } })
+                                            @Html.ValidationMessageFor(model => model.roledesc, "", new { @class = "text-danger" })
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+
+                                        <div class="form-group">
+                                            <label for="userId">Role Level:</label>
+                                            @Html.EditorFor(m => m.role_level, new { htmlAttributes = new { @class = "form-control fulName", @required = "required" } })
+                                            @Html.ValidationMessageFor(model => model.role_level, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+
+                                        <div class="form-group">
+                                            <label for="userId">Is it operation role?</label>
+                                            <fieldset>
+                                                <div class="some-class">
+                                                    <input type="radio" class="MRRadio" name="MRRadio" value="1" id="a" />
+                                                    <label for="y">YES </label>
+                                                    <input type="radio" class="MRRadio" name="MRRadio" value="0" id="b" />
+                                                    <label for="z">NO</label>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+
+                                        <div class="form-group">
+                                            <label for="userId">Authorizer?</label>
+                                            <fieldset>
+                                                <div class="some-class">
+                                                    <input type="radio" class="AuthRRadio" name="AuthRRadio" value="1" id="d" />
+                                                    <label for="y">YES </label>
+                                                    <input type="radio" class="AuthRRadio" name="AuthRRadio" value="0" id="e" />
+                                                    <label for="z">NO</label>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+
+                                <div class="modal-footer">
+                                    <span id="spnMessage" class="text-danger">@TempData["Message"]</span>
+                                    <br />
+                                    <div class="action">
+                                        <button type="submit" id="addbutton" class="btn btn-primary btn-lg">
+                                            Submit
+                                        </button>
+
+                                        <a href="@Url.Action("Index","Applicant")" class="btn btn-primary btn-lg">Return</a>
+                                    </div>
+
+
+                                </div>
+
+
+
+                            </div>
+
+                            if (ViewBag.Message != null)
+                            {
+                                <div class="alert alert-danger">
+                                    <strong>Error!</strong>@ViewBag.Message
+                                </div>
+                            }
+                        }
+
+
+
+                    }
+
+
+
+                </div>
+
+
+                <div class="panel-body" id="TableDiv">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col col-xs-6">
+                                <h3 class="panel-title" id="tile2">  <button id="refresh" style="display: none" class="btn btn-primary" onClick="window.location.reload();">back</button></h3>
+                            </div>
+                            <div class="col col-xs-6 text-right">
+                                <div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+@section scripts{
+    <link href="~/Content/Tabs.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <
+    <script>
+        $(function () {
+
+
+            $("form").submit(function (e) {
+                var selectedMRRadio = $("input[type='radio'][name='MRRadio']:checked");
+                var selectedAuth = $("input[type='radio'][name='AuthRRadio']:checked");
+                if (selectedAuth.length > 0) {
+
+                    $('#canauth').val(selectedAuth.val());
+                } else {
+                    alert("Please select if role can authorize");
+                    e.preventDefault();
+                    return false;
+                }
+
+                if (selectedMRRadio.length > 0) {
+
+                    $('#isoperation').val(selectedMRRadio.val());
+                } else {
+
+                    alert("Please select if role is operation");
+                    e.preventDefault();
+                    return false;
+                }
+
+            });
+
+
+        });
+
+    </script>
+}
+
+
+

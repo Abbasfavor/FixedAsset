@@ -1,0 +1,356 @@
+﻿@model FixedAsset.Models.ReAncillary.ReAncillary
+@{
+    ViewBag.Title = "create";
+}
+
+<section id="intro" class="intro">
+
+    <div class="row">
+
+        <div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="0.1s">
+            <div style="height:130px">
+
+            </div>
+        </div>
+
+
+    </div>
+
+</section>
+<section id="intro" class="intro">
+
+    <div class="row">
+
+        <div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="0.1s">
+            <div style="height:130px">
+
+            </div>
+        </div>
+
+
+    </div>
+
+</section>
+
+@*<section id="boxes" class="home-section paddingtop-80">*@
+
+<div class="container">
+    <div class="row">
+
+
+        <div class="col-md-10 col-md-offset-1">
+
+
+
+            <div style="display:none;" class="alert alert-success alert-dismissible" id="succesdiv">
+                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                <p>
+                    <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong><span id="sucessspan"></span>
+
+                </p>
+            </div>
+            <div class="panel panel-default panel-table" id="maindiv">
+
+                <div class="panel-heading">
+                    <div class="row">
+
+                        <div class="col col-xs-6 text-left">
+                            <div>
+                                <h3 id="tile1">&nbsp;&nbsp;RECURRING ANCILLARY COST ITEMS</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-heading">
+                    <div class="row">
+
+                        <div class="col col-xs-6 text-left">
+                            <div>
+                                <h3 id="tile1">&nbsp;&nbsp; </h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body" id="FormDiv">
+
+                    <div class="alert alert-danger alert-dismissible" style="display:none;" id="errordiv">
+                        <a href="#" class="close" data-dismiss="alert">&times;</a>
+                        <strong>Error!&nbsp;&nbsp;</strong><span id="errorspan"></span>
+                    </div>
+                    @if (ViewBag.Status != null && Convert.ToBoolean(ViewBag.Status))
+                    {
+
+                        if (ViewBag.Message != null)
+                        {
+
+                            <div class="alert alert-success">
+                                <strong>@ViewBag.Message</strong>
+                            </div>
+                            <div class="action">
+
+                                <a href="@Url.Action("Create","FixedAsset")" class="btn btn-primary btn-lg">Return</a>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        using (Html.BeginForm("Create", "FixedAsset", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="form">
+
+
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="userId"> Fixed Asset Code:</label>
+                                            @Html.EditorFor(model => model.FACode, new { htmlAttributes = new { @class = "form-control fulName" } })
+                                            @Html.ValidationMessageFor(model => model.FACode, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+
+                                        <div class="form-group">
+                                            <label for="userId">Cost Code:</label>
+                                            @Html.EditorFor(model => model.CostCode, new { htmlAttributes = new { @class = "form-control fulName" } })
+                                            @Html.ValidationMessageFor(model => model.CostCode, "", new { @class = "text-danger" })
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+
+                                        <div class="form-group">
+                                            <label for="userId"> Fixed Asset Code:</label>
+                                            @Html.EditorFor(model => model.FACode, new { htmlAttributes = new { @class = "form-control fulName" } })
+                                            @Html.ValidationMessageFor(model => model.FACode, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+
+                                        <div class="form-group">
+                                            <label for="userId"> Amount:</label>
+                                            @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control fulName" } })
+                                            @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+
+                                        <div class="form-group">
+
+                                            <label for="CompanyId ">Transaction Date: </label>
+                                            @Html.EditorFor(model => model.TranDate, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.TranDate, "", new { @class = "text-danger" })
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-6">
+
+                                        <div class="form-group">
+                                            <label for="userId">Narration:</label>
+
+                                            @Html.EditorFor(model => model.Narration, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Narration, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+
+                                        <div class="form-group">
+                                            <label for="userId"> Expense method:</label>
+                                            @Html.EditorFor(model => model.ExpMethod, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.ExpMethod, "", new { @class = "text-danger" })
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+
+                                        <div class="form-group">
+                                            <label for="userId"> DR Account:</label>
+                                            @Html.EditorFor(model => model.DRAccount, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.DRAccount, "", new { @class = "text-danger" })
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+
+                                        <div class="form-group">
+                                            <label for="userId"> CR Account:</label>
+                                            @Html.EditorFor(model => model.CRAccount, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.CRAccount, "", new { @class = "text-danger" })
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+
+                                        <div class="form-group">
+                                            <label for="userId"> Mojnthly Run Rate:</label>
+                                            @Html.EditorFor(model => model.MonthlyRunRate, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.MonthlyRunRate, "", new { @class = "text-danger" })
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+
+                                        <div class="form-group">
+                                            <label for="userId">Next Amortise Date:</label>
+                                            @Html.EditorFor(model => model.NextAmortDate, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.NextAmortDate, "", new { @class = "text-danger" })
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+
+                                        <div class="form-group">
+                                            <label for="userId">Amount Paid:</label>
+                                            @Html.EditorFor(model => model.AmountPaid, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.AmountPaid, "", new { @class = "text-danger" })
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <span id="spnMessage" class="text-danger">@TempData["Message"]</span>
+                                    <br />
+                                    <div class="action">
+                                        <button type="submit" id="addbutton" class="btn btn-primary btn-lg">
+                                            Submit
+                                        </button>
+
+                                        <a href="@Url.Action("Index","Applicant")" class="btn btn-primary btn-lg">Return</a>
+                                    </div>
+
+
+                                </div>
+
+
+
+                            </div>
+
+                            if (ViewBag.Message != null)
+                            {
+                                <div class="alert alert-danger">
+                                    <strong>Error!</strong>@ViewBag.Message
+                                </div>
+                            }
+                        }
+
+
+
+                    }
+
+
+
+                </div>
+
+
+                <div class="panel-body" id="TableDiv">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col col-xs-6">
+                                <h3 class="panel-title" id="tile2">  <button id="refresh" style="display: none" class="btn btn-primary" onClick="window.location.reload();">back</button></h3>
+                            </div>
+                            <div class="col col-xs-6 text-right">
+                                <div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document" style="width:80% !important">
+            <div class="modal-content">
+                <div class="modal-header">
+                    @*<h5 class="modal-title" id="exampleModalLabel">New message</h5>*@
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="row">
+
+                        <div class="col-md-12" id="IndivApp">
+                            <div class="card" id="assetDetails">
+                                <h5 class="card-header" style="background-color:blue;color:white">Ancillary Cost</h5>
+                                <div class="card-body">
+
+                                    <div class="row">
+                                        <div class="col-md-6" style="color:black; font-size:medium;">COST ELEMENTS:</div>  <div class="col-md-6" style="color:black; font-size:medium;">AMOUNT</div>
+                                        <br />
+                                        <hr />
+                                        @*<div class="col-md-6" style="background-color:antiquewhite"><label class="" id="CustomerName" style="color:blue;"><input class="form-control AmountApprove2" id="txtcostElement" /></label></div>*@
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">Transport Cost:</div>
+                                        <div class="col-md-6" style="background-color:antiquewhite"><label class="" id="lblBusName" style="color:blue;"><input class="form-control AmountApprove2" id="txtTransElement" /> </label></div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">Installation Cost:</div>
+                                        <div class="col-md-6" style="background-color:antiquewhite"><label class="" id="YearOfInc" style="color:blue;"><input class="form-control AmountApprove2" id="txtInstallCost" /> </label></div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">Transit Insurance cost:</div>
+                                        <div class="col-md-6" style="background-color:antiquewhite"><label class="" id="YearOfInc" style="color:blue;"><input class="form-control AmountApprove2" id="txtInstallCost" /> </label></div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <link href="~/Content/Tabs.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <
+    <script>
+        $(function () {
+            $('#btnAncillaryCost').click(function () {
+                $(this).attr("data-toggle", "modal").attr("data-target", "#exampleModal");
+            });
+
+        });
+
+    </script>
+}
+
+

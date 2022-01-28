@@ -1,0 +1,166 @@
+﻿@model FixedAsset.Models.Setup.Department.DepartModel
+@{
+    ViewBag.Title = "DepartmentEdit";
+}
+
+<section id="intro" class="intro">
+
+    <div class="row">
+
+        <div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="0.1s">
+            <div style="height:130px">
+
+            </div>
+        </div>
+
+
+    </div>
+
+</section>
+<section id="intro" class="intro">
+
+    <div class="row">
+
+        <div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="0.1s">
+            <div style="height:130px">
+
+            </div>
+        </div>
+
+
+    </div>
+
+</section>
+
+@*<section id="boxes" class="home-section paddingtop-80">*@
+
+<div class="container">
+    <div class="row">
+
+
+        <div class="col-md-10 col-md-offset-1">
+
+
+
+            <div style="display:none;" class="alert alert-success alert-dismissible" id="succesdiv">
+                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                <p>
+                    <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong><span id="sucessspan"></span>
+
+                </p>
+            </div>
+            <div class="panel panel-default panel-table" id="maindiv">
+
+                <div class="panel-heading">
+                    <div class="row">
+
+                        <div class="col col-xs-6 text-left">
+                            <div>
+                                <h3 id="tile1">&nbsp;&nbsp;DEPARTMENT SETUP</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-heading">
+                    <div class="row">
+
+                        <div class="col col-xs-6 text-left">
+                            <div>
+                                <h3 id="tile1">&nbsp;&nbsp; </h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body" id="FormDiv">
+
+                    <div class="alert alert-danger alert-dismissible" style="display:none;" id="errordiv">
+                        <a href="#" class="close" data-dismiss="alert">&times;</a>
+                        <strong>Error!&nbsp;&nbsp;</strong><span id="errorspan"></span>
+                    </div>
+                    @if (ViewBag.Status != null && Convert.ToBoolean(ViewBag.Status))
+                    {
+
+                        if (ViewBag.Message != null)
+                        {
+
+                            <div class="alert alert-success">
+                                <strong>@ViewBag.Message</strong>
+                            </div>
+                            <div class="action">
+
+                                <a href="@Url.Action("Department","Setup")" class="btn btn-primary btn-lg">Return</a>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        using (Html.BeginForm("DepartmentEdit", "Setup", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+
+                <div class="form">
+
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(m => m.Deptid)
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="userId">Department Name:</label>
+                                @Html.EditorFor(model => model.DeptName, new { htmlAttributes = new { @class = "form-control fulName", @required = "required" } })
+                                @Html.ValidationMessageFor(model => model.DeptName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label for="userId">Department Short Name:</label>
+                                @Html.EditorFor(model => model.DeptShortname, new { htmlAttributes = new { @class = "form-control fulName", @required = "required" } })
+                                @Html.ValidationMessageFor(model => model.DeptShortname, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <span id="spnMessage" class="text-danger">@TempData["Message"]</span>
+                        <br />
+                        <div class="action">
+                            <button type="submit" id="addbutton" class="btn btn-primary btn-lg">
+                                Submit
+                            </button>
+
+                            <a href="@Url.Action("DepartmentList","Setup")" class="btn btn-primary btn-lg">Return</a>
+                        </div>
+
+
+                    </div>
+
+
+
+                </div>
+
+                            if (ViewBag.Message != null)
+                            {
+                                <div class="alert alert-danger">
+                                    <strong>Error!</strong>@ViewBag.Message
+                                </div>
+                            }
+                        }
+
+
+
+                    }
+
+
+
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+

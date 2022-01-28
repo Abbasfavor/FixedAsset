@@ -1,0 +1,378 @@
+﻿@model FixedAsset.Models.Setup.Branch.BrancModel
+@{
+    ViewBag.Title = "Branch";
+}
+<section id="intro" class="intro">
+
+    <div class="row">
+
+        <div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="0.1s">
+            <div style="height:130px">
+
+            </div>
+        </div>
+
+
+    </div>
+
+</section>
+<section id="intro" class="intro">
+
+    <div class="row">
+
+        <div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="0.1s">
+            <div style="height:130px">
+
+            </div>
+        </div>
+
+
+    </div>
+
+</section>
+
+@*<section id="boxes" class="home-section paddingtop-80">*@
+
+<div class="container">
+    <div class="row">
+
+
+        <div class="col-md-10 col-md-offset-1">
+
+
+
+            <div style="display:none;" class="alert alert-success alert-dismissible" id="succesdiv">
+                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                <p>
+                    <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong><span id="sucessspan"></span>
+
+                </p>
+            </div>
+            <div class="panel panel-default panel-table" id="maindiv">
+
+                <div class="panel-heading">
+                    <div class="row">
+
+                        <div class="col col-xs-6 text-left">
+                            <div>
+                                <h3 id="tile1">&nbsp;&nbsp;BRANCH SETUP</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-heading">
+                    <div class="row">
+
+                        <div class="col col-xs-6 text-left">
+                            <div>
+                                <h3 id="tile1">&nbsp;&nbsp; </h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body" id="FormDiv">
+
+                    <div class="alert alert-danger alert-dismissible" style="display:none;" id="errordiv">
+                        <a href="#" class="close" data-dismiss="alert">&times;</a>
+                        <strong>Error!&nbsp;&nbsp;</strong><span id="errorspan"></span>
+                    </div>
+                    @if (ViewBag.Status != null && Convert.ToBoolean(ViewBag.Status))
+                    {
+
+                        if (ViewBag.Message != null)
+                        {
+
+                            <div class="alert alert-success">
+                                <strong>@ViewBag.Message</strong>
+                            </div>
+                            <div class="action">
+
+                                <a href="@Url.Action("BranchList","Setup")" class="btn btn-primary btn-lg">Return</a>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        using (Html.BeginForm("Branch", "Setup", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+
+                <div class="form">
+
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(m => m.subbranch)
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="userId"> Branch Code:</label>
+                                @Html.EditorFor(model => model.BranchCode, new { htmlAttributes = new { @class = "form-control fulName", @required = "required" } })
+                                @Html.ValidationMessageFor(model => model.BranchCode, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label for="userId">Branch Name:</label>
+                                @Html.EditorFor(model => model.BranchName, new { htmlAttributes = new { @class = "form-control fulName", @required = "required" } })
+                                @Html.ValidationMessageFor(model => model.BranchName, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="userId">First Address:</label>
+                                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control fulName", @required = "required" } })
+                                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label for="userId">Second Address:</label>
+                                @Html.EditorFor(model => model.address2, new { htmlAttributes = new { @class = "form-control fulName", @required = "required" } })
+                                @Html.ValidationMessageFor(model => model.address2, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="userId">Phone:</label>
+                                @Html.EditorFor(model => model.phone, new { htmlAttributes = new { @class = "form-control fulName", @required = "required" } })
+                                @Html.ValidationMessageFor(model => model.phone, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label for="userId">Email:</label>
+                                @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control fulName", @required = "required" } })
+                                @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+
+                                <label for="CompanyId ">fax: </label>
+                                @Html.EditorFor(model => model.fax, new { htmlAttributes = new { @class = "form-control fulName", @required = "required" } })
+                                @Html.ValidationMessageFor(model => model.fax, "", new { @class = "text-danger" })
+                            </div>
+
+                        </div>
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label for="userId">City:</label>
+
+                                @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control fulName", @required = "required" } })
+                                @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label for="userId"> State:</label>
+                                @Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control fulName", @required = "required" } })
+                                @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label for="userId">Region:</label>
+                                @Html.EditorFor(model => model.region, new { htmlAttributes = new { @class = "form-control fulName", @required = "required" } })
+                                @Html.ValidationMessageFor(model => model.region, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label for="userId"> Country:</label>
+                                @Html.EditorFor(model => model.Country, new { htmlAttributes = new { @class = "form-control fulName", @required = "required" } })
+                                @Html.ValidationMessageFor(model => model.Country, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label for="userId"> Cash Account:</label>
+                                @Html.EditorFor(model => model.cashaccount, new { htmlAttributes = new { @class = "form-control fulName", @required = "required" } })
+                                @Html.ValidationMessageFor(model => model.cashaccount, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label for="userId"> Suspense DR:</label>
+                                @Html.EditorFor(model => model.suspenseDR, new { htmlAttributes = new { @class = "form-control fulName", @required = "required" } })
+                                @Html.ValidationMessageFor(model => model.suspenseDR, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label for="userId"> Suspense CR:</label>
+                                @Html.EditorFor(model => model.suspenseCR, new { htmlAttributes = new { @class = "form-control fulName", @required = "required" } })
+                                @Html.ValidationMessageFor(model => model.suspenseCR, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label for="userId"> Inter-Branch GL:</label>
+                                @Html.EditorFor(model => model.InterBranchGL, new { htmlAttributes = new { @class = "form-control fulName", @required = "required" } })
+                                @Html.ValidationMessageFor(model => model.InterBranchGL, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label for="userId"> Branch Type:</label>
+                                @Html.EditorFor(model => model.BranchType, new { htmlAttributes = new { @class = "form-control fulName", @required = "required" } })
+                                @Html.ValidationMessageFor(model => model.BranchType, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label for="userId">Main Branch Code:</label>
+                                @Html.EditorFor(model => model.MBranchCode, new { htmlAttributes = new { @class = "form-control fulName", @required = "required" } })
+                                @Html.ValidationMessageFor(model => model.MBranchCode, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label for="userId">Sub-Branch Code:</label>
+                                @Html.EditorFor(model => model.SBranchCode, new { htmlAttributes = new { @class = "form-control fulName", @required = "required" } })
+                                @Html.ValidationMessageFor(model => model.SBranchCode, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+
+                        <div class="col-md-12">
+
+                            <div class="form-group">
+                                <label for="userId">Is it a sub-branch?</label>
+                                <fieldset>
+                                    <div class="some-class">
+                                        <input type="radio" class="branch" name="branch" value="1" />
+                                        <label for="y">YES </label>
+                                        <input type="radio" class="branch" name="branch" value="0" />
+                                        <label for="z">NO</label>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="modal-footer">
+                        <span id="spnMessage" class="text-danger">@TempData["Message"]</span>
+                        <br />
+                        <div class="action">
+                            <button type="submit" id="addbutton" class="btn btn-primary btn-lg">
+                                Submit
+                            </button>
+
+                            <a href="@Url.Action("BranchList","Setup")" class="btn btn-primary btn-lg">Return</a>
+                        </div>
+
+
+                    </div>
+
+
+
+                </div>
+
+                            if (ViewBag.Message != null)
+                            {
+                                <div class="alert alert-danger">
+                                    <strong>Error!</strong>@ViewBag.Message
+                                </div>
+                            }
+                        }
+
+
+
+                    }
+
+
+
+                </div>
+
+
+                
+            </div>
+
+        </div>
+    </div>
+    
+</div>
+
+@section scripts{
+    <link href="~/Content/Tabs.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <
+    <script>
+        $(function () {
+            $("form").submit(function (e) {
+                var selectedAuth = $("input[type='radio'][name='branch']:checked");
+                if (selectedAuth.length > 0) {
+
+                    $('#subbranch').val(selectedAuth.val());
+                } else {
+                    alert("Please specify if this is a sub-Branch");
+                    e.preventDefault();
+                    return false;
+                }
+
+            });
+
+        });
+
+    </script>
+}
+
+
+

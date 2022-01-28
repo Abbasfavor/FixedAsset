@@ -1,0 +1,141 @@
+﻿@model IEnumerable<FixedAsset.Models.Setup.Branch.BrancModel>
+@{
+    ViewBag.Title = "BranchList";
+}
+<section id="intro" class="intro">
+
+    <div class="row">
+
+        <div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="0.1s">
+            <div style="height:130px">
+
+            </div>
+        </div>
+    </div>
+
+</section>
+<section id="intro" class="intro">
+
+    <div class="row">
+
+        <div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="0.1s">
+            <div style="height:130px">
+
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 pad-top">
+    <div class="card">
+        <br />
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    @*<a href="@Url.Action("Create","Applicant")" class="btn btn-primary btn-lg">Add New</a>*@
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    @*<a href="@Url.Action("Create","Applicant")" class="btn btn-primary btn-lg">Add New</a>*@
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <a href="@Url.Action("Branch","Setup")" class="btn btn-primary btn-lg">Add New</a>
+                </div>
+            </div>
+        </div>
+        <div class="card-header">
+            <h2 class="mb-0">Branch List</h2>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered basic-main-table">
+                    <thead>
+                        <tr>
+                            <th>Branch Code</th>
+                            <th>Branch Name</th>
+                            <th>Address</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                            <th>Fax</th>
+                            <th>City</th>
+                            <th>State</th>
+                            <th>Region</th>
+                            <th>Country</th>
+                            <th>Cash Account</th>
+                            <th>Suspense DR</th>
+                            <th>Suspense CR</th>
+                            <th>Inter-Branch GL</th>
+                            <th>Branch Type</th>
+                            <th>Main Branch Code</th>
+                            <th>Sub-Branch Code</th>
+                            <th>sub-branch?</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null)
+                        {
+                            foreach (var item in Model)
+                            {
+                                //var dateC = item.createdate.ToString("dd/MM/yyyy");
+                                <tr>
+                                    <td>@item.BranchCode</td>
+                                    <td>@item.BranchName</td>
+                                    <td>@item.Address</td>
+                                    <td>@item.phone</td>
+                                    <td>@item.email</td>
+                                    <td>@item.fax</td>
+                                    <td>@item.City</td>
+                                    <td>@item.State</td>
+                                    <td>@item.region</td>
+                                    <td>@item.Country</td>
+                                    <td>@item.cashaccount</td>
+                                    <td>@item.suspenseDR</td>
+                                    <td>@item.suspenseCR</td>
+                                    <td>@item.InterBranchGL</td>
+                                    <td>@item.BranchType</td>
+                                    <td>@item.MBranchCode</td>
+                                    <td>@item.SBranchCode</td>
+                                    <td>@item.subbranch</td>
+                                    <td class="table-action">
+                                        <div class="dropdown float-right">
+                                            <a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown" aria-expanded="false">
+                                                Actions<i class="mdi mdi-dots-vertical"></i>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-right" style="">
+                                                <a class="dropdown-item" href="@Url.Action("BranchEdit", "Setup", new { branchCode = item.BranchCode })">
+                                                    <i class="la fa fa-edit"></i>
+                                                    <span class="kt-nav__link-text">Edit</span>
+                                                </a>
+                                                <a class="dropdown-item" href="@Url.Action("BranchDelete", "Setup", new { branchCode = item.BranchCode  })">
+                                                    <i class="la fa fa-trash"></i>
+                                                    <span class="kt-nav__link-text">Delete</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+                @if (ViewBag.Message != null)
+                {
+                    <script type="text/javascript">
+
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+                    </script>
+
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+

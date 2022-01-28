@@ -1,0 +1,356 @@
+﻿@model FixedAsset.Models.User.UserModel
+@{
+    ViewBag.Title = "CreateUser";
+}
+<section id="intro" class="intro">
+
+    <div class="row">
+
+        <div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="0.1s">
+            <div style="height:130px">
+
+            </div>
+        </div>
+
+
+    </div>
+
+</section>
+<section id="intro" class="intro">
+
+    <div class="row">
+
+        <div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="0.1s">
+            <div style="height:130px">
+
+            </div>
+        </div>
+
+
+    </div>
+
+</section>
+
+@*<section id="boxes" class="home-section paddingtop-80">*@
+
+<div class="container">
+    <div class="row">
+
+
+        <div class="col-md-10 col-md-offset-1">
+
+
+
+            <div style="display:none;" class="alert alert-success alert-dismissible" id="succesdiv">
+                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                <p>
+                    <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong><span id="sucessspan"></span>
+
+                </p>
+            </div>
+            <div class="panel panel-default panel-table" id="maindiv">
+
+                <div class="panel-heading">
+                    <div class="row">
+
+                        <div class="col col-xs-6 text-left">
+                            <div>
+                                <h3 id="tile1">&nbsp;&nbsp;MANAGE USER</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-heading">
+                    <div class="row">
+
+                        <div class="col col-xs-6 text-left">
+                            <div>
+                                <h3 id="tile1">&nbsp;&nbsp; </h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body" id="FormDiv">
+
+                    <div class="alert alert-danger alert-dismissible" style="display:none;" id="errordiv">
+                        <a href="#" class="close" data-dismiss="alert">&times;</a>
+                        <strong>Error!&nbsp;&nbsp;</strong><span id="errorspan"></span>
+                    </div>
+                    @if (ViewBag.Status != null && Convert.ToBoolean(ViewBag.Status))
+                    {
+
+                        if (ViewBag.Message != null)
+                        {
+
+                            <div class="alert alert-success">
+                                <strong>@ViewBag.Message</strong>
+                            </div>
+                            <div class="action">
+
+                                <a href="@Url.Action("CreateUser","User")" class="btn btn-primary btn-lg">Return</a>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        using (Html.BeginForm("CreateUser", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+
+                <div class="form">
+
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(m => m.Authoriser)
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="userId"> Username:</label>
+                                @Html.EditorFor(model => model.Userid, new { htmlAttributes = new { @class = "form-control fulName", @required = "required" } })
+                                @Html.ValidationMessageFor(model => model.Userid, "", new { @class = "text-danger" })
+                                @*<input class="form-control" id="username" type="text" />*@
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label for="userId">first Name:</label>
+                                @Html.EditorFor(model => model.firstname, new { htmlAttributes = new { @class = "form-control fulName", @required = "required" } })
+                                @Html.ValidationMessageFor(model => model.firstname, "", new { @class = "text-danger" })
+                                @*<input class="form-control" id="username" type="text" />*@
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label for="userId">Surname:</label>
+                                @Html.EditorFor(model => model.lastname, new { htmlAttributes = new { @class = "form-control fulName", @required = "required" } })
+                                @Html.ValidationMessageFor(model => model.lastname, "", new { @class = "text-danger" })
+                                @*<input class="form-control" id="username" type="text" />*@
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label for="userId"> Other name:</label>
+                                @Html.EditorFor(model => model.othername, new { htmlAttributes = new { @class = "form-control fulName" } })
+                                @Html.ValidationMessageFor(model => model.othername, "", new { @class = "text-danger" })
+                                @*<input class="form-control" id="username" type="text" />*@
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+
+                                <label for="CompanyId ">Email: </label>
+                                @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control fulName", @required = "required" } })
+                                @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                                @*<input class="form-control" id="username" type="text" />*@
+                            </div>
+
+                        </div>
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label for="userId">Phone:</label>
+                                @Html.EditorFor(model => model.phoneno, new { htmlAttributes = new { @class = "form-control fulName", @required = "required" } })
+                                @Html.ValidationMessageFor(model => model.phoneno, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label for="userId">Can user authorize?</label>
+                                <fieldset>
+                                    <div class="some-class">
+                                        <input type="radio" class="MRRadio" name="x" value="1"/>
+                                        <label for="y">YES </label>
+                                        <input type="radio" class="MRRadio" name="x" value="0"/>
+                                        <label for="z">NO</label>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label for="userId"> Role:</label>
+                                @Html.DropDownListFor(m => m.Role_id, new SelectList(ViewBag.Role, "role_id", "role_name"), "-----select-----", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Role_id, "", new { @class = "text-danger" })
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label for="userId"> Department:</label>
+                                @Html.DropDownListFor(m => m.deptcode, new SelectList(ViewBag.dept, "Deptid", "DeptName"), "-----select-----", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.deptcode, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label for="userId">Branch:</label>
+                                @Html.DropDownListFor(m => m.branchcode, new SelectList(ViewBag.Branch, "BranchCode", "BranchName"), "-----select-----", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.branchcode, "", new { @class = "text-danger" })
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div name="frmCheckPassword" id="frmCheckPassword">
+                                <div class="form-group">
+                                    <label for="userId"> Password:</label>
+                                    @Html.EditorFor(model => model.userpassword, new { htmlAttributes = new { @class = "form-control", @type = "password", @name = "password", @id = "password", @onKeyUp = "checkPasswordStrength();" } })
+                                    @Html.ValidationMessageFor(model => model.userpassword, "", new { @class = "text-danger" })
+                                    <div id="password-strength-status"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label for="userId"> Confirm password:</label>
+                                @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control fulName", @required = "required", @type = "password" } })
+                                @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="modal-footer">
+                        <span id="spnMessage" class="text-danger">@TempData["Message"]</span>
+                        <br />
+                        <div class="action">
+                            <button type="submit" id="addbutton" class="btn btn-primary btn-lg">
+                                Submit
+                            </button>
+
+                            <a href="@Url.Action("UserList","User")" class="btn btn-primary btn-lg">Return</a>
+                        </div>
+
+
+                    </div>
+
+
+
+                </div>
+
+                            if (ViewBag.Message != null)
+                            {
+                                <div class="alert alert-danger">
+                                    <strong>Error!</strong>@ViewBag.Message
+                                </div>
+                            }
+                        }
+
+
+
+                    }
+
+
+
+                </div>
+
+
+                <div class="panel-body" id="TableDiv">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col col-xs-6">
+                                <h3 class="panel-title" id="tile2">  <button id="refresh" style="display: none" class="btn btn-primary" onClick="window.location.reload();">back</button></h3>
+                            </div>
+                            <div class="col col-xs-6 text-right">
+                                <div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+@section scripts{
+    <link href="~/Content/Tabs.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <
+    <script>
+        $(function () {
+            $("form").submit(function (e) {
+                var selectedAuth = $("input[type='radio'][name='x']:checked");
+                if (selectedAuth.length > 0) {
+
+                    $('#Authoriser').val(selectedAuth.val());
+                } else {
+                    alert("Please select if role can authorize");
+                    e.preventDefault();
+                    return false;
+                }
+
+
+
+            });
+
+
+        });
+
+    </script>
+}
+
+
+@*<script src="~/Content/accounting/js/jquery-3.2.1.min.js"></script>*@
+<script>
+
+    function checkPasswordStrength() {
+        var number = /([0-9])/;
+        var alphabets = /([a-zA-Z])/;
+        var special_characters = /([~,!,#,$,%,^,&,*,-,_,+,=,?,>,<])/;
+        if ($('#password').val().length < 6) {
+            $('#password-strength-status').removeClass();
+            $('#password-strength-status').addClass('weak-password');
+            $('#password-strength-status').html("Weak (should be atleast 6 characters.)");
+        } else {
+            if ($('#password').val().match(number) && $('#password').val().match(alphabets) && $('#password').val().match(special_characters)) {
+                $('#password-strength-status').removeClass();
+                $('#password-strength-status').addClass('strong-password');
+                $('#password-strength-status').html("Strong");
+            } else {
+                $('#password-strength-status').removeClass();
+                $('#password-strength-status').addClass('medium-password');
+                $('#password-strength-status').html("Medium (should include alphabets, numbers and special characters.)");
+            }
+        }
+    }
+</script>
+

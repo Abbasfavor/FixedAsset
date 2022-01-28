@@ -1,0 +1,126 @@
+﻿@model IEnumerable<FixedAsset.Models.User.UserModel>
+@{
+    ViewBag.Title = "Userlist";
+}
+
+<section id="intro" class="intro">
+
+    <div class="row">
+
+        <div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="0.1s">
+            <div style="height:130px">
+
+            </div>
+        </div>
+    </div>
+
+</section>
+<section id="intro" class="intro">
+
+    <div class="row">
+
+        <div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="0.1s">
+            <div style="height:130px">
+
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 pad-top">
+    <div class="card">
+        <br />
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    @*<a href="@Url.Action("Create","Applicant")" class="btn btn-primary btn-lg">Add New</a>*@
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    @*<a href="@Url.Action("Create","Applicant")" class="btn btn-primary btn-lg">Add New</a>*@
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <a href="@Url.Action("CreateUser","User")" class="btn btn-primary btn-lg">Add New</a>
+                </div>
+            </div>
+        </div>
+        <div class="card-header">
+            <h2 class="mb-0">User List</h2>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered basic-main-table">
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Fisrt Name</th>
+                            <th>Last Name</th>
+                            <th>Other Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Role</th>
+                            <th>Department</th>
+                            <th>Branch</th>
+                            <th>Authoriser</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null)
+                        {
+                            foreach (var item in Model)
+                            {
+
+                                <tr>
+                                    <td>@item.Userid</td>
+                                    <td>@item.firstname</td>
+                                    <td>@item.lastname</td>
+                                    <td>@item.othername</td>
+                                    <td>@item.email</td>
+                                    <td>@item.phoneno</td>
+                                    <td>@item.Role_id</td>
+                                    <td>@item.deptcode</td>
+                                    <td>@item.branchcode</td>
+                                    <td>@item.Authoriser</td>
+                                    <td class="table-action">
+                                        <div class="dropdown float-right">
+                                            <a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown" aria-expanded="false">
+                                                Actions<i class="mdi mdi-dots-vertical"></i>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-right" style="">
+                                                <a class="dropdown-item" href="@Url.Action("Edit", "User", new { Userid = item.Userid })">
+                                                    <i class="la fa fa-edit"></i>
+                                                    <span class="kt-nav__link-text">Edit</span>
+                                                </a>
+                                                <a class="dropdown-item" href="@Url.Action("Delete", "User", new { Userid = item.Userid  })">
+                                                    <i class="la fa fa-trash"></i>
+                                                    <span class="kt-nav__link-text">Delete</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+                @if (ViewBag.Message != null)
+                {
+                    <script type="text/javascript">
+
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+                    </script>
+
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+
