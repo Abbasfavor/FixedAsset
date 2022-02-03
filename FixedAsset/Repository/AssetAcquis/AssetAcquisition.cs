@@ -179,6 +179,7 @@ namespace FixedAsset.Repository.AssetAcquis
         public void Dispose()
         {
             throw new NotImplementedException();
+            _entity.Dispose();
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FixedAsset.Repository.Report;
+using FixedAsset.Repository.Setup;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,10 +11,38 @@ namespace FixedAsset.Controllers
     [Authorize]
     public class ReportController : Controller
     {
-        // GET: Report
-        public ActionResult Index()
+        private IRptFARegisterRepo _entity;
+        private readonly IBranch _IBranch;
+        public ReportController()
         {
-            return View();
+            _entity = new RptFARegisterRepo(new Models.FixedAssetEntities());
+            _IBranch = new Branch(new Models.FixedAssetEntities());
+        }
+
+        public ReportController(IRptFARegisterRepo entity, IBranch IBranch)
+        {
+            _entity = entity;
+            _IBranch = IBranch;
+        }
+
+        // GET: Report
+        [HttpGet]
+        public ActionResult GetRegister()
+        {
+            var BranchCode = _IBranch.GetBranch();
+            ViewBag.BranchCode = BranchCode;
+            return View();  
+        }
+
+        public ActionResult GetRegisterReport(string Branchcode, string FAClass)
+        {
+            var model = _entity.GetFARegister(Branchcode, FAClass);
+            if (model != null)
+            {
+                return Json(model, JsonRequestBehavior.AllowGet);
+            }
+            return null;
         }
     }
 }
+

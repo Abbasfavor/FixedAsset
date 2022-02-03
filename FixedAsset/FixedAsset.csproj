@@ -51,6 +51,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -120,11 +123,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
-      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -169,6 +167,10 @@
     <Compile Include="Models\HelperModel\ReturnModel.cs" />
     <Compile Include="Models\maintenance\maintenance.cs" />
     <Compile Include="Models\ReAncillary\ReAncillary.cs" />
+    <Compile Include="Models\Reports\RptFADisposed .cs" />
+    <Compile Include="Models\Reports\RptFARegister.cs" />
+    <Compile Include="Models\Reports\RptFAWrittenOff.cs" />
+    <Compile Include="Models\Reports\RptMaint_Repairs.cs" />
     <Compile Include="Models\Setup\AncillaryCost\AncillaryCostm.cs" />
     <Compile Include="Models\Setup\Branch\BrancModel.cs" />
     <Compile Include="Models\Setup\Department\DepartModel.cs" />
@@ -251,6 +253,14 @@
     <Compile Include="Repository\AssetAcquis\IAssetAcquisition.cs" />
     <Compile Include="Repository\Maintenance\IMaintenance.cs" />
     <Compile Include="Repository\Maintenance\Maintenance.cs" />
+    <Compile Include="Repository\Report\IRptMaint_RepairsRepo.cs" />
+    <Compile Include="Repository\Report\IRptFARegisterRepo.cs" />
+    <Compile Include="Repository\Report\IRptFADisposedRepo.cs" />
+    <Compile Include="Repository\Report\IRptFAWrittenOffRepo.cs" />
+    <Compile Include="Repository\Report\RptMaint_RepairsRepo.cs" />
+    <Compile Include="Repository\Report\RptFARegisterRepo.cs" />
+    <Compile Include="Repository\Report\RptFADisposedRepo.cs" />
+    <Compile Include="Repository\Report\RptFAWrittenOffRepo.cs" />
     <Compile Include="Repository\Setup\AncillaryCost.cs" />
     <Compile Include="Repository\Setup\Asset_Category.cs" />
     <Compile Include="Repository\Setup\Asset_Class.cs" />
@@ -758,6 +768,7 @@
     <Content Include="Views\Setup\createAncillaryClass.cshtml" />
     <Content Include="Views\User\Edit.cshtml" />
     <Content Include="Views\User\Userlist.cshtml" />
+    <Content Include="Views\Report\GetRegister.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -52,7 +52,7 @@ namespace FixedAsset
                       "~/Content/Regna/assets/vendor/glightbox/css/glightbox.min.css",
                       "~/Content/Regna/assets/vendor/swiper/swiper-bundle.min.css",
                       "~/Content/Regna/assets/css/style.css"));
-            //BundleTable.EnableOptimizations = true;
+           
 
 
 
