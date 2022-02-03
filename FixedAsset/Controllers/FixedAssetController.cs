@@ -65,7 +65,7 @@ namespace FixedAsset.Controllers
             var FAClass = _asset_Class.GetFAClass();
             ViewBag.FAClass = FAClass;
             var FACatCode = _IAsset_Category.GetCategory();
-            ViewBag.FAClass = FACatCode;
+            ViewBag.FACatCode = FACatCode;
             var FALocationCode = _IFALocation.GetFALocation();
             ViewBag.FALocationCode = FALocationCode;
             var getAmortize = _IMaintenance.Get_AmortiseType();
@@ -128,11 +128,11 @@ namespace FixedAsset.Controllers
             var result = _IAncillaryCost.GetAncillaryCost();
             if (result != null) {
 
-                return Json(result, "success", JsonRequestBehavior.AllowGet);
+                return Json(result, JsonRequestBehavior.AllowGet);
 
             }
 
-            return Json(result, "failed", JsonRequestBehavior.AllowGet);
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
     }
 }

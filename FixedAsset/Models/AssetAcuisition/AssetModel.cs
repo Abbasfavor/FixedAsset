@@ -55,6 +55,6 @@ namespace FixedAsset.Models.AssetAcuisition
         public Nullable<decimal> DisposalAmt { get; set; }
         public string UserID { get; set; }
         public string AuthID { get; set; }
-        public List<AncillaryCostm> AncillCosList { get; set; }
+        public List<AncillaryCostType> AncillCosList { get; set; }
     }
 }

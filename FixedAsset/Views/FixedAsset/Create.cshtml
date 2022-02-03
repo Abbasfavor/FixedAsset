@@ -98,231 +98,231 @@
                         {
                             @Html.AntiForgeryToken()
 
-                <div class="form">
+                            <div class="form">
 
 
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-                    <div class="row">
-                        <div class="col-md-6">
+                                <div class="row">
+                                    <div class="col-md-6">
 
-                            <div class="form-group">
-                                <label for="userId"> Fixed Asset Code:</label>
-                                @Html.EditorFor(model => model.FACode, new { htmlAttributes = new { @class = "form-control fulName" } })
-                                @Html.ValidationMessageFor(model => model.FACode, "", new { @class = "text-danger" })
+                                        <div class="form-group">
+                                            <label for="userId"> Fixed Asset Code:</label>
+                                            @Html.EditorFor(model => model.FACode, new { htmlAttributes = new { @class = "form-control fulName" } })
+                                            @Html.ValidationMessageFor(model => model.FACode, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+
+                                        <div class="form-group">
+                                            <label for="userId"> Fixed Asset Name:</label>
+                                            @Html.EditorFor(model => model.FAName, new { htmlAttributes = new { @class = "form-control fulName" } })
+                                            @Html.ValidationMessageFor(model => model.FAName, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="userId"> Fixed Asset Category:</label>
+                                            @Html.DropDownListFor(m => m.CatCode, new SelectList(ViewBag.FACatCode, "CatCode", "CatDesc"), "-----select Category-----", new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.CatCode, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+
+                                        <div class="form-group">
+                                            <label for="userId">Fixed Asset Class:</label>
+                                            @Html.DropDownListFor(m => m.ClassCode, new SelectList(ViewBag.FAClass, "ClassCode", "ClassName"), "-----select class-----", new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.ClassCode, "", new { @class = "text-danger" })
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+
+                                        <div class="form-group">
+
+                                            <label for="CompanyId ">Depreciation Method: </label>
+                                            @Html.DropDownListFor(m => m.DepMethod, new SelectList(ViewBag.getAmortize, "status", "transtype"), "-----select-----", new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.DepMethod, "", new { @class = "text-danger" })
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-6">
+
+                                        <div class="form-group">
+                                            <label for="userId">Depreciation Rate:</label>
+
+                                            @Html.EditorFor(model => model.Deprate, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Deprate, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+
+                                        <div class="form-group">
+                                            <label for="userId">Residual Value:</label>
+                                            @Html.EditorFor(model => model.ResidualVal, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.ResidualVal, "", new { @class = "text-danger" })
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+
+                                        <div class="form-group">
+                                            <label for="userId">Accumulated Depreciation:</label>
+                                            @Html.EditorFor(model => model.AccumDep, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.AccumDep, "", new { @class = "text-danger" })
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+
+                                        <div class="form-group">
+                                            <label for="userId"> Asset Lifespan:</label>
+
+                                            @Html.EditorFor(model => model.LifeSpan, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.LifeSpan, "", new { @class = "text-danger" })
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+
+                                        <div class="form-group">
+                                            <label for="userId"> Asset Lifespan used:</label>
+                                            @Html.EditorFor(model => model.LifeSpanUsed, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.LifeSpanUsed, "", new { @class = "text-danger" })
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+
+                                        <div class="form-group">
+                                            <label for="userId"> Location:</label>
+                                            @Html.DropDownListFor(m => m.LocationCode, new SelectList(ViewBag.FALocationCode, "FALocationCode", "FALocationCode"), "-----select Location-----", new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.LocationCode, "", new { @class = "text-danger" })
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+
+                                        <div class="form-group">
+                                            <label for="userId"> Cost:</label>
+                                            @Html.EditorFor(model => model.FACost, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.FACost, "", new { @class = "text-danger" })
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+
+                                        <div class="form-group">
+                                            <label for="userId">Fixed Asset GL:</label>
+                                            @Html.EditorFor(model => model.FAGLAccount, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.FAGLAccount, "", new { @class = "text-danger" })
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+
+                                        <div class="form-group">
+                                            <label for="userId">Funding GL:</label>
+                                            @Html.EditorFor(model => model.FundingGL, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.FundingGL, "", new { @class = "text-danger" })
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+
+                                        <div class="form-group">
+                                            <label for="userId">Accumulated Depreciation GL:</label>
+                                            @Html.EditorFor(model => model.AccumDepGL, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.AccumDepGL, "", new { @class = "text-danger" })
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+
+                                        <div class="form-group">
+                                            <label for="userId">Expenses GL:</label>
+                                            @Html.EditorFor(model => model.ExpenseGL, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.ExpenseGL, "", new { @class = "text-danger" })
+
+                                        </div>
+                                    </div>
+                                </div>
+                                @*<div class="row">
+                                        <div class="col-md-6">
+
+                                            <div class="form-group">
+                                                <label for="userId">Disposal Method:</label>
+                                                @Html.EditorFor(model => model.DisposalMethod, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.DisposalMethod, "", new { @class = "text-danger" })
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+
+                                            <div class="form-group">
+                                                <label for="userId">Disposal Amount:</label>
+                                                @Html.EditorFor(model => model.DisposalAmt, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.DisposalAmt, "", new { @class = "text-danger" })
+
+                                            </div>
+                                        </div>
+                                    </div>*@
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <button type="button" class="btn btn-primary" id="btnAncillaryCost">Ancillary Cost</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12" id="CreditGrantAmount3" style="display:none;">
+                                        <div class="form-group">
+                                            @*<label for="userId">Enter Amount for Credit Grant:</label>
+                                                @Html.Editor("...", new { htmlAttributes = new { @class = "form-control formatNumber" } })
+                                                @Html.ValidationMessage("....", "", new { @class = "text-danger" })*@
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <span id="spnMessage" class="text-danger">@TempData["Message"]</span>
+                                    <br />
+                                    <div class="action">
+                                        <button type="submit" id="addbutton" class="btn btn-primary btn-lg">
+                                            Submit
+                                        </button>
+
+                                        <a href="@Url.Action("Index","Applicant")" class="btn btn-primary btn-lg">Return</a>
+                                    </div>
+
+
+                                </div>
+
+
+
                             </div>
-                        </div>
-                        <div class="col-md-6">
-
-                            <div class="form-group">
-                                <label for="userId"> Fixed Asset Name:</label>
-                                @Html.EditorFor(model => model.FAName, new { htmlAttributes = new { @class = "form-control fulName" } })
-                                @Html.ValidationMessageFor(model => model.FAName, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-
-
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="userId"> Fixed Asset Category:</label>
-                                @Html.DropDownListFor(m => m.CatCode, new SelectList(ViewBag.FACatCode, "CatCode", "CatDesc"), "-----select Category-----", new { @class = "form-control" })
-                                @Html.ValidationMessageFor(model => model.CatCode, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-
-                            <div class="form-group">
-                                <label for="userId">Fixed Asset Class:</label>
-                                @Html.DropDownListFor(m => m.ClassCode, new SelectList(ViewBag.FAClass, "ClassCode", "ClassName"), "-----select class-----", new { @class = "form-control" })
-                                @Html.ValidationMessageFor(model => model.ClassCode, "", new { @class = "text-danger" })
-
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-
-                            <div class="form-group">
-
-                                <label for="CompanyId ">Depreciation Method: </label>
-                                @Html.DropDownListFor(m => m.DepMethod, new SelectList(ViewBag.getAmortize, "status", "transtype"), "-----select-----", new { @class = "form-control" })
-                                @Html.ValidationMessageFor(model => model.DepMethod, "", new { @class = "text-danger" })
-                            </div>
-
-                        </div>
-                        <div class="col-md-6">
-
-                            <div class="form-group">
-                                <label for="userId">Depreciation Rate:</label>
-
-                                @Html.EditorFor(model => model.Deprate, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Deprate, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-
-
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6">
-
-                            <div class="form-group">
-                                <label for="userId">Residual Value:</label>
-                                @Html.EditorFor(model => model.ResidualVal, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.ResidualVal, "", new { @class = "text-danger" })
-
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-
-                            <div class="form-group">
-                                <label for="userId">Accumulated Depreciation:</label>
-                                @Html.EditorFor(model => model.AccumDep, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.AccumDep, "", new { @class = "text-danger" })
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6">
-
-                            <div class="form-group">
-                                <label for="userId"> Asset Lifespan:</label>
-
-                                @Html.EditorFor(model => model.LifeSpan, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.LifeSpan, "", new { @class = "text-danger" })
-
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-
-                            <div class="form-group">
-                                <label for="userId"> Asset Lifespan used:</label>
-                                @Html.EditorFor(model => model.LifeSpanUsed, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.LifeSpanUsed, "", new { @class = "text-danger" })
-
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-
-                            <div class="form-group">
-                                <label for="userId"> Location:</label>
-                                @Html.DropDownListFor(m => m.LocationCode, new SelectList(ViewBag.FALocationCode, "FALocationCode", "FALocationCode"), "-----select Location-----", new { @class = "form-control" })
-                                @Html.ValidationMessageFor(model => model.LocationCode, "", new { @class = "text-danger" })
-
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-
-                            <div class="form-group">
-                                <label for="userId"> Cost:</label>
-                                @Html.EditorFor(model => model.FACost, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.FACost, "", new { @class = "text-danger" })
-
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6">
-
-                            <div class="form-group">
-                                <label for="userId">Fixed Asset GL:</label>
-                                @Html.EditorFor(model => model.FAGLAccount, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.FAGLAccount, "", new { @class = "text-danger" })
-
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-
-                            <div class="form-group">
-                                <label for="userId">Funding GL:</label>
-                                @Html.EditorFor(model => model.FundingGL, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.FundingGL, "", new { @class = "text-danger" })
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6">
-
-                            <div class="form-group">
-                                <label for="userId">Accumulated Depreciation GL:</label>
-                                @Html.EditorFor(model => model.AccumDepGL, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.AccumDepGL, "", new { @class = "text-danger" })
-
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-
-                            <div class="form-group">
-                                <label for="userId">Expenses GL:</label>
-                                @Html.EditorFor(model => model.ExpenseGL, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.ExpenseGL, "", new { @class = "text-danger" })
-
-                            </div>
-                        </div>
-                    </div>
-                    @*<div class="row">
-            <div class="col-md-6">
-
-                <div class="form-group">
-                    <label for="userId">Disposal Method:</label>
-                    @Html.EditorFor(model => model.DisposalMethod, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.DisposalMethod, "", new { @class = "text-danger" })
-
-                </div>
-            </div>
-            <div class="col-md-6">
-
-                <div class="form-group">
-                    <label for="userId">Disposal Amount:</label>
-                    @Html.EditorFor(model => model.DisposalAmt, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.DisposalAmt, "", new { @class = "text-danger" })
-
-                </div>
-            </div>
-        </div>*@
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <button type="button" class="btn btn-primary" id="btnAncillaryCost">Ancillary Cost</button>
-                            </div>
-                        </div>
-                        <div class="col-md-12" id="CreditGrantAmount3" style="display:none;">
-                            <div class="form-group">
-                                @*<label for="userId">Enter Amount for Credit Grant:</label>
-                    @Html.Editor("...", new { htmlAttributes = new { @class = "form-control formatNumber" } })
-                    @Html.ValidationMessage("....", "", new { @class = "text-danger" })*@
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <span id="spnMessage" class="text-danger">@TempData["Message"]</span>
-                        <br />
-                        <div class="action">
-                            <button type="submit" id="addbutton" class="btn btn-primary btn-lg">
-                                Submit
-                            </button>
-
-                            <a href="@Url.Action("Index","Applicant")" class="btn btn-primary btn-lg">Return</a>
-                        </div>
-
-
-                    </div>
-
-
-
-                </div>
 
                             if (ViewBag.Message != null)
                             {
@@ -376,27 +376,25 @@
                             <div class="card" id="assetDetails">
                                 <h5 class="card-header" style="background-color:blue;color:white">Ancillary Cost</h5>
                                 <div class="card-body">
+                                    <div style="width: 100%; " id="TableDivCost">
 
-                                    <div class="row">
-                                        <div class="col-md-6" style="color:black; font-size:medium;">COST ELEMENTS:</div>  <div class="col-md-6" style="color:black; font-size:medium;">AMOUNT</div>
-                                        <br/>
-                                        <hr />
-                                        @*<div class="col-md-6" style="background-color:antiquewhite"><label class="" id="CustomerName" style="color:blue;"><input class="form-control AmountApprove2" id="txtcostElement" /></label></div>*@
+                                        <table id="CostTable" class="display select" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <th><input type="checkbox" name="select_all" value="1" id="ExtractTableAll"></th>
+                                                    <th style="display:none">Cost Code</th>
+                                                    <th>Cost Name</th>
+                                                    <th>Amount</th>
+                                                </tr>
+                                            </thead>
 
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">Transport Cost:</div>
-                                        <div class="col-md-6" style="background-color:antiquewhite"><label class="" id="lblBusName" style="color:blue;"><input class="form-control AmountApprove2" id="txtTransElement" /> </label></div>
-
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">Installation Cost:</div>
-                                        <div class="col-md-6" style="background-color:antiquewhite"><label class="" id="YearOfInc" style="color:blue;"><input class="form-control AmountApprove2" id="txtInstallCost" /> </label></div>
+                                        </table>
 
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-6">Transit Insurance cost:</div>
-                                        <div class="col-md-6" style="background-color:antiquewhite"><label class="" id="YearOfInc" style="color:blue;"><input class="form-control AmountApprove2" id="txtInstallCost" /> </label></div>
+                                        <div class="col-10">
+                                            <button type="button" id="checkBtn" class="btn btn-primary">click</button>
+                                        </div>
 
                                     </div>
                                 </div>
@@ -414,18 +412,235 @@
 </div>
 
 @section scripts{
-    <link href="~/Content/Tabs.css" rel="stylesheet" />
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <   <script>
+
+    <script src="~/Content/consula/consula/js/jquery-3.3.1.min.js"></script>
+
+    <link href="https://cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css" rel="stylesheet" />
+    @*<link href="~/Content/consula/DataTables/datatables.css" rel="stylesheet" />*@
+    <script src="~/Content/consula/DataTables/DataTables-1.10.24/js/jquery.dataTables.js"></script>
+
+
+    <script>
+
+        var AnciCostList = [];
+        var anciCostCode = "";
+        var anciCostAmount = 0;
         $(function () {
             $('#btnAncillaryCost').click(function () {
                 $(this).attr("data-toggle", "modal").attr("data-target", "#exampleModal");
+                CostTable();
+            });
+        });
+        //
+        // Updates "Select all" control in a data table
+        //
+        function updateDataTableSelectAllCtrl(table) {
+            var $table = table.table().node();
+            var $chkbox_all = $('tbody input[type="checkbox"]', $table);
+            var $chkbox_checked = $('tbody input[type="checkbox"]:checked', $table);
+            var chkbox_select_all = $('thead input[name="select_all"]', $table).get(0);
+
+            // If none of the checkboxes are checked
+            if ($chkbox_checked.length === 0) {
+                chkbox_select_all.checked = false;
+                if ('indeterminate' in chkbox_select_all) {
+                    chkbox_select_all.indeterminate = false;
+                }
+
+                // If all of the checkboxes are checked
+            } else if ($chkbox_checked.length === $chkbox_all.length) {
+                chkbox_select_all.checked = true;
+                if ('indeterminate' in chkbox_select_all) {
+                    chkbox_select_all.indeterminate = false;
+                }
+
+                // If some of the checkboxes are checked
+            } else {
+                chkbox_select_all.checked = true;
+                if ('indeterminate' in chkbox_select_all) {
+                    chkbox_select_all.indeterminate = true;
+                }
+            }
+        }
+
+        function CostTable() {
+            var url='@Url.Action("AncillaryCost")'
+            $.ajax({
+                url: url,
+                typr: "GET",
+                data: {},
+                contentType: "application/json;charset=UTF-8",
+                dataType: "json",
+                success: function (Data) {
+                    var tr;
+                    $('#CostTable tbody').empty();
+                    //Append each row to html table
+                    //for (var i = 0; i < result.course.length; i++) {
+                    var n = 0;
+                    $.each(Data, function (index, item) {
+                        tr = $('<tr/>');
+                        tr.append('<td></td>');
+                        tr.append('<td style="display:none" id="' + n + '">' + item.CostCode + '</td>');
+                        tr.append('<td id="' + n + '">' + item.CostDesc + '</td>');
+                        tr.append('<td id="' + n + '"><input type="text" class="form-control" id="'+n+'"></td>');
+                        $('table').append(tr);
+                        n++;
+                    });
+
+                    // Array holding selected row IDs
+                    //var data_selected = [];
+                    //the ceckbock code start from here
+                    var rows_selectedExtra = [];
+                    var Extrtable = $('#CostTable').DataTable({
+                        'columnDefs': [{
+                            'targets': 0,
+                            'searchable': false,
+                            'orderable': false,
+                            'width': '1%',
+                            'className': 'dt-body-center',
+                            'render': function (data, type, full, meta) {
+                                return '<input type="checkbox">';
+                                //return '<input type="checkbox">';
+                            }
+                        }],
+                        'order': [[1, 'asc']],
+                        'rowCallback': function (row, data, dataIndex) {
+                            $node = this.api().row(row).nodes().to$();
+                            if (data['CostCode'] == '' || data['CostCode'] == null) {
+                                $node.addClass('rowColor')
+                            }
+                            //else
+                            //{
+                            //    $('td', row).css('background-color', 'green');
+                            //}
+
+                            // Get row ID
+                            var rowIdExtra = data[0];
+
+                            // If row ID is in the list of selected row IDs
+                            if ($.inArray(rowIdExtra, rows_selectedExtra) !== -1) {
+                                $(row).find('input[type="checkbox"]').prop('checked', true);
+                                $(row).addClass('selected');
+                            }
+                        },
+                        retrieve: true,
+                    });
+
+                    // Handle click on checkbox
+                    $('#CostTable tbody').on('click', 'input[type="checkbox"]', function (e) {
+                        var $row = $(this).closest('tr');
+
+                        // Get row data
+                        var data = Extrtable.row($row).data();
+                        //alert(data);
+                        // Get row ID
+                        var rowIdExtra = data[1];
+                        //alert(rowIdExtra);
+
+                        // Determine whether row ID is in the list of selected row IDs
+                        var index = $.inArray(rowIdExtra, rows_selectedExtra);
+
+                        // If checkbox is checked and row ID is not in list of selected row IDs
+                        if (this.checked && index === -1) {
+                            rows_selectedExtra.push(rowIdExtra);
+
+                            //data_selected.push(data);
+                            //alert(data_selected);
+
+                            // Otherwise, if checkbox is not checked and row ID is in list of selected row IDs
+                        } else if (!this.checked && index !== -1) {
+                            rows_selectedExtra.splice(index, 1);
+
+                        }
+
+                        if (this.checked) {
+                            $row.addClass('selected');
+
+                        } else {
+                            $row.removeClass('selected');
+                        }
+
+                        // Update state of "Select all" control
+                        updateDataTableSelectAllCtrl(Extrtable);
+
+                        // Prevent click event from propagating to parent
+                        e.stopPropagation();
+                    });
+
+                    // Handle click on table cells with checkboxes
+                    $('#CostTable').on('click', 'tbody td, thead th:first-child', function (e) {
+                        $(this).parent().find('input[type="checkbox"]').trigger('click');
+                    });
+
+                    // Handle click on "Select all" control
+                    $('thead input[name="select_all"]', Extrtable.table().container()).on('click', function (e) {
+                        if (this.checked) {
+                            $('#ExtractTable tbody input[type="checkbox"]:not(:checked)').trigger('click');
+                        } else {
+                            $('#ExtractTable tbody input[type="checkbox"]:checked').trigger('click');
+                        }
+
+                        // Prevent click event from propagating to parent
+                        e.stopPropagation();
+                    });
+
+                    // Handle table draw event
+                    Extrtable.on('draw', function () {
+                        // Update state of "Select all" control
+                        updateDataTableSelectAllCtrl(Extrtable);
+                    });
+
+                    $("#checkBtn").click(function (e) {
+
+
+
+                        rowIdExtract = rows_selectedExtra.join(",").toString();
+
+                        var StmtRowId = rowIdExtract.toString();
+
+
+
+                        alert(StmtRowId);
+                        //var accountNoSt = $("[id*='accountNoSt'] :selected").text();
+                   /*     var accountNoGL = $("#accountNoGL").val();*/
+                        //var matchType = parseInt($("[id*='matchType'] :selected").val());
+                        //var matchType = $("#matchType").val();
+                        //if (matchType == "" || accountNoGL == "") {
+                        //    alert("Please select Match Type");
+                        //    e.preventDefault();
+                        //    return false;
+                        //}
+                        //if (matchType == 1 && (StmtRowId == "" || GLRowId == "")) {
+                        //    alert("Please select row(s) to be match mannually");
+                        //    e.preventDefault();
+                        //    return false;
+                        //}
+
+                        ////alert(StmtRowId + "===" + GLRowId);
+                        //if ($('#ExtractTable tbody tr td').length == 0 || $('#importTable tbody tr td').length == 0) {
+                        //    alert("No records to match");
+                        //    e.preventDefault();
+                        //    return false;
+                        //}
+
+
+
+                
+
+                    });
+
+
+
+                },
+                error: function (result) {
+
+                    alert("Error! Something went wrong");
+                }
             });
 
-        });
 
+
+        }
     </script>
 }
 

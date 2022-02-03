@@ -144,6 +144,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AssetAcuisition\AncillaryCostType.cs" />
     <Compile Include="Models\AssetAcuisition\AssetModel.cs" />
     <Compile Include="Models\AssetAllocation\AssetAllocation.cs" />
     <Compile Include="Models\AssetDisposal\AssetDisposal.cs" />
@@ -362,6 +363,14 @@
     <Content Include="Content\consula\DataTables\datatables.js" />
     <Content Include="Content\consula\DataTables\datatables.min.css" />
     <Content Include="Content\consula\DataTables\datatables.min.js" />
+    <Content Include="Content\datatablecript\buttons_flash_min.js" />
+    <Content Include="Content\datatablecript\buttons_html5_min.js" />
+    <Content Include="Content\datatablecript\buttons_print_min.js" />
+    <Content Include="Content\datatablecript\dataTables_buttons_min.js" />
+    <Content Include="Content\datatablecript\jquery_dataTables_min.js" />
+    <Content Include="Content\datatablecript\jszip_min.js" />
+    <Content Include="Content\datatablecript\pdfmake_min.js" />
+    <Content Include="Content\datatablecript\vfs_fonts.js" />
     <Content Include="Content\Login_v1\css\main.css" />
     <Content Include="Content\Login_v1\css\util.css" />
     <Content Include="Content\Login_v1\fonts\font-awesome-4.7.0\css\font-awesome.css" />
