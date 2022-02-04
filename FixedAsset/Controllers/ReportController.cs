@@ -11,7 +11,7 @@ namespace FixedAsset.Controllers
     [Authorize]
     public class ReportController : Controller
     {
-        private IReportRepo _entity;
+        private readonly IReportRepo _entity;
         private readonly IBranch _IBranch;
         public ReportController()
         {
@@ -25,13 +25,13 @@ namespace FixedAsset.Controllers
             _IBranch = IBranch;
         }
 
-        // GET: Report
+
         [HttpGet]
         public ActionResult GetFARegister()
         {
             var BranchCode = _IBranch.GetBranch();
             ViewBag.BranchCode = BranchCode;
-            return View();  
+ return View();  
         }
 
         public ActionResult GetFADisposed()
