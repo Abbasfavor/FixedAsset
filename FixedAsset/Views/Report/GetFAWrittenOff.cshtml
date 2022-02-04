@@ -1,0 +1,621 @@
+﻿
+@{
+    ViewBag.Title = "GetFAWrittenOff";
+}
+
+
+<section id="intro" class="intro">
+
+    <div class="row">
+
+        <div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="0.1s">
+            <div style="height:130px">
+
+            </div>
+        </div>
+
+
+    </div>
+
+</section>
+<section id="intro" class="intro">
+
+    <div class="row">
+
+        <div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="0.1s">
+            <div style="height:130px">
+
+            </div>
+        </div>
+
+
+    </div>
+
+</section>
+<section id="intro" class="intro">
+
+    <div class="row">
+
+        <div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="0.1s">
+            <div style="height:130px">
+
+            </div>
+        </div>
+
+
+    </div>
+
+</section>
+
+<div class="container">
+    <div class="row">
+
+
+        <div class="col-md-10 col-md-offset-1">
+
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div style="display:none;" class="alert alert-success alert-dismissible" id="succesdiv">
+                    <a href="#" class="close" data-dismiss="alert">&times;</a>
+                    <p>
+                        <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong><span id="sucessspan"></span>
+
+                    </p>
+                </div>
+
+
+
+
+
+                <div class="bs-example" id="ListContainer">
+
+
+                    <div class="panel panel-default panel-table" id="maindiv">
+                        <div class="row">
+                            <div class="col-md-6">
+
+                            </div>
+
+                        </div>
+
+
+
+
+                        <div class="panel-body" id="FormDiv">
+
+                            <div class="alert alert-danger alert-dismissible" style="display:none;" id="errordiv">
+                                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                                <strong>Error!&nbsp;&nbsp;</strong><span id="errorspan"></span>
+                            </div>
+
+                            <div class="form">
+
+
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="userId"> F.A. Code:</label>
+                                            @Html.DropDownList("BranchCode", new SelectList(ViewBag.BranchCode, "BranchCode", "BranchName"), "-----select Branch-----", new { @class = "form-control", @required = "required" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+
+                                        <div class="form-group">
+                                            <label for="userId">FA. Class:</label>
+                                            @Html.Editor("FAClass", new { htmlAttributes = new { @class = "form-control ", @required = "required" } })
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+
+                                        <div class="form-group">
+                                            <label for="userId">startdate:</label>
+                                            @Html.Editor("startdate", new { htmlAttributes = new { @class = "form-control ", @required = "required" } })
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+
+                                        <div class="form-group">
+                                            <label for="userId">enddate:</label>
+                                            @Html.Editor("enddate", new { htmlAttributes = new { @class = "form-control ", @required = "required" } })
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="modal-footer">
+
+                                    <br />
+                                    <div class="action">
+                                        <button type="submit" id="addbutton" onclick="return FetchFAWrittenOff();" class="btn btn-primary btn-lg">
+                                            Submit  
+                                        </button>
+
+                                    </div>
+
+
+                                </div>
+
+
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="panel-body" id="TableDivCSS">
+                            <div class="panel-heading">
+                                <div class="row">
+
+                                    <div class="col col-xs-6 text-left">
+                                        <div>
+                                            <h3 id="tile1">&nbsp;&nbsp;</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <br />
+                            <div style="width: 120%; " id="TableDiv">
+
+
+                                <table id="importTable1" class="display" style="width:100%;">
+
+                                    <thead>
+                                        <tr>
+
+                                            <th> S/N</th>
+                                            <th>BranchName</th>
+                                            <th>FACode </th>
+                                            <th>FAName</th>
+                                            <th>ClassName </th>
+
+                                            <th>PurchaseDate</th>
+                                            <th>ExpiryDate</th>
+
+                                            <th>DepStartDate </th>
+                                            <th>DisposedDate </th>
+
+                                            <th>FACost</th>
+                                            <th>Deprate</th>
+                                            <th>ResidualVal</th>
+                                            <th>AccumDep.</th>
+                                            <th>DisposableAmt </th>
+                                            <th>DisposedAmt </th>
+                                            <th>Gain/Loss </th>
+
+                                            <th>DepMethod</th>
+                                            <th>LifeSpan</th>
+                                            <th>LifeSpanUsed</th>
+
+
+                                            <th>FAGLAccount</th>
+                                            <th>FundingGL </th>
+                                            <th>AccumDepGL</th>
+                                            <th>ExpenseGL</th>
+                                            <th>DisposedGL</th>
+                                            <th>Narration</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    table.dataTable th {
+        font-size: 10px;
+        color: #FFFFFF;
+        font-weight: bold;
+        background-color: #31708f;
+    }
+
+    table.dataTable tbody {
+        font-size: 10px;
+        color: #000000;
+        font-weight: bold;
+    }
+</style>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    /* Create three equal columns that floats next to each other */
+    .column {
+        float: left;
+        width: 30.33%;
+        padding: 10px;
+        /*  height: 30px;*/ /* Should be removed. Only for demonstration */
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+</style>
+
+
+<script src="../Content/JqueryTableScriptLates/jquery_3_3_1.js"></script>
+
+<script src="../Content/Template/js/bootstrap.min.js"></script>
+
+<script src="../Content/Template/js/jquery.easing.min.js"></script>
+
+<script src="../Content/Template/js/wow.min.js"></script>
+
+<script src="../Content/Template/js/jquery.scrollTo.js"></script>
+
+<script src="../Content/Template/js/jquery.appear.js"></script>
+
+<script src="../Content/Template/js/stellar.js"></script>
+
+<script src="../Content/Template/plugins/cubeportfolio/js/jquery.cubeportfolio.min.js"></script>
+
+<script src="../Content/Template/js/owl.carousel.min.js"></script>
+
+<script src="../Content/Template/js/nivo-lightbox.min.js"></script>
+
+  <%--
+<script src="../Content/Template/js/custom.js"></script>--%>
+
+
+
+
+
+<link href="../Content/Template/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+
+<script src="../Content/Template/js/bootstrap-datetimepicker.min.js"></script>
+
+<script src="../Content/Template/js/bootstrap.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="../Content/DatatableCSS/jquery_dataTables_min.css" rel="stylesheet" />
+
+
+
+<link href="../Content/DatatableCSS/buttons_dataTables_min.css" rel="stylesheet" />
+
+
+
+<script src="../Content/JqueryTableScriptLates/jquery_dataTables_min.js"></script>
+<script src="../Content/JqueryTableScriptLates/dataTables_buttons_min.js"></script>
+<script src="../Content/JqueryTableScriptLates/jszip_min.js"></script>
+<script src="../Content/JqueryTableScriptLates/pdfmake_min.js"></script>
+<script src="../Content/JqueryTableScriptLates/vfs_fonts.js"></script>
+
+<script src="../Content/JqueryTableScriptLates/buttons_html5_min.js"></script>
+<script src="../Content/JqueryTableScriptLates/buttons_print_min.js"></script>
+
+
+
+<script src="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css"></script>
+
+<script src="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css"></script>
+
+
+
+
+
+<!--<link href="../Content/Template/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+<link href="../Content/Template/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+<link rel="../Content/Template/stylesheet" type="text/css" href="plugins/cubeportfolio/css/cubeportfolio.min.css" />
+
+<link href="../Content/Template/css/nivo-lightbox.css" rel="stylesheet" />
+
+<link href="../Content/Template/css/nivo-lightbox-theme/default/default.css" rel="stylesheet" type="text/css" />
+
+<link href="../Content/Template/css/owl.carousel.css" rel="stylesheet" media="screen" />
+
+<link href="../Content/Template/css/owl.theme.css" rel="stylesheet" media="screen" />
+
+<link href="../Content/Template/css/animate.css" rel="stylesheet" />
+
+<link href="../Content/Template/css/style.css" rel="stylesheet" />
+
+
+
+<link href="../Content/Template/css/jquery-ui.css" rel="stylesheet" />-->
+<!-- boxed bg -->
+<!--<link id="bodybg" href="../Content/Template/bodybg/bg1.css" rel="stylesheet" type="text/css" />-->
+<!-- template skin -->
+<!--<%--
+<link id="t-colors" href="../Content/Template/color/default.css" rel="stylesheet" />--%>-->
+<!--@section scripts{
+    @Styles.Render("~/Content/EkitiCss")
+        @Scripts.Render("~/Content/EkitiJs")-->
+@*<script src="~/Content/consula/consula/js/jquery-3.3.1.min.js"></script>*@
+@*<script src="~/Content/consula/consula/js/jquery-ui.js"></script>*@
+@*<script src="~/Content/datatablecript/jszip_min.js"></script>
+    <script src="~/Content/datatablecript/pdfmake_min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js"></script>
+    <script src="~/Content/datatablecript/jquery_dataTables_min.js"></script>
+    <script src="~/Content/datatablecript/dataTables_buttons_min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.4.0/js/buttons.flash.min.js"></script>
+    <script src="~/Content/datatablecript/buttons_html5_min.js"></script>
+    <script src="~/Content/datatablecript/buttons_print_min.js"></script>*@
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://datatables.net/extensions/buttons/examples/html5/filename.html"></script>
+<script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
+<script src="~/Content/datatablecript/buttons_print_min.js"></script>
+
+
+
+<script>
+    function FetchFAWrittenOff() {
+    var BranchCode = $('#BranchCode').val();
+    var FAClass = $('#FAClass').val();
+    var startdate = $('#startdate').val();
+    var enddate = $('#enddate').val();
+
+    if (BranchCode == '' || BranchCode == null) {
+
+        alert('Please select branch');
+
+        return false;
+
+    }
+
+    if (FAClass == '' || FAClass == null) {
+
+        alert('Input asset code');
+
+        return false;
+
+        }
+        if (startdate == '' || startdate == null) {
+
+            alert('select startdate');
+
+            return false;
+
+        }
+        if (enddate == '' || enddate == null) {
+
+            alert('select enddate');
+
+            return false;
+
+        }
+
+        var mytable = $('#importTable1').DataTable();
+
+        mytable.clear();
+        mytable.destroy();
+        var url = '@Url.Action("GetFAWrittenOffReport")';
+        //var data={
+        //    btn: btn
+        //};
+        $.ajax({
+            url: url,
+            type: "GET",
+            data: { BranchCode: BranchCode, FAClass: FAClass, startdate:startdate, enddate:enddate },
+            contentType: "application/json; charset=utf-8",
+            datatype: JSON,
+            success: function (Data) {
+
+                if (Data != null) {
+                    var tr;
+                    $('#importTable1 tbody').empty();
+                    var i = 0;
+                    $.each(Data, function (index, trans) {
+                        tr = $('<tr/>');
+                        tr.append('<td>' + trans.Id + '</td>');
+                        tr.append('<td>' + trans.BranchName + '</td>');
+                        tr.append('<td>' + trans.FACode + '</td>');
+                        tr.append('<td>' + trans.FAName + '</td>');
+                        tr.append('<td>' + trans.ClassName + '</td>');
+
+                        //Dates
+                        tr.append('<td>' + Formatdate(trans.PurchaseDate) + '</td>');
+                        tr.append('<td>' + Formatdate(trans.ExpiryDate) + '</td>');
+                        tr.append('<td>' + Formatdate(trans.TranDate) + '</td>');
+                        tr.append('<td>' + Formatdate(trans.DepStartDate) + '</td>');
+
+                        // Values/cost
+                        tr.append('<td>' + addCommas(trans.FACost) + '</td>');
+                        tr.append('<td>' + addCommas(trans.Deprate) + '</td>');
+                        tr.append('<td>' + addCommas(trans.ResidualVal) + '</td>');
+                        tr.append('<td>' + addCommas(trans.AccumDep) + '</td>');
+                        tr.append('<td>' + addCommas(trans.DisposalAmt) + '</td>');
+                        tr.append('<td>' + trans.DepMethod + '</td>');
+                        tr.append('<td>' + trans.LifeSpan + '</td>');
+                        tr.append('<td>' + trans.LifeSpanUsed + '</td>');
+
+                        //Accounts/statues
+                        tr.append('<td>' + trans.FAGLAccount + '</td>');
+                        tr.append('<td>' + trans.FundingGL + '</td>');
+                        tr.append('<td>' + trans.AccumDepGL + '</td>');
+                        tr.append('<td>' + trans.ExpenseGL + '</td>');
+                        tr.append('<td>' + trans.Status + '</td>');
+
+
+                        $('table').append(tr);
+
+
+                       /* $('#importTable1').append('<caption style="color: #FFFFFF; background-color: #31708f; font-weight: bold; padding-left: 50px; "> LOAN MATURE REPORT FROM </caption > ');*/
+
+
+
+
+
+
+                    });
+
+                    $('#importTable1').DataTable({
+
+
+
+                        "orderMulti": false,
+                        "ordering": false,
+
+
+
+
+                        dom: 'Blfrtip',
+                        /* "scrollX": true,*/
+
+
+
+
+                        buttons: [
+
+                            'copy', 'csv', 'excel', 'pdf', 'print'
+
+                        ],
+
+
+                        "lengthMenu": [[100, 500, 1000, -1], [100, 500, 1000, "All"]],
+                        retrieve: true,
+                    });
+
+
+                    //$(document).ready(function () {
+                    //    //var table = $('#importTable1').DataTable();
+
+
+                    //});
+                 /*   $("#ListContainer").show();*/
+                } else {
+                    alert("No record found");
+                }
+
+            },
+            error: function (data) {
+                alert("failed");
+            }
+        });
+
+    }
+
+
+
+    function addCommas(nStr) {
+
+        var ispositive = 1;
+        try {
+            if (nStr >= 0) {
+                ispositive = 1;
+            }
+            else {
+                ispositive = 0;
+            }
+            nStr += '';
+
+            x = nStr.split('.');
+
+            x1 = x[0];
+
+            x2 = x.length > 1 ? '.' + x[1] : '';
+
+            var rgx = /(\d+)(\d{3})/;
+
+            while (rgx.test(x1)) {
+
+                x1 = x1.replace(rgx, '$1' + ',' + '$2');
+
+            }
+
+            if (ispositive == 1) {
+                return x1 + x2;
+            }
+            else {
+                return '(' + (x1 + x2).replace('-', '') + ')';
+            }
+
+        }
+        catch (err) {
+            return ''
+        }
+
+    }
+
+    function Formatdate(Jsondate) {
+
+        if (Jsondate == null || Jsondate == '') {
+
+            return Jsondate;
+
+        }
+
+        else {
+
+            try {
+                var mydate = new Date(eval('new' + Jsondate.replace(/\//g, ' ')));
+
+                var month = mydate.getMonth() + 1;
+
+                var day = mydate.getDate();
+
+                var year = mydate.getFullYear();
+
+                var date = day + "/" + month + "/" + year;
+
+                if (date == '1/1/1') {
+                    return '';
+                }
+                else {
+                    return date;
+                }
+
+            }
+            catch (err) {
+                return ''
+            }
+
+        }
+
+
+
+    }
+</script>
+}
+
+
+
+
+
