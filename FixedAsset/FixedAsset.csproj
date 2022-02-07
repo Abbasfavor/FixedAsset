@@ -142,6 +142,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AssetAcuisition\AncillaryCostType.cs" />
     <Compile Include="Models\AssetAcuisition\AssetModel.cs" />
     <Compile Include="Models\AssetAllocation\AssetAllocation.cs" />
     <Compile Include="Models\AssetDisposal\AssetDisposal.cs" />

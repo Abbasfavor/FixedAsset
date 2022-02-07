@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FixedAsset.Models.Setup.AncillaryCost;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -25,7 +26,9 @@ namespace FixedAsset.Models.AssetAcuisition
         public Nullable<int> LifeSpan { get; set; }
         [Required(ErrorMessage = "field is required.")]
         public string LocationCode { get; set; }
-        public byte[] PurchaseDate { get; set; }
+        public DateTime? PurchaseDate { get; set; }
+        public DateTime? ExpiryDate { get; set; }
+        public DateTime? TranDate { get; set; }
         [Required(ErrorMessage = "field is required.")]
         public Nullable<decimal> FACost { get; set; }
         [Required(ErrorMessage = "field is required.")]
@@ -36,6 +39,7 @@ namespace FixedAsset.Models.AssetAcuisition
         public Nullable<int> LifeSpanUsed { get; set; }
         [Required(ErrorMessage = "field is required.")]
         public Nullable<System.DateTime> DepStartDate { get; set; }
+
         [Required(ErrorMessage = "field is required.")]
         public string FAGLAccount { get; set; }
         [Required(ErrorMessage = "field is required.")]
@@ -51,5 +55,6 @@ namespace FixedAsset.Models.AssetAcuisition
         public Nullable<decimal> DisposalAmt { get; set; }
         public string UserID { get; set; }
         public string AuthID { get; set; }
+        public List<AncillaryCostType> AncillCosList { get; set; }
     }
 }
