@@ -414,6 +414,33 @@
         $("#startdate").datetimepicker({ format: 'yyyy-MM-dd', pickTime: false, autoclose: true, minView: 2 });
         $("#enddate").datetimepicker({ format: 'yyyy-MM-dd', pickTime: false, autoclose: true, minView: 2 });
 
+        var boundCharges = [];
+        $("#addbutton").click(function () {
+
+            //Loop through all row in the order table and safe to array
+            $('#chargeTable tbody').find('tr').each(function () {
+                var row = $(this).find('td');
+
+                var message = {};
+                message.chargeId = row.eq(0).text();
+                message.ChargeBasedOn = row.eq(1).text();
+                message.Rule1 = row.eq(2).text();
+                message.startRange = row.eq(3).text();
+                message.endRange = row.eq(4).text();
+                message.Rate = row.eq(5).text();
+                message.Amount = row.eq(6).text();
+
+                boundCharges.push(message);
+            });
+
+            //stringy array and safe to model prop
+            var send = JSON.stringify(boundCharges);
+            $("#BoundedCharges").val(send);
+
+            //submit form
+            $('form').submit();
+        });
+
     });
 
     function FetchFADisposed() {
