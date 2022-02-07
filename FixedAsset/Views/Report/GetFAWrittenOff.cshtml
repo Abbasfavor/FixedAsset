@@ -6,16 +6,16 @@
 
 <section id="intro" class="intro">
 
-    <div class="row">
+<div class="row">
 
-        <div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="0.1s">
-            <div style="height:130px">
+    <div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="0.1s">
+        <div style="height:130px">
 
-            </div>
         </div>
-
-
     </div>
+
+
+</div>
 
 </section>
 <section id="intro" class="intro">
@@ -44,8 +44,24 @@
 
 
     </div>
+    <link href="../Content/Template/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+
+    <script src="../Content/Template/js/bootstrap-datetimepicker.min.js"></script>
+
+    <script src="../Content/Template/js/bootstrap.min.js"></script>
 
 </section>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        GetBranch();
+        GetProduct();
+        $("#startdate").datetimepicker({ format: 'yyyy-MM-dd', pickTime: false, autoclose: true, minView: 2, minDate: new Date('2014-07-23'), maxDate: new Date('2022-12-31') });
+        $("#enddate").datetimepicker({ format: 'yyyy-MM-dd', pickTime: false, autoclose: true, minView: 2, minDate: new Date('2014-07-23'), maxDate: new Date('2022-12-31') });
+
+
+    });
+</script>
 
 <div class="container">
     <div class="row">
@@ -111,18 +127,20 @@
 
                                         <div class="form-group">
                                             <label for="userId">startdate:</label>
-                                            @Html.Editor("startdate", new { htmlAttributes = new { @class = "form-control ", @required = "required" } })
+                                            @Html.Editor("startdate", new { htmlAttributes = new { @class = "form-control datepicker", @required = "required" } })
 
                                         </div>
                                     </div>
+
                                     <div class="col-md-6">
 
                                         <div class="form-group">
                                             <label for="userId">enddate:</label>
-                                            @Html.Editor("enddate", new { htmlAttributes = new { @class = "form-control ", @required = "required" } })
+                                            @Html.Editor("eddate", new { htmlAttributes = new { @class = "form-control datepicker", @required = "required" } })
 
                                         </div>
                                     </div>
+
                                 </div>
 
 
@@ -131,7 +149,7 @@
                                     <br />
                                     <div class="action">
                                         <button type="submit" id="addbutton" onclick="return FetchFAWrittenOff();" class="btn btn-primary btn-lg">
-                                            Submit  
+                                            Submit
                                         </button>
 
                                     </div>
@@ -176,7 +194,6 @@
 
                                             <th>PurchaseDate</th>
                                             <th>ExpiryDate</th>
-
                                             <th>DepStartDate </th>
                                             <th>DisposedDate </th>
 
@@ -184,7 +201,7 @@
                                             <th>Deprate</th>
                                             <th>ResidualVal</th>
                                             <th>AccumDep.</th>
-                                            <th>DisposableAmt </th>
+                                            <th>DisposableValue </th>
                                             <th>DisposedAmt </th>
                                             <th>Gain/Loss </th>
 
@@ -199,6 +216,7 @@
                                             <th>ExpenseGL</th>
                                             <th>DisposedGL</th>
                                             <th>Narration</th>
+
 
                                         </tr>
                                     </thead>
@@ -253,7 +271,6 @@
         clear: both;
     }
 </style>
-
 
 <script src="../Content/JqueryTableScriptLates/jquery_3_3_1.js"></script>
 
@@ -333,6 +350,9 @@
 
 
 
+
+
+
 <!--<link href="../Content/Template/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 
 <link href="../Content/Template/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
@@ -374,7 +394,6 @@
     <script src="~/Content/datatablecript/buttons_print_min.js"></script>*@
 
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script src="https://datatables.net/extensions/buttons/examples/html5/filename.html"></script>
 <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
@@ -383,14 +402,27 @@
 <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
 <script src="~/Content/datatablecript/buttons_print_min.js"></script>
 
+<link href="../Content/Template/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
 
+<script src="../Content/Template/js/bootstrap-datetimepicker.min.js"></script>
+
+<script src="../Content/Template/js/bootstrap.min.js"></script>
 
 <script>
+
+    //$(document).ready(function () {
+    //    GetBranch();
+    //    GetProduct();
+    //    $("#startdate").datetimepicker({ format: 'yyyy-MM-dd', pickTime: false, autoclose: true, minView: 2 });
+    //    $("#enddate").datetimepicker({ format: 'yyyy-MM-dd', pickTime: false, autoclose: true, minView: 2 });
+
+    //});
+
     function FetchFAWrittenOff() {
     var BranchCode = $('#BranchCode').val();
     var FAClass = $('#FAClass').val();
     var startdate = $('#startdate').val();
-    var enddate = $('#enddate').val();
+        var eddate = $('#eddate').val();
 
     if (BranchCode == '' || BranchCode == null) {
 
@@ -414,7 +446,7 @@
             return false;
 
         }
-        if (enddate == '' || enddate == null) {
+        if (eddate == '' || eddate == null) {
 
             alert('select enddate');
 
@@ -433,14 +465,23 @@
         $.ajax({
             url: url,
             type: "GET",
-            data: { BranchCode: BranchCode, FAClass: FAClass, startdate:startdate, enddate:enddate },
+            data: { BranchCode: BranchCode, FAClass: FAClass, startdate: startdate, eddate: eddate },
             contentType: "application/json; charset=utf-8",
             datatype: JSON,
             success: function (Data) {
 
+                var total_FACost = 0;
+                var total_Deprate = 0;
+                var total_ResidualVal = 0;
+                var total_AccumDep = 0;
+                var total_DisposedAmt = 0;
+                var total_DisposableVal = 0;
+                var total_Gain_Loss = 0;
+
                 if (Data != null) {
                     var tr;
                     $('#importTable1 tbody').empty();
+
                     var i = 0;
                     $.each(Data, function (index, trans) {
                         tr = $('<tr/>');
@@ -453,15 +494,18 @@
                         //Dates
                         tr.append('<td>' + Formatdate(trans.PurchaseDate) + '</td>');
                         tr.append('<td>' + Formatdate(trans.ExpiryDate) + '</td>');
-                        tr.append('<td>' + Formatdate(trans.TranDate) + '</td>');
                         tr.append('<td>' + Formatdate(trans.DepStartDate) + '</td>');
+                        tr.append('<td>' + Formatdate(trans.Disposed_Date) + '</td>');
 
                         // Values/cost
                         tr.append('<td>' + addCommas(trans.FACost) + '</td>');
                         tr.append('<td>' + addCommas(trans.Deprate) + '</td>');
                         tr.append('<td>' + addCommas(trans.ResidualVal) + '</td>');
                         tr.append('<td>' + addCommas(trans.AccumDep) + '</td>');
-                        tr.append('<td>' + addCommas(trans.DisposalAmt) + '</td>');
+                        tr.append('<td>' + addCommas(trans.Disposable_Value) + '</td>');
+                        tr.append('<td>' + addCommas(trans.Disposed_Amount) + '</td>');
+                        tr.append('<td>' + addCommas(trans.Gain_Loss) + '</td>');
+
                         tr.append('<td>' + trans.DepMethod + '</td>');
                         tr.append('<td>' + trans.LifeSpan + '</td>');
                         tr.append('<td>' + trans.LifeSpanUsed + '</td>');
@@ -471,22 +515,118 @@
                         tr.append('<td>' + trans.FundingGL + '</td>');
                         tr.append('<td>' + trans.AccumDepGL + '</td>');
                         tr.append('<td>' + trans.ExpenseGL + '</td>');
-                        tr.append('<td>' + trans.Status + '</td>');
+                        tr.append('<td>' + trans.DisposedGL + '</td>');
+                        tr.append('<td>' + trans.Narration + '</td>');
 
 
                         $('table').append(tr);
 
 
-                       /* $('#importTable1').append('<caption style="color: #FFFFFF; background-color: #31708f; font-weight: bold; padding-left: 50px; "> LOAN MATURE REPORT FROM </caption > ');*/
 
 
 
+                        if (trans.FACost == null || trans.FACost == '' || isNaN(trans.FACost)) {
 
+                            total_FACost = parseFloat(total_FACost) + 0;
+                        }
+                        else {
+                            total_FACost = parseFloat(total_FACost) + parseFloat(trans.FACost);
 
+                        }
+
+                        if (trans.Deprate == null || trans.Deprate == '' || isNaN(trans.Deprate)) {
+
+                            total_Deprate = parseFloat(total_Deprate) + 0;
+                        }
+                        else {
+                            total_Deprate = parseFloat(total_Deprate) + parseFloat(trans.Deprate);
+
+                        }
+                        if (trans.ResidualVal == null || trans.ResidualVal == '' || isNaN(trans.ResidualVal)) {
+
+                            total_ResidualVal = parseFloat(total_ResidualVal) + 0;
+                        }
+                        else {
+                            total_ResidualVal = parseFloat(total_ResidualVal) + parseFloat(trans.ResidualVal);
+
+                        }
+                        if (trans.AccumDep == null || trans.AccumDep == '' || isNaN(trans.AccumDep)) {
+
+                            total_AccumDep = parseFloat(total_AccumDep) + 0;
+                        }
+                        else {
+                            total_AccumDep = parseFloat(total_AccumDep) + parseFloat(trans.AccumDep);
+
+                        }
+                        if (trans.Disposed_Amount == null || trans.Disposed_Amount == '' || isNaN(trans.Disposed_Amount)) {
+
+                            total_DisposedAmt = parseFloat(total_DisposedAmt) + 0;
+                        }
+                        else {
+                            total_DisposedAmt = parseFloat(total_DisposedAmt) + parseFloat(trans.Disposed_Amount);
+
+                        }
+
+                        if (trans.Disposable_Value == null || trans.Disposable_Value == '' || isNaN(trans.Disposable_Value)) {
+
+                            total_DisposableVal = parseFloat(total_DisposableVal) + 0;
+                        }
+                        else {
+                            total_DisposableVal = parseFloat(total_DisposableVal) + parseFloat(trans.Disposable_Value);
+
+                        }
+                        if (trans.Gain_Loss == null || trans.Gain_Loss == '' || isNaN(trans.Gain_Loss)) {
+
+                            total_Gain_Loss = parseFloat(total_Gain_Loss) + 0;
+                        }
+                        else {
+                            total_Gain_Loss = parseFloat(total_Gain_Loss) + parseFloat(trans.Gain_Loss);
+
+                        }
 
                     });
 
+                    tr = $('<tr style="background-color: #0000FF; color: #FFFFFF; font-size:14px; font-weight: bolder"/>');
+                    tr.append('<td> TOTAL </td>');
+                    tr.append('<td></td>');
+                    tr.append('<td></td>');
+                    tr.append('<td></td>');
+                    tr.append('<td></td>');
+                    tr.append('<td></td>');
+                    tr.append('<td></td>');
+                    tr.append('<td></td>');
+                    tr.append('<td></td>');
+                    tr.append('<td>' + addCommas(total_FACost.toFixed(2)) + '</td>');
+                    tr.append('<td>' + addCommas(total_Deprate.toFixed(2)) + '</td>');
+                    tr.append('<td>' + addCommas(total_ResidualVal.toFixed(2)) + '</td>');
+                    tr.append('<td>' + addCommas(total_AccumDep.toFixed(2)) + '</td>');
+                    tr.append('<td>' + addCommas(total_DisposableVal.toFixed(2)) + '</td>');
+                    tr.append('<td>' + addCommas(total_DisposedAmt.toFixed(2)) + '</td>');
+                    tr.append('<td>' + addCommas(total_Gain_Loss.toFixed(2)) + '</td>');
+                    tr.append('<td></td>');
+                    tr.append('<td></td>');
+                    tr.append('<td></td>');
+                    tr.append('<td></td>');
+                    tr.append('<td></td>');
+                    tr.append('<td></td>');
+                    tr.append('<td></td>');
+                    tr.append('<td></td>');
+                    tr.append('<td></td>');
+
+                    $('#importTable1').append(tr);
+
+
+
+
+
+                    $('#processingmesage').hide();
+
+                    //$('#importTable1').append('<caption style="color: #FFFFFF; background-color: #31708f; font-weight: bold; padding-left: 50px; "> LOAN DISBURSE REPORT FROM ' + startdate + ' TO ' + enddate + '</caption > ');
+
+
+
                     $('#importTable1').DataTable({
+
 
 
 

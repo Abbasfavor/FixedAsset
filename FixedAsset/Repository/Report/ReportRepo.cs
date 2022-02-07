@@ -92,8 +92,8 @@ namespace FixedAsset.Repository.Report
             try
             {
                 CatList = _entity.Database.SqlQuery<RptMaintRepairByCode>("proc_rptMaintRepairByCode @FaCode,@retportType",
-                    new SqlParameter("@Branchcode", FaCode),
-                    new SqlParameter("@FAClass", retportType)).ToList();
+                    new SqlParameter("@FaCode", FaCode),
+                    new SqlParameter("@retportType", retportType)).ToList();
 
             }
             catch (Exception ex)
