@@ -433,11 +433,129 @@
                 $(this).attr("data-toggle", "modal").attr("data-target", "#exampleModal");
                 CostTable();
             });
+            $('#CostTable tbody :checkbox').change(function () {
+                alert("here...");
+                // From the other examples
+                if (!this.checked) {
+                    var sure = confirm("Are you sure?");
+                    this.checked = !sure;
+                    alert(sure.toString());
+                }
+
+                $("#addbutton").click(function (e) {
+
+                    var AncillaryCostType = [];
+
+
+                    //Loop through all row in the order table and safe to array
+                    $('#CostTable tbody').find('tr').each(function (index, rowhtml) {
+
+                        var checked = $('input[type="checkbox"]:checked', rowhtml).length;
+                        if (checked > 0) {
+                            var row = $(this).find('td');
+
+                            var message = {};
+
+                            message.FACode = $('#FACode').val();
+                            if ($('#FACode').val() == '' || $('#FACode').val() == '') {
+                                alert("Please enter FACode");
+                                e.preventDefault();
+                            } else {
+                                message.DebittGL = $('#ClassCode').val();
+                            }
+                            message.CostCode = row.eq(1).text();
+                            message.ClassCode = $('#ClassCode').val();
+                            if ($('#ClassCode').val() == '' || $('#ClassCode').val() == '') {
+                                alert("Please enter ClassCode");
+                                e.preventDefault();
+                            } else {
+                                message.DebittGL = $('#ClassCode').val();
+                            }
+                            if (row.eq(3).find('input[id=costAmnt]').val() == '' || row.eq(3).find('input[id=costAmnt]').val() == '') {
+                                alert("Please enter amount");
+                                e.preventDefault();
+                            } else {
+                                message.CostAmount = row.eq(3).find('input[id=costAmnt]').val();
+                            }
+                           
+                          
+                            message.CapitalizedType = 0
+                            if ($('#ExpenseGL').val() == '' || $('#ExpenseGL').val() == '') {
+                                alert("Please enter Expense GL");
+                                e.preventDefault();
+                            } else {
+                                message.DebittGL = $('#ExpenseGL').val();
+                            }
+                            if ($('#FundingGL').val() == '' || $('#FundingGL').val() == null) {
+                                alert("Please enter Funding GL");
+                                e.preventDefault();
+                            } else {
+                                message.CreditGL = $('#FundingGL').val();
+                        
+                            }
+                           
+                      
+                        }
+
+
+
+
+                        AncillaryCostType.push(message);
+                    });
+
+                    //stringy array and safe to model prop
+                    var send = JSON.stringify(AncillaryCostType);
+                    /*  alert(send);*/
+                    $("#AncillCosList").val(send);
+
+
+                    //submit form
+                    $('form').submit();
+                });
+            });
+          
+
+
+            //var AncillaryCostType = [];
+            //$("#checkBtn").click(function () {
+
+            //    //Loop through all row in the order table and safe to array
+            //    $('#CostTable tbody').find('tr').each(function () {
+            //        var row = $(this).find('td');
+            //        var table = $('#CostTable');
+            //        var message = {};
+            //        var selected = table.column(3, { selected: true }).find('input[id=costAmnt]').val();
+            //        if (selected == '' || selected == null) {
+            //            alert("wrong");
+            //        } else {
+            //            message.FACode = $('#FACode').val();
+            //            message.CostCode = row.eq(1).text();
+            //            message.ClassCode = $('#ClassCode').val();
+            //            message.CostAmount = row.eq(3).find('input[id=costAmnt]').val();
+            //            message.CapitalizedType = row.eq(2).text();
+            //            message.CreditGL = $('#FundingGL').val();
+            //            message.DebittGL = $('#ExpenseGL').val();
+            //        }
+           
+             
+            //        AncillaryCostType.push(message);
+            //    });
+
+            //    //stringy array and safe to model prop
+            //    var send = JSON.stringify(AncillaryCostType);
+            //    alert(send);
+            //    $("#AncillaryCostType").val(send);
+
+                //submit form
+               /* $('form').submit();*/
+          /*  });*/
+     
+      
         });
 
 
         function CostTable() {
-            var url='@Url.Action("AncillaryCost")'
+            var url = '@Url.Action("AncillaryCost")';
             $.ajax({
                 url: url,
                 typr: "GET",
@@ -455,7 +573,7 @@
                         tr.append('<td></td>');
                         tr.append('<td style="display:none" id="' + n + '">' + item.CostCode + '</td>');
                         tr.append('<td id="' + n + '">' + item.CostDesc + '</td>');
-                        tr.append('<td id="' + n + '"><input type="text" class="form-control" id="'+n+'"></td>');
+                        tr.append('<td id="' + n + '"><input type="text" class="form-control" id="costAmnt"></td>');
                         $('table').append(tr);
                         n++;
                     });
@@ -466,7 +584,7 @@
                             'orderable': false,
                             'className': 'dt-body-center',
                             'render': function (data, type, full, meta) {
-                                return '<input type="checkbox" name="id[]" value="' + $('<div/>').text(data).html() + '">';
+                                return '<input type="checkbox" class="checkbox" name="id[]" value="' + $('<div/>').text(data).html() + '">';
                             }
                         }],
                         'order': [[1, 'asc']]
@@ -515,29 +633,6 @@
                     //    });
                     //});
 
-
-                    $("#checkBtn").click(function () {
-                        table.$('input[type="checkbox"]').each(function () {
-                            // If checkbox doesn't exist in DOM
-                            if ($.contains(document, this)) {
-                              /*  alert("Test");*/
-                                // If checkbox is checked
-                                if (this.checked) {
-                                    /*   alert("Test");*/
-                                    var selectedRows = table.rows('.selected').data();
-
-                                    //if you are getting array of objects inside main object
-                                    alert(selectedRows[0].postTITLE);
-                                    alert(selectedRows[0].postURL);
-
-                                    // if you are getting just plain object you can access it as
-                                    alert(selectedRows.postTITLE);
-                                    alert(selectedRows.postURL);
-                                   
-                                }
-                            }
-                        });
-                    });
 
 
                 },

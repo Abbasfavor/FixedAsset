@@ -8,6 +8,7 @@ namespace FixedAsset.Models.AssetAcuisition
     public class AncillaryCostType
     {
         public int? Id { get; set; }
+        public string FACode { get; set; }
         public string CostCode { get; set; }
         public string ClassCode { get; set; }
         public decimal? CostAmount { get; set; }
