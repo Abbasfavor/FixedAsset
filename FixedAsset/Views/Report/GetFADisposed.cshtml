@@ -52,14 +52,15 @@
 </section>
 <script type="text/javascript">
 
-        $(document).ready(function () {
-            GetBranch();
-            GetProduct();
-            $("#startdate").datetimepicker({ format: 'yyyy-MM-dd', pickTime: false, autoclose: true, minView: 2 });
-            $("#enddate").datetimepicker({ format: 'yyyy-MM-dd', pickTime: false, autoclose: true, minView: 2 });
+    $(document).ready(function () {
+        GetBranch();
+        GetProduct();
+        $("#startdate").datetimepicker({ format: 'yyyy-MM-dd', pickTime: false, autoclose: true, minView: 2, minDate: new Date('2014-07-23'), maxDate: new Date('2022-12-31') });
+        $("#enddate").datetimepicker({ format: 'yyyy-MM-dd', pickTime: false, autoclose: true, minView: 2, minDate: new Date('2014-07-23'), maxDate: new Date('2022-12-31') });
 
-        });
-   </script>
+
+    });
+</script>
 
 <div class="container">
     <div class="row">
@@ -134,7 +135,7 @@
 
                                         <div class="form-group">
                                             <label for="userId">enddate:</label>
-                                            @Html.Editor("enddate", new { htmlAttributes = new { @class = "form-control datepicker", @required = "required" } })
+                                            @Html.Editor("eddate", new { htmlAttributes = new { @class = "form-control datepicker", @required = "required" } })
 
                                         </div>
                                     </div>
@@ -270,7 +271,6 @@
     }
 </style>
 
-
 <script src="../Content/JqueryTableScriptLates/jquery_3_3_1.js"></script>
 
 <script src="../Content/Template/js/bootstrap.min.js"></script>
@@ -352,9 +352,6 @@
 
 
 
-
-
-
 <!--<link href="../Content/Template/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 
 <link href="../Content/Template/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
@@ -404,15 +401,19 @@
 <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
 <script src="~/Content/datatablecript/buttons_print_min.js"></script>
 
+<link href="../Content/Template/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
 
+<script src="../Content/Template/js/bootstrap-datetimepicker.min.js"></script>
+
+<script src="../Content/Template/js/bootstrap.min.js"></script>
 
 <script>
 
-    $(document).ready(function () {
-        GetBranch();
-        GetProduct();
-        $("#startdate").datetimepicker({ format: 'yyyy-MM-dd', pickTime: false, autoclose: true, minView: 2 });
-        $("#enddate").datetimepicker({ format: 'yyyy-MM-dd', pickTime: false, autoclose: true, minView: 2 });
+    //$(document).ready(function () {
+    //    GetBranch();
+    //    GetProduct();
+    //    $("#startdate").datetimepicker({ format: 'yyyy-MM-dd', pickTime: false, autoclose: true, minView: 2 });
+    //    $("#enddate").datetimepicker({ format: 'yyyy-MM-dd', pickTime: false, autoclose: true, minView: 2 });
 
         var boundCharges = [];
         $("#addbutton").click(function () {
@@ -442,12 +443,13 @@
         });
 
     });
+    //});
 
     function FetchFADisposed() {
     var BranchCode = $('#BranchCode').val();
     var FAClass = $('#FAClass').val();
     var startdate = $('#startdate').val();
-    var enddate = $('#enddate').val();
+        var eddate = $('#eddate').val();
 
     if (BranchCode == '' || BranchCode == null) {
 
@@ -471,7 +473,7 @@
             return false;
 
         }
-        if (enddate == '' || enddate == null) {
+        if (eddate == '' || eddate == null) {
 
             alert('select enddate');
 
@@ -490,10 +492,18 @@
         $.ajax({
             url: url,
             type: "GET",
-            data: { BranchCode: BranchCode, FAClass: FAClass, startdate:startdate, enddate:enddate },
+            data: { BranchCode: BranchCode, FAClass: FAClass, startdate: startdate, eddate: eddate },
             contentType: "application/json; charset=utf-8",
             datatype: JSON,
             success: function (Data) {
+
+                var total_FACost = 0;
+                var total_Deprate = 0;
+                var total_ResidualVal = 0;
+                var total_AccumDep = 0;
+                var total_DisposedAmt = 0;
+                var total_DisposableVal = 0;
+                var total_Gain_Loss = 0;
 
                 if (Data != null) {
                     var tr;
@@ -511,7 +521,6 @@
                         //Dates
                         tr.append('<td>' + Formatdate(trans.PurchaseDate) + '</td>');
                         tr.append('<td>' + Formatdate(trans.ExpiryDate) + '</td>');
-                        tr.append('<td>' + Formatdate(trans.TranDate) + '</td>');
                         tr.append('<td>' + Formatdate(trans.DepStartDate) + '</td>');
                         tr.append('<td>' + Formatdate(trans.Disposed_Date) + '</td>');
 
@@ -522,6 +531,8 @@
                         tr.append('<td>' + addCommas(trans.AccumDep) + '</td>');
                         tr.append('<td>' + addCommas(trans.Disposable_Value) + '</td>');
                         tr.append('<td>' + addCommas(trans.Disposed_Amount) + '</td>');
+                        tr.append('<td>' + addCommas(trans.Gain_Loss) + '</td>');
+                        
                         tr.append('<td>' + trans.DepMethod + '</td>');
                         tr.append('<td>' + trans.LifeSpan + '</td>');
                         tr.append('<td>' + trans.LifeSpanUsed + '</td>');
@@ -538,16 +549,111 @@
                         $('table').append(tr);
 
 
-                       /* $('#importTable1').append('<caption style="color: #FFFFFF; background-color: #31708f; font-weight: bold; padding-left: 50px; "> LOAN MATURE REPORT FROM </caption > ');*/
+                     
 
 
+                        if (trans.FACost == null || trans.FACost == '' || isNaN(trans.FACost)) {
 
+                            total_FACost = parseFloat(total_FACost) + 0;
+                        }
+                        else {
+                            total_FACost = parseFloat(total_FACost) + parseFloat(trans.FACost);
 
+                        }
 
+                        if (trans.Deprate == null || trans.Deprate == '' || isNaN(trans.Deprate)) {
+
+                            total_Deprate = parseFloat(total_Deprate) + 0;
+                        }
+                        else {
+                            total_Deprate = parseFloat(total_Deprate) + parseFloat(trans.Deprate);
+
+                        }
+                        if (trans.ResidualVal == null || trans.ResidualVal == '' || isNaN(trans.ResidualVal)) {
+
+                            total_ResidualVal = parseFloat(total_ResidualVal) + 0;
+                        }
+                        else {
+                            total_ResidualVal = parseFloat(total_ResidualVal) + parseFloat(trans.ResidualVal);
+
+                        }
+                        if (trans.AccumDep == null || trans.AccumDep == '' || isNaN(trans.AccumDep)) {
+
+                            total_AccumDep = parseFloat(total_AccumDep) + 0;
+                        }
+                        else {
+                            total_AccumDep = parseFloat(total_AccumDep) + parseFloat(trans.AccumDep);
+
+                        }
+                        if (trans.Disposed_Amount == null || trans.Disposed_Amount == '' || isNaN(trans.Disposed_Amount)) {
+
+                            total_DisposedAmt = parseFloat(total_DisposedAmt) + 0;
+                        }
+                        else {
+                            total_DisposedAmt = parseFloat(total_DisposedAmt) + parseFloat(trans.Disposed_Amount);
+
+                        }
+
+                        if (trans.Disposable_Value == null || trans.Disposable_Value == '' || isNaN(trans.Disposable_Value)) {
+
+                            total_DisposableVal = parseFloat(total_DisposableVal) + 0;
+                        }
+                        else {
+                            total_DisposableVal = parseFloat(total_DisposableVal) + parseFloat(trans.Disposable_Value);
+
+                        }
+                        if (trans.Gain_Loss == null || trans.Gain_Loss == '' || isNaN(trans.Gain_Loss)) {
+
+                            total_Gain_Loss = parseFloat(total_Gain_Loss) + 0;
+                        }
+                        else {
+                            total_Gain_Loss = parseFloat(total_Gain_Loss) + parseFloat(trans.Gain_Loss);
+
+                        }
 
                     });
 
+                    tr = $('<tr style="background-color: #0000FF; color: #FFFFFF; font-size:14px; font-weight: bolder"/>');
+                    tr.append('<td> TOTAL </td>');
+                    tr.append('<td></td>');
+                    tr.append('<td></td>');
+                    tr.append('<td></td>');
+                    tr.append('<td></td>');
+                    tr.append('<td></td>');
+                    tr.append('<td></td>');
+                    tr.append('<td></td>');
+                    tr.append('<td></td>');
+                    tr.append('<td>' + addCommas(total_FACost.toFixed(2)) + '</td>');
+                    tr.append('<td>' + addCommas(total_Deprate.toFixed(2)) + '</td>');
+                    tr.append('<td>' + addCommas(total_ResidualVal.toFixed(2)) + '</td>');
+                    tr.append('<td>' + addCommas(total_AccumDep.toFixed(2)) + '</td>');
+                    tr.append('<td>' + addCommas(total_DisposableVal.toFixed(2)) + '</td>');
+                    tr.append('<td>' + addCommas(total_DisposedAmt.toFixed(2)) + '</td>');
+                    tr.append('<td>' + addCommas(total_Gain_Loss.toFixed(2)) + '</td>');
+                    tr.append('<td></td>');
+                    tr.append('<td></td>');
+                    tr.append('<td></td>');
+                    tr.append('<td></td>');
+                    tr.append('<td></td>');
+                    tr.append('<td></td>');
+                    tr.append('<td></td>');
+                    tr.append('<td></td>');
+                    tr.append('<td></td>');
+
+                    $('#importTable1').append(tr);
+
+
+
+
+
+                    $('#processingmesage').hide();
+
+                    //$('#importTable1').append('<caption style="color: #FFFFFF; background-color: #31708f; font-weight: bold; padding-left: 50px; "> LOAN DISBURSE REPORT FROM ' + startdate + ' TO ' + enddate + '</caption > ');
+
+
+
                     $('#importTable1').DataTable({
+
 
 
 
