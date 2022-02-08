@@ -335,6 +335,7 @@
     <Content Include="Content\consula\consula\js\SweetAlert2.js" />
     <Content Include="Content\consula\consula\js\SweetAlert3.js" />
     <Content Include="Content\consula\consula\js\typed.js" />
+    <Content Include="Content\consula\DataTables\DataTables-1.10.24\css\datatablebuttons.css" />
     <Content Include="Content\consula\DataTables\DataTables-1.10.24\css\dataTables.bootstrap.css" />
     <Content Include="Content\consula\DataTables\DataTables-1.10.24\css\dataTables.bootstrap.min.css" />
     <Content Include="Content\consula\DataTables\DataTables-1.10.24\css\dataTables.bootstrap4.css" />
@@ -376,6 +377,9 @@
     <Content Include="Content\datatablecript\jszip_min.js" />
     <Content Include="Content\datatablecript\pdfmake_min.js" />
     <Content Include="Content\datatablecript\vfs_fonts.js" />
+    <Content Include="Content\DataTableStyle\buttons.dataTables.min.css" />
+    <Content Include="Content\DataTableStyle\jquery.dataTables.min.css" />
+    <Content Include="Content\DataTableStyle\select.datatables.min.css" />
     <Content Include="Content\Login_v1\css\main.css" />
     <Content Include="Content\Login_v1\css\util.css" />
     <Content Include="Content\Login_v1\fonts\font-awesome-4.7.0\css\font-awesome.css" />

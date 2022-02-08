@@ -329,7 +329,18 @@
                                             <li>@Html.ActionLink("Revaluation", "create", "AssetRevaluation")</li>
                                             <li>@Html.ActionLink("Writeoff", "create", "WriteOff")</li>
                                             <li>@Html.ActionLink("Disposal", "create", "AssetDisposal")</li>
-                                            <li>@Html.ActionLink("Reports", "Index", "Report")</li>
+                                      
+                                            <li>
+                                                <a href="#">Reports</a>
+                                                <ul class="dropdown">
+                                                    <li>@Html.ActionLink("Disposed", "GetFADisposed", "Report")</li>
+                                                    <li>@Html.ActionLink("Maintenance/Repairs", "GetFAMaint_Repairs", "Report")</li>
+                                                    <li>@Html.ActionLink("Maintenance/Repairs by Code", "GetFAMaintRepairByCode", "Report")</li>
+                                                    <li>@Html.ActionLink("FA. Registered", "GetFARegister", "Report")</li>
+                                                    <li>@Html.ActionLink("Write Off", "GetFAWrittenOff", "Report")</li>
+
+                                                </ul>
+                                            </li>
                                             <li class="nav-item"><a href="javascript:document.getElementById('logoutForm').submit()" class="nav-link">Logout</a></li>
 
                                         }
@@ -405,7 +416,17 @@
                                     <li>@Html.ActionLink("Revaluation", "create", "AssetRevaluation")</li>
                                     <li>@Html.ActionLink("Writeoff", "create", "WriteOff")</li>
                                     <li>@Html.ActionLink("Disposal", "create", "AssetDisposal")</li>
-                                    <li>@Html.ActionLink("Reports", "Index", "Report")</li>
+                                    <li>
+                                        <a href="#">Reports</a>
+                                        <ul class="dropdown">
+                                            <li>@Html.ActionLink("Disposed", "GetFADisposed", "Report")</li>
+                                            <li>@Html.ActionLink("Maintenance/Repairs", "GetFAMaint_Repairs", "Report")</li>
+                                            <li>@Html.ActionLink("Maintenance/Repairs by Code", "GetFAMaintRepairByCode", "Report")</li>
+                                            <li>@Html.ActionLink("FA. Registered", "GetFARegister", "Report")</li>
+                                            <li>@Html.ActionLink("Write Off", "GetFAWrittenOff", "Report")</li>
+
+                                        </ul>
+                                    </li>
                                     @*@Html.ActionLink("Forgot password", "ForgotPassword", "User", new { area = "" }, new { @class = "navbar-brand" })*@
                                 }
                             </ul>
