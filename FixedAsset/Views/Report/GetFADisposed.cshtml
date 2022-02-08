@@ -43,25 +43,7 @@
 
 
     </div>
-    <link href="../Content/Template/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
-
-    <script src="../Content/Template/js/bootstrap-datetimepicker.min.js"></script>
-
-    <script src="../Content/Template/js/bootstrap.min.js"></script>
-
 </section>
-<script type="text/javascript">
-
-    $(document).ready(function () {
-        GetBranch();
-        GetProduct();
-        $("#startdate").datetimepicker({ format: 'yyyy-MM-dd', pickTime: false, autoclose: true, minView: 2, minDate: new Date('2014-07-23'), maxDate: new Date('2022-12-31') });
-        $("#enddate").datetimepicker({ format: 'yyyy-MM-dd', pickTime: false, autoclose: true, minView: 2, minDate: new Date('2014-07-23'), maxDate: new Date('2022-12-31') });
-
-
-    });
-</script>
-
 <div class="container">
     <div class="row">
 
@@ -148,7 +130,7 @@
                                     <br />
                                     <div class="action">
                                         <button type="submit" id="addbutton" onclick="return FetchFADisposed();" class="btn btn-primary btn-lg">
-                                            Submit
+                                            Generate Report
                                         </button>
 
                                     </div>
@@ -235,214 +217,24 @@
         </div>
     </div>
 </div>
-
-<style>
-    table.dataTable th {
-        font-size: 10px;
-        color: #FFFFFF;
-        font-weight: bold;
-        background-color: #31708f;
-    }
-
-    table.dataTable tbody {
-        font-size: 10px;
-        color: #000000;
-        font-weight: bold;
-    }
-</style>
-<style>
-    * {
-        box-sizing: border-box;
-    }
-
-    /* Create three equal columns that floats next to each other */
-    .column {
-        float: left;
-        width: 30.33%;
-        padding: 10px;
-        /*  height: 30px;*/ /* Should be removed. Only for demonstration */
-    }
-
-    /* Clear floats after the columns */
-    .row:after {
-        content: "";
-        display: table;
-        clear: both;
-    }
-</style>
-
-<script src="../Content/JqueryTableScriptLates/jquery_3_3_1.js"></script>
-
-<script src="../Content/Template/js/bootstrap.min.js"></script>
-
-<script src="../Content/Template/js/jquery.easing.min.js"></script>
-
-<script src="../Content/Template/js/wow.min.js"></script>
-
-<script src="../Content/Template/js/jquery.scrollTo.js"></script>
-
-<script src="../Content/Template/js/jquery.appear.js"></script>
-
-<script src="../Content/Template/js/stellar.js"></script>
-
-<script src="../Content/Template/plugins/cubeportfolio/js/jquery.cubeportfolio.min.js"></script>
-
-<script src="../Content/Template/js/owl.carousel.min.js"></script>
-
-<script src="../Content/Template/js/nivo-lightbox.min.js"></script>
-
-  <%--
-<script src="../Content/Template/js/custom.js"></script>--%>
-
-
-
-
-
-<link href="../Content/Template/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
-
-<script src="../Content/Template/js/bootstrap-datetimepicker.min.js"></script>
-
-<script src="../Content/Template/js/bootstrap.min.js"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<link href="../Content/DatatableCSS/jquery_dataTables_min.css" rel="stylesheet" />
-
-
-
-<link href="../Content/DatatableCSS/buttons_dataTables_min.css" rel="stylesheet" />
-
-
-
-<script src="../Content/JqueryTableScriptLates/jquery_dataTables_min.js"></script>
-<script src="../Content/JqueryTableScriptLates/dataTables_buttons_min.js"></script>
-<script src="../Content/JqueryTableScriptLates/jszip_min.js"></script>
-<script src="../Content/JqueryTableScriptLates/pdfmake_min.js"></script>
-<script src="../Content/JqueryTableScriptLates/vfs_fonts.js"></script>
-
-<script src="../Content/JqueryTableScriptLates/buttons_html5_min.js"></script>
-<script src="../Content/JqueryTableScriptLates/buttons_print_min.js"></script>
-
-
-
-<script src="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css"></script>
-
-<script src="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css"></script>
-
-
-
-
-
-
-
-
-<!--<link href="../Content/Template/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-
-<link href="../Content/Template/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-
-<link rel="../Content/Template/stylesheet" type="text/css" href="plugins/cubeportfolio/css/cubeportfolio.min.css" />
-
-<link href="../Content/Template/css/nivo-lightbox.css" rel="stylesheet" />
-
-<link href="../Content/Template/css/nivo-lightbox-theme/default/default.css" rel="stylesheet" type="text/css" />
-
-<link href="../Content/Template/css/owl.carousel.css" rel="stylesheet" media="screen" />
-
-<link href="../Content/Template/css/owl.theme.css" rel="stylesheet" media="screen" />
-
-<link href="../Content/Template/css/animate.css" rel="stylesheet" />
-
-<link href="../Content/Template/css/style.css" rel="stylesheet" />
-
-
-
-<link href="../Content/Template/css/jquery-ui.css" rel="stylesheet" />-->
-<!-- boxed bg -->
-<!--<link id="bodybg" href="../Content/Template/bodybg/bg1.css" rel="stylesheet" type="text/css" />-->
-<!-- template skin -->
-<!--<%--
-<link id="t-colors" href="../Content/Template/color/default.css" rel="stylesheet" />--%>-->
-<!--@section scripts{
-    @Styles.Render("~/Content/EkitiCss")
-        @Scripts.Render("~/Content/EkitiJs")-->
-@*<script src="~/Content/consula/consula/js/jquery-3.3.1.min.js"></script>*@
-@*<script src="~/Content/consula/consula/js/jquery-ui.js"></script>*@
-@*<script src="~/Content/datatablecript/jszip_min.js"></script>
-    <script src="~/Content/datatablecript/pdfmake_min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js"></script>
-    <script src="~/Content/datatablecript/jquery_dataTables_min.js"></script>
-    <script src="~/Content/datatablecript/dataTables_buttons_min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/1.4.0/js/buttons.flash.min.js"></script>
+@section scripts{
+
+    <link href="~/Content/consula/DataTables/DataTables-1.10.24/css/datatablebuttons.css" rel="stylesheet" />
+    <link href="~/Content/consula/DataTables/DataTables-1.10.24/css/jquery.dataTables.css" rel="stylesheet" />
+    <link href="~/Content/consula/DataTables/DataTables-1.10.24/css/dataTables.jqueryui.css" rel="stylesheet" />
+    <link href="~/Content/DataTableStyle/buttons.dataTables.min.css" rel="stylesheet" />
+    <script src="~/Content/consula/consula/js/bootstrap-datepicker.min.js"></script>
+    <script src="~/Content/consula/DataTables/DataTables-1.10.24/js/jquery.dataTables.js"></script>
+    @*<script src="~/Content/datatablecript/buttons_flash_min.js"></script>*@
     <script src="~/Content/datatablecript/buttons_html5_min.js"></script>
-    <script src="~/Content/datatablecript/buttons_print_min.js"></script>*@
+    <script src="~/Content/datatablecript/buttons_print_min.js"></script>
+    <script src="~/Content/datatablecript/dataTables_buttons_min.js"></script>
+    <script src="~/Content/datatablecript/pdfmake_min.js"></script>
+    <script src="~/Content/datatablecript/vfs_fonts.js"></script>
+    <script src="~/Content/datatablecript/jszip_min.js"></script>
+    <script>
 
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
-<script src="~/Content/datatablecript/buttons_print_min.js"></script>
 
-<link href="../Content/Template/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
-
-<script src="../Content/Template/js/bootstrap-datetimepicker.min.js"></script>
-
-<script src="../Content/Template/js/bootstrap.min.js"></script>
-
-<script>
-
-    //$(document).ready(function () {
-    //    GetBranch();
-    //    GetProduct();
-    //    $("#startdate").datetimepicker({ format: 'yyyy-MM-dd', pickTime: false, autoclose: true, minView: 2 });
-    //    $("#enddate").datetimepicker({ format: 'yyyy-MM-dd', pickTime: false, autoclose: true, minView: 2 });
-
-        var boundCharges = [];
-        $("#addbutton").click(function () {
-
-            //Loop through all row in the order table and safe to array
-            $('#chargeTable tbody').find('tr').each(function () {
-                var row = $(this).find('td');
-
-                var message = {};
-                message.chargeId = row.eq(0).text();
-                message.ChargeBasedOn = row.eq(1).text();
-                message.Rule1 = row.eq(2).text();
-                message.startRange = row.eq(3).text();
-                message.endRange = row.eq(4).text();
-                message.Rate = row.eq(5).text();
-                message.Amount = row.eq(6).text();
-
-                boundCharges.push(message);
-            });
-
-            //stringy array and safe to model prop
-            var send = JSON.stringify(boundCharges);
-            $("#BoundedCharges").val(send);
-
-            //submit form
-            $('form').submit();
-        });
-
-    });
     //});
 
     function FetchFADisposed() {
@@ -532,7 +324,7 @@
                         tr.append('<td>' + addCommas(trans.Disposable_Value) + '</td>');
                         tr.append('<td>' + addCommas(trans.Disposed_Amount) + '</td>');
                         tr.append('<td>' + addCommas(trans.Gain_Loss) + '</td>');
-                        
+
                         tr.append('<td>' + trans.DepMethod + '</td>');
                         tr.append('<td>' + trans.LifeSpan + '</td>');
                         tr.append('<td>' + trans.LifeSpanUsed + '</td>');
@@ -549,7 +341,7 @@
                         $('table').append(tr);
 
 
-                     
+
 
 
                         if (trans.FACost == null || trans.FACost == '' || isNaN(trans.FACost)) {
@@ -779,7 +571,7 @@
 
 
     }
-</script>
+    </script>
 }
 
 
