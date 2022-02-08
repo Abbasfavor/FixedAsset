@@ -5,13 +5,18 @@ using System.Web;
 
 namespace FixedAsset.Models.ReAncillary
 {
-    public class ReAncillary
+    public class ReAncillaryModel
     {
         public int Id { get; set; }
         public string FACode { get; set; }
         public string CostCode { get; set; }
         public Nullable<decimal> Amount { get; set; }
-        public byte[] TranDate { get; set; }
+
+
+        public Nullable<System.DateTime> TranDate { get; set; }
+   
+
+
         public string Narration { get; set; }
         public Nullable<int> ExpMethod { get; set; }
         public string DRAccount { get; set; }

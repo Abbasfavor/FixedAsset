@@ -1,0 +1,319 @@
+﻿@model FixedAsset.Models.ReAncillary.ReAncillaryModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+
+
+
+
+
+
+
+<section id="intro" class="intro">
+
+    <div class="row">
+
+        <div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="0.1s">
+            <div style="height:130px">
+
+            </div>
+        </div>
+
+
+    </div>
+
+</section>
+<section id="intro" class="intro">
+
+    <div class="row">
+
+        <div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="0.1s">
+            <div style="height:130px">
+
+            </div>
+        </div>
+
+
+    </div>
+
+</section>
+
+@*<section id="boxes" class="home-section paddingtop-80">*@
+
+<div class="container">
+    <div class="row">
+
+
+        <div class="col-md-10 col-md-offset-1">
+
+
+
+            <div style="display:none;" class="alert alert-success alert-dismissible" id="succesdiv">
+                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                <p>
+                    <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong><span id="sucessspan"></span>
+
+                </p>
+            </div>
+            <div class="panel panel-default panel-table" id="maindiv">
+
+                <div class="panel-heading">
+                    <div class="row">
+
+                        <div class="col col-xs-6 text-left">
+                            <div>
+                                <h3 id="tile1">&nbsp;&nbsp; RECURRING ANCILLARY COST ITEMS</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-heading">
+                    <div class="row">
+
+                        <div class="col col-xs-6 text-left">
+                            <div>
+                                <h3 id="tile1">&nbsp;&nbsp; </h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body" id="FormDiv">
+
+                    <div class="alert alert-danger alert-dismissible" style="display:none;" id="errordiv">
+                        <a href="#" class="close" data-dismiss="alert">&times;</a>
+                        <strong>Error!&nbsp;&nbsp;</strong><span id="errorspan"></span>
+                    </div>
+                    @if (ViewBag.Status != null && Convert.ToBoolean(ViewBag.Status))
+                    {
+
+                        if (ViewBag.Message != null)
+                        {
+
+                            <div class="alert alert-success">
+                                <strong>@ViewBag.Message</strong>
+                            </div>
+                            <div class="action">
+
+                                <a href="@Url.Action("Edit","ReAncillary")" class="btn btn-primary btn-lg">Return</a>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        using (Html.BeginForm("Edit", "ReAncillary", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+
+                <div class="form">
+
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(m => m.Id)
+
+
+
+
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="userId"> Fixed Asset Code:</label>
+                                @Html.EditorFor(model => model.FACode, new { htmlAttributes = new { @class = "form-control fulName" } })
+                                @Html.ValidationMessageFor(model => model.FACode, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label for="userId">Cost Code:</label>
+                                @Html.EditorFor(model => model.CostCode, new { htmlAttributes = new { @class = "form-control fulName" } })
+                                @Html.ValidationMessageFor(model => model.CostCode, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label for="userId"> Fixed Asset Code:</label>
+                                @Html.EditorFor(model => model.FACode, new { htmlAttributes = new { @class = "form-control fulName" } })
+                                @Html.ValidationMessageFor(model => model.FACode, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label for="userId"> Amount:</label>
+                                @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control fulName" } })
+                                @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+
+
+
+
+                            <div class="form-group">
+                                <label for="userId">Transaction Date:</label>
+
+                                @Html.EditorFor(model => model.TranDate, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.TranDate, "", new { @class = "text-danger" })
+                            </div>
+
+
+
+                        </div>
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label for="userId">Narration:</label>
+
+                                @Html.EditorFor(model => model.Narration, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Narration, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label for="userId"> Expense method:</label>
+                                @Html.EditorFor(model => model.ExpMethod, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.ExpMethod, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label for="userId"> DR Account:</label>
+                                @Html.EditorFor(model => model.DRAccount, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.DRAccount, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label for="userId"> CR Account:</label>
+                                @Html.EditorFor(model => model.CRAccount, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.CRAccount, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label for="userId"> Mojnthly Run Rate:</label>
+                                @Html.EditorFor(model => model.MonthlyRunRate, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.MonthlyRunRate, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label for="userId">Next Amortise Date:</label>
+                                @Html.EditorFor(model => model.NextAmortDate, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.NextAmortDate, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <label for="userId">Amount Paid:</label>
+                                @Html.EditorFor(model => model.AmountPaid, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.AmountPaid, "", new { @class = "text-danger" })
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+                    <div class="modal-footer">
+                        <span id="spnMessage" class="text-danger">@TempData["Message"]</span>
+                        <br />
+                        <div class="action">
+
+                     
+                            <button type="submit" id="addbutton" class="btn btn-primary btn-lg">
+                                Submit
+                            </button>
+
+                            <a href="@Url.Action("ACillaryCostList","ReAncillary")" class="btn btn-primary btn-lg">Return</a>
+                        </div>
+
+
+                    </div>
+
+
+
+                </div>
+
+                            if (ViewBag.Message != null)
+                            {
+                                <div class="alert alert-danger">
+                                    <strong>Error!</strong>@ViewBag.Message
+                                </div>
+                            }
+                        }
+
+
+
+                    }
+
+
+
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

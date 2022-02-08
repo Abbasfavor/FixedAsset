@@ -1,0 +1,197 @@
+﻿@model IEnumerable<FixedAsset.Models.AssetRelocation.AssetRelocationModel>
+
+@{
+    ViewBag.Title = "locationlist";
+}
+
+
+<section id="intro" class="intro">
+
+    <div class="row">
+
+        <div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="0.1s">
+            <div style="height:130px">
+
+            </div>
+        </div>
+    </div>
+
+</section>
+<section id="intro" class="intro">
+
+    <div class="row">
+
+        <div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="0.1s">
+            <div style="height:130px">
+
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+
+
+@if (ViewBag.Message != null)
+
+{
+    <h3 class="alert alert-info">@ViewBag.Message</h3>
+}
+
+
+
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 pad-top">
+    <div class="card">
+        <br />
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    @*<a href="@Url.Action("Create","Applicant")" class="btn btn-primary btn-lg">Add New</a>*@
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    @*<a href="@Url.Action("Create","Applicant")" class="btn btn-primary btn-lg">Add New</a>*@
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <a href="@Url.Action("CreateFaReloct","AssetRelocation")" class="btn btn-primary btn-lg">Add New</a>
+                    <a href="@Url.Action("locationlist","AssetRelocation")" class="btn btn-primary btn-lg">List</a>
+                </div>
+            </div>
+        </div>
+        <div class="card-header">
+            <h2 class="mb-0">ASSET RELOCATION</h2>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered basic-main-table">
+                    <thead>
+                        <tr>
+                            <th>FA Code</th>
+                            <th>Cost Code</th>
+                            <th>branch</th>
+                            <th>officer Email</th>
+                            <th>Date Allocated</th>
+                            <th>Receipt By</th>
+                            <th>Asset GL</th>
+                            <th>AccumDep GL</th>
+                            <th>DepExpense GL</th>
+                            <th>Credit Acc</th>
+                            <th>Debit Acc</th>
+
+                            <th>User ID</th>
+                            <th>Auth ID</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null)
+                        {
+                            foreach (var item in Model)
+                            {
+
+
+
+                        <tr>
+                            <td>@item.FACode</td>
+                            <td>@item.FALocationCode</td>
+                            <td>@item.BranchName</td>
+                            <td>@item.OffEmail</td>
+                            <td>@item.DateAllocated</td>
+                            <td>@item.ReceiptBy</td>
+                            <td>@item.AssetGL</td>
+                            <td>@item.AccumDepGL</td>
+                            <td>@item.DepExpenseGL</td>
+
+                            <td>@item.CRAccount</td>
+                            <td>@item.DRAccount</td>
+                            <td>@item.UserID</td>
+                            <td>@item.AuthID</td>
+
+                            <td class="table-action">
+                                <div class="dropdown float-right">
+                                    <a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown" aria-expanded="false">
+                                        Actions<i class="mdi mdi-dots-vertical"></i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right" style="">
+                                        <a class="dropdown-item" href="@Url.Action("Edit", "AssetRelocation", new { Id = item.Id })">
+                                            <i class="la fa fa-edit"></i>
+                                            <span class="kt-nav__link-text">Edit</span>
+                                        </a>
+                                        <a class="dropdown-item" href="@Url.Action("Delete", "AssetRelocation", new { Id = item.Id  })">
+
+                                            <i class="la fa fa-trash"></i>
+                                            <span class="kt-nav__link-text">Delete</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+
+
+
+
+
+
+
+
+
+                @if (ViewBag.Message != null)
+                {
+                    <script type="text/javascript">
+
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+                    </script>
+
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

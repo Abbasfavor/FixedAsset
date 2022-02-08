@@ -1,0 +1,170 @@
+﻿@model IEnumerable<FixedAsset.Models.ReAncillary.ReAncillaryModel>
+
+@{
+    ViewBag.Title = "ACillaryCostList";
+}
+
+
+<section id="intro" class="intro">
+
+    <div class="row">
+
+        <div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="0.1s">
+            <div style="height:130px">
+
+            </div>
+        </div>
+    </div>
+
+</section>
+<section id="intro" class="intro">
+
+    <div class="row">
+
+        <div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="0.1s">
+            <div style="height:130px">
+
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+
+
+
+
+
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 pad-top">
+    <div class="card">
+        <br />
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    @*<a href="@Url.Action("Create","Applicant")" class="btn btn-primary btn-lg">Add New</a>*@
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    @*<a href="@Url.Action("Create","Applicant")" class="btn btn-primary btn-lg">Add New</a>*@
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <a href="@Url.Action("Create","ReAncillary")" class="btn btn-primary btn-lg">Add New</a>
+                </div>
+            </div>
+        </div>
+        <div class="card-header">
+            <h2 class="mb-0">RECURRING ANCILLARY COST ITEMS</h2>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered basic-main-table">
+                    <thead>
+                        <tr>
+                            <th>FA Code</th>
+                            <th>Cost Code</th>
+                            <th>Amount</th>
+                            <th>Tran Date</th>
+                            <th>Narration</th>
+                            <th>Exp Method</th>
+                            <th>DR Account</th>
+                            <th>CR Account</th>
+                            <th>Monthly RunRate</th>
+                            <th>Next Amort Date</th>
+                            <th>Amount Paid</th>
+                            <th>User ID</th>
+                            <th>Auth ID</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null)
+                        {
+                            foreach (var item in Model)
+                            {
+
+                                <tr>
+                                    <td>@item.FACode</td>
+                                    <td>@item.CostCode</td>
+                                    <td>@item.Amount</td>
+                                    <td>@item.TranDate</td>
+                                    <td>@item.Narration</td>
+                                    <td>@item.ExpMethod</td>
+                                    <td>@item.DRAccount</td>
+                                    <td>@item.CRAccount</td>
+                                    <td>@item.MonthlyRunRate</td>
+                                    <td>@item.NextAmortDate</td>
+                                    <td>@item.Amount</td>
+                                    <td>@item.UserID</td>
+                                    <td>@item.AuthID</td>
+
+                                    <td class="table-action">
+                                        <div class="dropdown float-right">
+                                            <a href="#" class="dropdown-toggle arrow-none card-drop" data-toggle="dropdown" aria-expanded="false">
+                                                Actions<i class="mdi mdi-dots-vertical"></i>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-right" style="">
+                                                <a class="dropdown-item" href="@Url.Action("Edit", "ReAncillary", new { Id = item.Id })">
+                                                    <i class="la fa fa-edit"></i>
+                                                    <span class="kt-nav__link-text">Edit</span>
+                                                </a>
+                                                <a class="dropdown-item" href="@Url.Action("Delete", "ReAncillary", new { Id = item.Id  })">
+
+                                                    <i class="la fa fa-trash"></i>
+                                                    <span class="kt-nav__link-text">Delete</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+
+
+
+                
+
+
+
+
+
+                @if (ViewBag.Message != null)
+                {
+                    <script type="text/javascript">
+
+            window.onload = function () {
+                alert("@ViewBag.Message");
+            };
+                    </script>
+
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

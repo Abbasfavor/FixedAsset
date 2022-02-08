@@ -146,7 +146,7 @@
     <Compile Include="Models\AssetAcuisition\AssetModel.cs" />
     <Compile Include="Models\AssetAllocation\AssetAllocation.cs" />
     <Compile Include="Models\AssetDisposal\AssetDisposal.cs" />
-    <Compile Include="Models\AssetRelocation\AssetRelocation.cs" />
+    <Compile Include="Models\AssetRelocation\AssetRelocationModel.cs" />
     <Compile Include="Models\AssetRevaluation\AssetRevaluation.cs" />
     <Compile Include="Models\FALocation\FALocationModel.cs" />
     <Compile Include="Models\FixedAsset.Context.cs">
@@ -167,7 +167,7 @@
     <Compile Include="Models\HelperModel\AmortiseSet.cs" />
     <Compile Include="Models\HelperModel\ReturnModel.cs" />
     <Compile Include="Models\maintenance\maintenance.cs" />
-    <Compile Include="Models\ReAncillary\ReAncillary.cs" />
+    <Compile Include="Models\ReAncillary\ReAncillaryModel.cs" />
     <Compile Include="Models\Reports\RptFADisposed .cs" />
     <Compile Include="Models\Reports\RptFARegister.cs" />
     <Compile Include="Models\Reports\RptFAWrittenOff.cs" />
@@ -253,8 +253,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AssetAcquis\AssetAcquisition.cs" />
     <Compile Include="Repository\AssetAcquis\IAssetAcquisition.cs" />
+    <Compile Include="Repository\AssetRelocation\IRelocation.cs" />
+    <Compile Include="Repository\AssetRelocation\Relocation.cs" />
     <Compile Include="Repository\Maintenance\IMaintenance.cs" />
     <Compile Include="Repository\Maintenance\Maintenance.cs" />
+    <Compile Include="Repository\ReAncillary\IReAncillary.cs" />
+    <Compile Include="Repository\ReAncillary\ReAncillary.cs" />
     <Compile Include="Repository\Report\IReportRepo.cs" />
     <Compile Include="Repository\Report\ReportRepo.cs" />
     <Compile Include="Repository\Setup\AncillaryCost.cs" />
@@ -1015,6 +1019,13 @@
     <Content Include="Views\Report\GetFAMaintRepairByCode.cshtml" />
     <Content Include="Views\Report\GetFAWrittenOff.cshtml" />
     <Content Include="Views\Report\GetFAMaint_Repairs.cshtml" />
+    <Content Include="Views\AssetRelocation\CreateFaReloct.cshtml" />
+    <Content Include="Views\AssetRelocation\Edit.cshtml" />
+    <Content Include="Views\AssetRelocation\locationlist.cshtml" />
+    <Content Include="Views\AssetMaintenance\Edit.cshtml" />
+    <Content Include="Views\AssetMaintenance\MaintainanceList.cshtml" />
+    <Content Include="Views\ReAncillary\ACillaryCostList.cshtml" />
+    <Content Include="Views\ReAncillary\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

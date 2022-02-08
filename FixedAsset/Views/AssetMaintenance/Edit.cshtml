@@ -1,22 +1,19 @@
-﻿@model FixedAsset.Models.ReAncillary.ReAncillaryModel
-
+﻿@model FixedAsset.Models.maintenance.maintenance
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "create";
 }
-
-
 <section id="intro" class="intro">
 
-<div class="row">
+    <div class="row">
 
-    <div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="0.1s">
-        <div style="height:130px">
+        <div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="0.1s">
+            <div style="height:130px">
 
+            </div>
         </div>
+
+
     </div>
-
-
-</div>
 
 </section>
 <section id="intro" class="intro">
@@ -33,6 +30,17 @@
     </div>
 
 </section>
+
+
+
+
+
+
+
+
+
+
+
 
 @*<section id="boxes" class="home-section paddingtop-80">*@
 
@@ -58,7 +66,7 @@
 
                         <div class="col col-xs-6 text-left">
                             <div>
-                                <h3 id="tile1">&nbsp;&nbsp;RECURRING ANCILLARY COST ITEMS</h3>
+                                <h3 id="tile1">&nbsp;&nbsp;MAINTENANCE/REPAIRS </h3>
                             </div>
                         </div>
                     </div>
@@ -73,18 +81,39 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <!--<div class="form-group">
+
+                        <fieldset>
+                            <div class="some-class">
+                                <input type="radio" class="MRRadio" name="OperaType" value="1" id="y" />-->
+                        @*<input type="radio" class="MRRadio" name="x" value="1" id="y" />*@
+                        <!--<label for="y">Maintenance </label>
+                        <input type="radio" class="MRRadio" name="OperaType" value="2" id="z" />-->
+                        @*<input type="radio" class="MRRadio" name="x" value="2" id="z" />*@
+                        <!--<label for="z">Repairs</label>
+                                </div>
+                            </fieldset>
+                        </div>-->
 
 
 
-                <div class="action">
+                        <div class="col-md-6">
 
-                    <a href="@Url.Action("Create","ReAncillary")" class="btn btn-primary btn-lg">Return</a>
-                    <a href="@Url.Action("ACillaryCostList","ReAncillary")" class="btn btn-primary btn-lg">List</a>
+                            <div class="form-group">
+                                <label for="userId"></label>
+
+
+
+
+                            </div>
+                        </div>
+
+
+                    </div>
                 </div>
-
-
-
-
                 <div class="panel-body" id="FormDiv">
 
                     <div class="alert alert-danger alert-dismissible" style="display:none;" id="errordiv">
@@ -102,13 +131,13 @@
                             </div>
                             <div class="action">
 
-                                @*<a href="@Url.Action("Create","FixedAsset")" class="btn btn-primary btn-lg">Return</a>*@
+                                <a href="@Url.Action("create","AssetMaintenance")" class="btn btn-primary btn-lg">Return</a>
                             </div>
                         }
                     }
                     else
                     {
-                        using (Html.BeginForm("Create", "ReAncillary", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        using (Html.BeginForm("Edit", "AssetMaintenance", FormMethod.Post, new { enctype = "multipart/form-data" }))
                         {
                             @Html.AntiForgeryToken()
 
@@ -118,139 +147,140 @@
                                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
 
+
+
+                                @Html.RadioButtonFor(model => model.OperaType, "1")  Maintenance
+                                @Html.RadioButtonFor(model => model.OperaType, "2") Repairs
+
+
+                                <br />
+                                <br />
+
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="userId"> Fixed Asset Code:</label>
+                                            <label for="userId">FA Code:</label>
                                             @Html.EditorFor(model => model.FACode, new { htmlAttributes = new { @class = "form-control fulName" } })
                                             @Html.ValidationMessageFor(model => model.FACode, "", new { @class = "text-danger" })
+
                                         </div>
                                     </div>
                                     <div class="col-md-6">
 
                                         <div class="form-group">
-                                            <label for="userId">Cost Code:</label>
-                                            @Html.DropDownListFor(m => m.CostCode, new SelectList(ViewBag.AnliarryCost, "CostCode", "CostDesc"), "-----select-----", new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.CostCode, "", new { @class = "text-danger" })
+                                            <label for="userId">Description:</label>
+                                            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control fulName" } })
+                                            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
 
                                         </div>
                                     </div>
 
                                 </div>
+
+
+
+
+
+
                                 <div class="row">
                                     <div class="col-md-6">
-
                                         <div class="form-group">
-                                            <label for="userId"> Fixed Asset Code:</label>
-                                            @Html.EditorFor(model => model.FACode, new { htmlAttributes = new { @class = "form-control fulName" } })
+                                            <label for="userId">Maintainance Date:</label>
+                                            @Html.EditorFor(model => model.MaintDate, new { htmlAttributes = new { @class = "form-control fulName" } })
                                             @Html.ValidationMessageFor(model => model.FACode, "", new { @class = "text-danger" })
+
                                         </div>
                                     </div>
                                     <div class="col-md-6">
 
                                         <div class="form-group">
-                                            <label for="userId"> Amount:</label>
+                                            <label for="userId"> Next Maintainance Dat:</label>
+                                            @Html.EditorFor(model => model.NextMaintDate, new { htmlAttributes = new { @class = "form-control fulName" } })
+                                            @Html.ValidationMessageFor(model => model.NextMaintDate, "", new { @class = "text-danger" })
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                <div class="row">
+                                    <div class="col-md-6">
+
+                                        <div class="form-group">
+                                            <label for="userId">Amount:</label>
                                             @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control fulName" } })
                                             @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
-
-
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-6">
-
-
-
-
-                                        <div class="form-group">
-                                            <label for="userId">Transaction Date:</label>
-
-                                            @*@Html.EditorFor(model => model.TranDate, new { htmlAttributes = new { @class = "form-control" } })*@
-
-                                            @Html.EditorFor(model => model.TranDate, new { htmlAttributes = new { @class = "form-control" } })
-
-                                            @Html.ValidationMessageFor(model => model.TranDate, "", new { @class = "text-danger" })
-                                        </div>
-
-
-
-                                    </div>
                                     <div class="col-md-6">
 
                                         <div class="form-group">
-                                            <label for="userId">Narration:</label>
-
-                                            @Html.EditorFor(model => model.Narration, new { htmlAttributes = new { @class = "form-control" } })
-                                            @Html.ValidationMessageFor(model => model.Narration, "", new { @class = "text-danger" })
+                                            <label for="userId">Capitalise type:</label>
+                                            @Html.DropDownListFor(m => m.CapitaliseTpe, new SelectList(ViewBag.Amortise, "status", "transtype"), "-----select-----", new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.CapitaliseTpe, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
 
 
                                 </div>
+                                @*<div class="row" id="CapAmount" style="display:none">
+                                        <div class="col-md-12">
+
+                                            <div class="form-group">
+                                                <label for="userId"> Capitalized Amount:</label>
+                                                @Html.EditorFor(model => model.CapitalAmount, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.CapitalAmount, "", new { @class = "text-danger" })
+
+                                            </div>
+                                        </div>
+
+
+                                    </div>*@
+
                                 <div class="row">
                                     <div class="col-md-6">
 
                                         <div class="form-group">
-                                            <label for="userId"> Expense method:</label>
-                                            @Html.EditorFor(model => model.ExpMethod, new { htmlAttributes = new { @class = "form-control" } })
-                                            @Html.ValidationMessageFor(model => model.ExpMethod, "", new { @class = "text-danger" })
 
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-
-                                        <div class="form-group">
-                                            <label for="userId"> DR Account:</label>
+                                            <label for="CompanyId ">Debit GL: </label>
                                             @Html.EditorFor(model => model.DRAccount, new { htmlAttributes = new { @class = "form-control" } })
                                             @Html.ValidationMessageFor(model => model.DRAccount, "", new { @class = "text-danger" })
-
                                         </div>
-                                    </div>
 
-                                </div>
-                                <div class="row">
+                                    </div>
                                     <div class="col-md-6">
 
                                         <div class="form-group">
-                                            <label for="userId"> CR Account:</label>
+                                            <label for="userId">Credit GL</label>
+
                                             @Html.EditorFor(model => model.CRAccount, new { htmlAttributes = new { @class = "form-control" } })
                                             @Html.ValidationMessageFor(model => model.CRAccount, "", new { @class = "text-danger" })
-
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
 
-                                        <div class="form-group">
-                                            <label for="userId"> Mojnthly Run Rate:</label>
-                                            @Html.EditorFor(model => model.MonthlyRunRate, new { htmlAttributes = new { @class = "form-control" } })
-                                            @Html.ValidationMessageFor(model => model.MonthlyRunRate, "", new { @class = "text-danger" })
-
-                                        </div>
-                                    </div>
 
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-6">
 
-                                        <div class="form-group">
-                                            <label for="userId">Next Amortise Date:</label>
-                                            @Html.EditorFor(model => model.NextAmortDate, new { htmlAttributes = new { @class = "form-control" } })
-                                            @Html.ValidationMessageFor(model => model.NextAmortDate, "", new { @class = "text-danger" })
 
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-
-                                        <div class="form-group">
-                                            <label for="userId">Amount Paid:</label>
-                                            @Html.EditorFor(model => model.AmountPaid, new { htmlAttributes = new { @class = "form-control" } })
-                                            @Html.ValidationMessageFor(model => model.AmountPaid, "", new { @class = "text-danger" })
-
-                                        </div>
-                                    </div>
-                                </div>
                                 <div class="modal-footer">
                                     <span id="spnMessage" class="text-danger">@TempData["Message"]</span>
                                     <br />
@@ -259,7 +289,7 @@
                                             Submit
                                         </button>
 
-                                        <a href="@Url.Action("Create","ReAncillary")" class="btn btn-primary btn-lg">Return</a>
+                                        <a href="@Url.Action("create","AssetMaintenance")" class="btn btn-primary btn-lg">Return</a>
                                     </div>
 
 
@@ -370,10 +400,17 @@
                 $(this).attr("data-toggle", "modal").attr("data-target", "#exampleModal");
             });
 
+            $('.MRRadio').click(function () {
+                //if ($('#y').is(':checked')) {
+                //    $('#CapAmount').show();
+                //} else {
+                //    $('#CapAmount').hide();
+                //}
+            });
+
         });
 
     </script>
 }
-
 
 

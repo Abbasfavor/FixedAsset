@@ -249,12 +249,9 @@ namespace FixedAsset.Repository.AssetAcquis
             return CatList;
         }
 
-
-
         public void Dispose()
         {
             throw new NotImplementedException();
-            _entity.Dispose();
         }
     }
 }
